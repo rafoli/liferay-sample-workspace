@@ -1,6 +1,6 @@
-Bundle-Name: MBOP Sample Module API
-Bundle-SymbolicName: com.mbo.partners.sample.module.api
+Bundle-Name: liferay Sample Module API
+Bundle-SymbolicName: com.liferay.sample.module.api
 Bundle-Version: 1.0.0
 Export-Package: \
-    com.mbo.partners.sample.module.model,\
-    com.mbo.partners.sample.module.service
+    com.liferay.sample.module.model,\
+    com.liferay.sample.module.service

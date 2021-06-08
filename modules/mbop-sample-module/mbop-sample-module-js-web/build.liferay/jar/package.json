@@ -1,5 +1,5 @@
 {
-  "name": "mbop-sample-module-js-web",
+  "name": "liferay-sample-module-js-web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -44,10 +44,10 @@
   },
   "portlet": {
     "com.liferay.portlet.display-category": "category.sample",
-    "javax.portlet.name": "mbopsamplemodulejsweb",
+    "javax.portlet.name": "liferaysamplemodulejsweb",
     "javax.portlet.security-role-ref": "power-user,user",
     "javax.portlet.resource-bundle": "content.Language",
     "com.liferay.portlet.instanceable": false,
-    "com.liferay.portlet.header-portlet-css": "/mbop-sample-module-js-web/styles.css"
+    "com.liferay.portlet.header-portlet-css": "/liferay-sample-module-js-web/styles.css"
   }
 }

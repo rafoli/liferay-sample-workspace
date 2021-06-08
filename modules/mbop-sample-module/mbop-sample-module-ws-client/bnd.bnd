@@ -1,9 +1,9 @@
-Bundle-Name: MBOP Sample Module WS Client
-Bundle-SymbolicName: com.mbo.partners.sample.module.ws
+Bundle-Name: liferay Sample Module WS Client
+Bundle-SymbolicName: com.liferay.sample.module.ws
 Bundle-Version: 1.0.0
 Export-Package: \
-    com.mbo.partners.sample.module.ws.client, \
-    com.mbo.partners.sample.module.ws.respose
+    com.liferay.sample.module.ws.client, \
+    com.liferay.sample.module.ws.respose
 Import-Package: \
 	!javax.annotation.*,\
     !org.slf4j.*,\
