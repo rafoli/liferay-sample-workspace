@@ -1,0 +1,6 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+
+	compileOnly project(":modules:mbop-sample-module:mbop-sample-module-api")
+	compileOnly project(":modules:mbop-sample-module:mbop-sample-module-ws-client")
+}

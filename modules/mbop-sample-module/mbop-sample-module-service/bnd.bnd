@@ -1,0 +1,3 @@
+Bundle-Name: MBOP Sample Module Service
+Bundle-SymbolicName: com.mbo.partners.sample.module.service
+Bundle-Version: 1.0.0

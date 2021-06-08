@@ -1,0 +1,3 @@
+Bundle-Name: MBOP Sample Module Web REST
+Bundle-SymbolicName: com.mbo.partners.sample.module.web.rest
+Bundle-Version: 1.0.0

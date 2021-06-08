@@ -1,0 +1,16 @@
+subprojects {
+    project.pluginManager.withPlugin("com.liferay.node") {
+        if (project.tasks.findByName('packageRunDeployLiferay')) {
+            deploy {
+                dependsOn packageRunDeployLiferay
+            }
+        }
+    }
+
+    gradle.taskGraph.whenReady { graph ->
+        if (project.tasks.findByName('packageRunDeployLiferay') && graph.hasTask(packageRunDeployLiferay)) {
+            packageRunTest.enabled = false
+            packageRunBuild.enabled = false
+        }
+    }
+}

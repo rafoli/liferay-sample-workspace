@@ -1,0 +1,18 @@
+{
+  "packages": {
+    "/": {
+      "dest": {
+        "dir": "./build.liferay/jar",
+        "id": "/",
+        "name": "mbop-sample-module-js-web",
+        "version": "0.0.0"
+      },
+      "src": {
+        "dir": ".",
+        "id": "/",
+        "name": "mbop-sample-module-js-web",
+        "version": "0.0.0"
+      }
+    }
+  }
+}

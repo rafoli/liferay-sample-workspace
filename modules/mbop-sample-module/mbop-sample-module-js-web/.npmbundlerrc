@@ -1,0 +1,6 @@
+{
+	"preset": "liferay-npm-bundler-preset-angular-cli",
+	"create-jar": {
+		"output-dir": "dist"
+	}
+}

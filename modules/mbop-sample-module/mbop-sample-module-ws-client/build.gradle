@@ -1,0 +1,14 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+
+	compileInclude group: "io.github.openfeign", name: "feign-core", version: "11.0"
+	compileInclude group: "io.github.openfeign", name: "feign-gson", version: "11.0"
+	compileInclude group: "io.github.openfeign", name: "feign-slf4j", version: "11.0"
+	compileInclude group: "io.github.resilience4j", name: "resilience4j-feign", version: "1.5.0"
+	compileInclude group: "io.github.resilience4j", name: "resilience4j-timelimiter", version: "1.5.0"
+
+	compileInclude group: "org.slf4j", name: "slf4j-api", version: "1.7.30"
+	compileInclude group: "org.slf4j", name: "slf4j-simple", version: "1.7.30"
+
+
+}
