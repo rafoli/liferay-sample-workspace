@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mbop-sample-module-js-web": {
+    "liferay-sample-module-js-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mbop-sample-module-js-web",
+            "outputPath": "dist/liferay-sample-module-js-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mbop-sample-module-js-web:build:production"
+              "browserTarget": "liferay-sample-module-js-web:build:production"
             },
             "development": {
-              "browserTarget": "mbop-sample-module-js-web:build:development"
+              "browserTarget": "liferay-sample-module-js-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mbop-sample-module-js-web:build"
+            "browserTarget": "liferay-sample-module-js-web:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "mbop-sample-module-js-web"
+  "defaultProject": "liferay-sample-module-js-web"
 }

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/mbop-sample-module-js-web'),
+      dir: require('path').join(__dirname, './coverage/liferay-sample-module-js-web'),
       subdir: '.',
       reporters: [
         { type: 'html' },
