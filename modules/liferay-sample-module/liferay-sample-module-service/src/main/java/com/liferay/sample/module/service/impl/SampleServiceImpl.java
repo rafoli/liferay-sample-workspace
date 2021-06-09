@@ -5,10 +5,8 @@ import com.liferay.sample.module.service.SampleService;
 import com.liferay.sample.module.service.mapper.SampleServiceMapper;
 import com.liferay.sample.module.ws.client.SampleWSClient;
 import com.liferay.sample.module.ws.respose.SampleResponse;
-
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
 import java.io.IOException;
 import java.util.List;
 

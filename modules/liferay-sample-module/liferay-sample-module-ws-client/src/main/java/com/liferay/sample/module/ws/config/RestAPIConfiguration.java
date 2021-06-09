@@ -8,13 +8,13 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
  * @author Rafael Oliveira
  */
 @ExtendedObjectClassDefinition(
-        category = "mbop-configuration",
+        category = "liferay-configuration",
         scope = ExtendedObjectClassDefinition.Scope.SYSTEM
 )
 @Meta.OCD(
-        id="com.mbo.partners.sample.module.ws.config.RestAPIConfiguration",
+        id="com.liferay.sample.module.ws.config.RestAPIConfiguration",
         localization = "content/Language",
-        name = "mbop-sample-ws"
+        name = "liferay-sample-ws"
 )
 public interface RestAPIConfiguration {
 

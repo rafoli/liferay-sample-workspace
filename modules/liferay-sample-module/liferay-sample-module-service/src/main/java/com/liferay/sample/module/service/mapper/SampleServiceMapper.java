@@ -2,9 +2,7 @@ package com.liferay.sample.module.service.mapper;
 
 import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.ws.respose.SampleResponse;
-
 import org.osgi.service.component.annotations.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
