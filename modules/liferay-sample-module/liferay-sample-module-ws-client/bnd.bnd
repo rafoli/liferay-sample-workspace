@@ -1,0 +1,16 @@
+Bundle-Name: Liferay Sample Module WS Client
+Bundle-SymbolicName: com.liferay.sample.module.ws
+Bundle-Version: 1.0.0
+Export-Package: \
+    com.liferay.sample.module.ws.client, \
+    com.liferay.sample.module.ws.respose
+Import-Package: \
+	!javax.annotation.*,\
+    !org.slf4j.*,\
+	!io.github.resilience4j.*,\
+	!io.micrometer.core.*,\
+	!io.reactivex.*,\
+	!org.reactivestreams.*,\
+	!org.springframework.boot.*,\
+	!reactor.core.*,\
+	*

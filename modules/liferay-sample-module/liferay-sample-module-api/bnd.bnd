@@ -1,0 +1,6 @@
+Bundle-Name: Liferay Sample Module API
+Bundle-SymbolicName: com.liferay.sample.module.api
+Bundle-Version: 1.0.0
+Export-Package: \
+    com.liferay.sample.module.model,\
+    com.liferay.sample.module.service
