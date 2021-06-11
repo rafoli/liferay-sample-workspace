@@ -9,8 +9,11 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
@@ -44,6 +47,17 @@ public class SampleApplication extends Application {
         List<SampleObject> samples = _sampleService.getSamples();
 
         return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();
+    }
+    
+    @Path("/sample/{id}/{name}")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postSamples(@Context HttpServletRequest request,
+    		@PathParam("id") String id, @PathParam("name") String name) {
+        SampleObject sample = _sampleService.addSample(id, name);
+
+        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
 
     @Reference

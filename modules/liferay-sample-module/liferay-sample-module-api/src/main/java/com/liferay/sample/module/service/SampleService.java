@@ -10,5 +10,6 @@ import java.util.List;
 public interface SampleService {
 
     public List<SampleObject> getSamples();
+    public SampleObject addSample(String id, String name);
 
 }
