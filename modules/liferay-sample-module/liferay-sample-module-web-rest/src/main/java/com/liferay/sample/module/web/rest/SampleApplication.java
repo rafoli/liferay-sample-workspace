@@ -70,15 +70,17 @@ public class SampleApplication extends Application {
     @Path("/sample/add")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addSample(@Context HttpServletRequest request) {
-    	
+    public Response addSample(@Context HttpServletRequest request, String body) {
+    	  	
     	// External Service Data
 //      SampleObject sample = _sampleService.addSample(sample);
     	
+    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
+    	
     	// Mocking Data    	
-    	SampleObject sample = new SampleObject();
-    	sample.setId("4");
-    	sample.setName("external data 4");
+//    	SampleObject sample = new SampleObject();
+//    	sample.setId("4");
+//    	sample.setName("external data 4");
     	
     	samples.add(sample);
 
