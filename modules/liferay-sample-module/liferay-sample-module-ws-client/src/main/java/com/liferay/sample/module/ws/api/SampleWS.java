@@ -15,5 +15,8 @@ public interface SampleWS {
    
    @RequestLine("POST")
    SampleResponse addSample(SampleObject sampleObject);
+   
+   @RequestLine("PUT")
+   SampleResponse updateSample(SampleObject sampleObject);
 
 }
