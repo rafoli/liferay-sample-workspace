@@ -43,9 +43,7 @@ public class SampleApplication extends Application {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSamples(@Context HttpServletRequest request) {      	
-
-//        List<SampleObject> samples = _sampleService.getSamples();
-    	
+   	
     	// Mocking Data    	
     	SampleObject sampleObj1 = new SampleObject();
     	sampleObj1.setId("1");
@@ -71,17 +69,9 @@ public class SampleApplication extends Application {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response addSample(@Context HttpServletRequest request, String body) {
-    	  	
-    	// External Service Data
-//      SampleObject sample = _sampleService.addSample(sample);
     	
     	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
-    	
-    	// Mocking Data    	
-//    	SampleObject sample = new SampleObject();
-//    	sample.setId("4");
-//    	sample.setName("external data 4");
-    	
+    	   	
     	samples.add(sample);
 
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
