@@ -45,22 +45,26 @@ public class SampleApplication extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSamples(@Context HttpServletRequest request) {      	
    	
-    	// Mocking Data    	
-    	SampleObject sampleObj1 = new SampleObject();
-    	sampleObj1.setId("1");
-    	sampleObj1.setName("external data 1");
-    	
-    	SampleObject sampleObj2 = new SampleObject();
-    	sampleObj2.setId("2");
-    	sampleObj2.setName("external data 2");
-    	
-    	SampleObject sampleObj3 = new SampleObject();
-    	sampleObj3.setId("3");
-    	sampleObj3.setName("external data 3");
-       
-    	samples.add(sampleObj1);
-    	samples.add(sampleObj2);
-    	samples.add(sampleObj3);
+    	if (samples.isEmpty()) {
+    		
+    		// Mocking Data    	
+        	SampleObject sampleObj1 = new SampleObject();
+        	sampleObj1.setId("1");
+        	sampleObj1.setName("external data 1");
+
+        	SampleObject sampleObj2 = new SampleObject();
+        	sampleObj2.setId("2");
+        	sampleObj2.setName("external data 2");
+
+        	SampleObject sampleObj3 = new SampleObject();
+        	sampleObj3.setId("3");
+        	sampleObj3.setName("external data 3");
+
+        	samples.add(sampleObj1);
+        	samples.add(sampleObj2);
+        	samples.add(sampleObj3);
+        	
+    	}
         
         return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();  
         
