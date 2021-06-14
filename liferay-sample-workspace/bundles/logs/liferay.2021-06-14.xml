@@ -1,0 +1,30 @@
+<log4j:event logger="com.liferay.portal.spring.context.PortalContextLoaderListener" timestamp="1623673265474" level="INFO" thread="main">
+<log4j:message><![CDATA[JVM arguments: -Xmx2560m -Dcatalina.base=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37 -Dcatalina.home=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37 -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=8099 -Dcom.sun.management.jmxremote.ssl=false -Dfile.encoding=UTF8 -Djava.endorsed.dirs=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/endorsed -Djava.io.tmpdir=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/temp -Djava.net.preferIPv4Stack=true -Djava.util.logging.config.file=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Duser.timezone=GMT]]></log4j:message>
+<log4j:locationInfo class="com.liferay.portal.kernel.log.SanitizerLogWrapper" method="info" file="SanitizerLogWrapper.java" line="139"/>
+</log4j:event>
+
+<log4j:event logger="com.liferay.portal.module.framework.ModuleFrameworkAdapterHelper" timestamp="1623673265512" level="ERROR" thread="main">
+<log4j:message><![CDATA[Unable to load the module framework]]></log4j:message>
+<log4j:locationInfo class="com.liferay.portal.module.framework.ModuleFrameworkAdapterHelper" method="&lt;init&gt;" file="ModuleFrameworkAdapterHelper.java" line="123"/>
+</log4j:event>
+
+<log4j:event logger="com.liferay.portal.spring.context.PortalContextLoaderListener" timestamp="1623673431534" level="INFO" thread="main">
+<log4j:message><![CDATA[JVM arguments: -Djava.util.logging.config.file=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dfile.encoding=UTF-8 -Djava.locale.providers=JRE,COMPAT,CLDR -Djava.net.preferIPv4Stack=true -Duser.timezone=GMT -Xms2560m -Xmx2560m -XX:MaxNewSize=1536m -XX:MaxMetaspaceSize=768m -XX:MetaspaceSize=768m -XX:NewSize=1536m -XX:SurvivorRatio=7 -Dignore.endorsed.dirs= -Dcatalina.base=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37 -Dcatalina.home=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37 -Djava.io.tmpdir=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/temp]]></log4j:message>
+<log4j:locationInfo class="com.liferay.portal.kernel.log.SanitizerLogWrapper" method="info" file="SanitizerLogWrapper.java" line="139"/>
+</log4j:event>
+
+<log4j:event logger="com.liferay.portal.module.framework.ModuleFrameworkAdapterHelper" timestamp="1623673431568" level="ERROR" thread="main">
+<log4j:message><![CDATA[Unable to load the module framework]]></log4j:message>
+<log4j:locationInfo class="com.liferay.portal.module.framework.ModuleFrameworkAdapterHelper" method="&lt;init&gt;" file="ModuleFrameworkAdapterHelper.java" line="123"/>
+</log4j:event>
+
+<log4j:event logger="com.liferay.portal.spring.context.PortalContextLoaderListener" timestamp="1623673463930" level="INFO" thread="main">
+<log4j:message><![CDATA[JVM arguments: -Djava.util.logging.config.file=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dfile.encoding=UTF-8 -Djava.locale.providers=JRE,COMPAT,CLDR -Djava.net.preferIPv4Stack=true -Duser.timezone=GMT -Xms2560m -Xmx2560m -XX:MaxNewSize=1536m -XX:MaxMetaspaceSize=768m -XX:MetaspaceSize=768m -XX:NewSize=1536m -XX:SurvivorRatio=7 -Dignore.endorsed.dirs= -Dcatalina.base=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37 -Dcatalina.home=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37 -Djava.io.tmpdir=/home/me/liferay/projects/liferay-sample-workspace/bundles/tomcat-9.0.37/temp]]></log4j:message>
+<log4j:locationInfo class="com.liferay.portal.kernel.log.SanitizerLogWrapper" method="info" file="SanitizerLogWrapper.java" line="139"/>
+</log4j:event>
+
+<log4j:event logger="com.liferay.portal.module.framework.ModuleFrameworkAdapterHelper" timestamp="1623673463963" level="ERROR" thread="main">
+<log4j:message><![CDATA[Unable to load the module framework]]></log4j:message>
+<log4j:locationInfo class="com.liferay.portal.module.framework.ModuleFrameworkAdapterHelper" method="&lt;init&gt;" file="ModuleFrameworkAdapterHelper.java" line="123"/>
+</log4j:event>
+

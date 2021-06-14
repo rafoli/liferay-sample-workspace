@@ -20,7 +20,6 @@ public class SampleServiceImpl implements SampleService {
 
     public List<SampleObject> getSamples() {
 
-
         try {
             List<SampleResponse> entities = _sampleWSClient.getSamples();
             return _sampleServiceMapper.toSampleObjects(entities);
@@ -32,11 +31,10 @@ public class SampleServiceImpl implements SampleService {
 
     }
     
-    @Override
-	public SampleObject addSample(String id, String name) {
+    public SampleObject addSample(SampleObject sampleObject) {
     	
     	try {
-    		SampleResponse entity = _sampleWSClient.addSample(id, name);
+    		SampleResponse entity = _sampleWSClient.addSample(sampleObject);
             return _sampleServiceMapper.toSampleObject(entity);
         } catch (IOException e) {
             e.printStackTrace();

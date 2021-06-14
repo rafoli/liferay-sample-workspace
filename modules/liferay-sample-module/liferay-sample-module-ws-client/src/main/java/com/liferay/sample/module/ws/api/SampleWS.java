@@ -1,10 +1,9 @@
 package com.liferay.sample.module.ws.api;
 
-import feign.RequestLine;
-
+import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.ws.response.SampleResponse;
-
 import java.util.List;
+import feign.RequestLine;
 
 /**
  * @author Rafael Oliveira
@@ -15,6 +14,6 @@ public interface SampleWS {
    List<SampleResponse> getSamples();
    
    @RequestLine("POST")
-   SampleResponse addSample(String id, String name);
+   SampleResponse addSample(SampleObject sampleObject);
 
 }

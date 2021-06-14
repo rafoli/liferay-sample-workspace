@@ -1,6 +1,7 @@
 package com.liferay.sample.module.ws.client;
 
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
+import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.ws.api.ApiResponseException;
 import com.liferay.sample.module.ws.api.SampleWS;
 import com.liferay.sample.module.ws.client.base.RestClientFactory;
@@ -39,9 +40,9 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
             return _sampleWS.getSamples();
     }
     
-    public SampleResponse addSample(String id, String name) throws ApiResponseException, IOException {
+    public SampleResponse addSample(SampleObject sampleObject) throws ApiResponseException, IOException {
 
-        	return _sampleWS.addSample(id, name);
+        	return _sampleWS.addSample(sampleObject);
     }
 
     private SampleWS _sampleWS;
