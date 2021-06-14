@@ -49,15 +49,15 @@ public class SampleApplication extends Application {
         return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();
     }
     
-    @Path("/sample/{id}/{name}")
+    @Path("/sample/{sample}")
     @POST
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postSamples(@Context HttpServletRequest request,
-    		@PathParam("id") String id, @PathParam("name") String name) {
-        SampleObject sample = _sampleService.addSample(id, name);
+    							@PathParam("sample") SampleObject sample) {
+        SampleObject sampleObj = _sampleService.addSample(sample.getId(), sample.getName());
 
-        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+        return Response.ok(JSONFactoryUtil.looseSerialize(sampleObj)).build();
     }
 
     @Reference
