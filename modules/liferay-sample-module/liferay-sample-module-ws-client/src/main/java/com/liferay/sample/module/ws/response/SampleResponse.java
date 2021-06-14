@@ -1,4 +1,4 @@
-package com.liferay.sample.module.ws.respose;
+package com.liferay.sample.module.ws.response;
 
 /**
  * @author Rafael Oliveira

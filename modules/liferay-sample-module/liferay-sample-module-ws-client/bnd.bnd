@@ -3,7 +3,7 @@ Bundle-SymbolicName: com.liferay.sample.module.ws
 Bundle-Version: 1.0.0
 Export-Package: \
     com.liferay.sample.module.ws.client, \
-    com.liferay.sample.module.ws.respose
+    com.liferay.sample.module.ws.response
 Import-Package: \
 	!javax.annotation.*,\
     !org.slf4j.*,\

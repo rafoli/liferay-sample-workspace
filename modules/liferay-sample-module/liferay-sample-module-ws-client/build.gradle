@@ -10,5 +10,6 @@ dependencies {
 	compileInclude group: "org.slf4j", name: "slf4j-api", version: "1.7.30"
 	compileInclude group: "org.slf4j", name: "slf4j-simple", version: "1.7.30"
 
+	compileOnly project(":modules:liferay-sample-module:liferay-sample-module-api")
 
 }
