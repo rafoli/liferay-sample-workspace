@@ -26,7 +26,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/samples/",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -35,8 +35,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"samples",
-						""
+						"samples"
 					]
 				}
 			},
@@ -83,7 +82,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -92,7 +91,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample"
+						"samples"
 					]
 				}
 			},
@@ -128,7 +127,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -137,7 +136,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample"
+						"samples"
 					]
 				}
 			},
@@ -173,7 +172,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -182,7 +181,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample"
+						"samples"
 					]
 				}
 			},
