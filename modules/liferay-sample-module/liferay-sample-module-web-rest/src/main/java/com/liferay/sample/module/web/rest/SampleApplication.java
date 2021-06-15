@@ -7,6 +7,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -94,6 +95,24 @@ public class SampleApplication extends Application {
     			
     			// Update Fields
     			samples.get(i).setName(sample.getName());
+    		}
+    	}
+    	
+        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+    }
+    
+    @Path("/sample/delete")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteSample(@Context HttpServletRequest request, String body) {
+        
+    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
+    	
+    	for (int i = 0; i < samples.size(); i++) {
+    		if (samples.get(i).getId().equals(sample.getId())) {
+    			
+    			// Delete from List
+    			samples.remove(sample);
     		}
     	}
     	

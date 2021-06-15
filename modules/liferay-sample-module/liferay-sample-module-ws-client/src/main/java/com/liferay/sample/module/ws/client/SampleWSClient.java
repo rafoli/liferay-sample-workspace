@@ -50,6 +50,12 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
     	return _sampleWS.updateSample(sampleObject);
         
     }
+    
+    public boolean deleteSample(SampleObject sampleObject) throws ApiResponseException, IOException {
+
+    	return _sampleWS.deleteSample(sampleObject);
+        
+    }
 
     private SampleWS _sampleWS;
 

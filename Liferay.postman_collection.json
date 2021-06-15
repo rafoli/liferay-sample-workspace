@@ -144,6 +144,52 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Sample DELETE Mehod",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "lw04post@liferay.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"3\",\n    \"name\": \"external data 3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/o/sample-module/sample/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"sample-module",
+						"sample",
+						"delete"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

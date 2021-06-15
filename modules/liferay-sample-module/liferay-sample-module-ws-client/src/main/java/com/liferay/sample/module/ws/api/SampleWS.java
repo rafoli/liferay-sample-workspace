@@ -18,5 +18,8 @@ public interface SampleWS {
    
    @RequestLine("PUT")
    SampleResponse updateSample(SampleObject sampleObject);
+   
+   @RequestLine("DELETE")
+   boolean deleteSample(SampleObject sampleObject);
 
 }

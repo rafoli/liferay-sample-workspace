@@ -12,5 +12,6 @@ public interface SampleService {
     public List<SampleObject> getSamples();
     public SampleObject addSample(SampleObject sampleObject);
     public SampleObject updateSample(SampleObject sampleObject);
+    public boolean deleteSample(SampleObject sampleObject);
 
 }
