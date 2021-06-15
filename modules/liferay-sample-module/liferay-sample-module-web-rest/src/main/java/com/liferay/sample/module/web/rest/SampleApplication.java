@@ -112,7 +112,7 @@ public class SampleApplication extends Application {
     		if (samples.get(i).getId().equals(sample.getId())) {
     			
     			// Delete from List
-    			samples.remove(sample);
+    			samples.remove(i);
     		}
     	}
     	
