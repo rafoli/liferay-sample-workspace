@@ -83,7 +83,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample/add",
+					"raw": "http://localhost:8080/o/sample-module/sample",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -92,8 +92,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample",
-						"add"
+						"sample"
 					]
 				}
 			},
@@ -129,7 +128,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample/update",
+					"raw": "http://localhost:8080/o/sample-module/sample",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -138,8 +137,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample",
-						"update"
+						"sample"
 					]
 				}
 			},
@@ -167,7 +165,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"3\",\n    \"name\": \"external data 3\"\n}",
+					"raw": "{\n    \"id\": \"4\",\n    \"name\": \"external data 4\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,7 +173,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample/delete",
+					"raw": "http://localhost:8080/o/sample-module/sample",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -184,8 +182,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample",
-						"delete"
+						"sample"
 					]
 				}
 			},
