@@ -55,6 +55,18 @@ public class SampleServiceImpl implements SampleService {
     	return null;
     	
     }
+    
+    public boolean deleteSample(SampleObject sampleObject) {
+    	
+    	try {
+    		 return _sampleWSClient.deleteSample(sampleObject);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return false;
+    	    	
+    }
 
     @Reference
     private SampleWSClient _sampleWSClient;

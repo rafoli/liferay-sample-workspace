@@ -26,7 +26,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/samples/",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -35,8 +35,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"samples",
-						""
+						"samples"
 					]
 				}
 			},
@@ -83,7 +82,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample/add",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -92,8 +91,7 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample",
-						"add"
+						"samples"
 					]
 				}
 			},
@@ -129,7 +127,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/o/sample-module/sample/update",
+					"raw": "http://localhost:8080/o/sample-module/samples",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -138,8 +136,52 @@
 					"path": [
 						"o",
 						"sample-module",
-						"sample",
-						"update"
+						"samples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sample DELETE Mehod",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "lw04post@liferay.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"4\",\n    \"name\": \"external data 4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/o/sample-module/samples",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"sample-module",
+						"samples"
 					]
 				}
 			},
