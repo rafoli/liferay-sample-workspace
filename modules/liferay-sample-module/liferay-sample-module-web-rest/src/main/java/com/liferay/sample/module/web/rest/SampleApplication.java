@@ -71,7 +71,7 @@ public class SampleApplication extends Application {
         
     }
        
-    @Path("/sample")
+    @Path("/samples")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response addSample(@Context HttpServletRequest request, String body) {
@@ -83,7 +83,7 @@ public class SampleApplication extends Application {
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
     
-    @Path("/sample")
+    @Path("/samples")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateSample(@Context HttpServletRequest request, String body) {
@@ -101,7 +101,7 @@ public class SampleApplication extends Application {
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
     
-    @Path("/sample")
+    @Path("/samples")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteSample(@Context HttpServletRequest request, String body) {
