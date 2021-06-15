@@ -9,6 +9,7 @@ import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
@@ -44,22 +45,26 @@ public class SampleApplication extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSamples(@Context HttpServletRequest request) {      	
    	
-    	// Mocking Data    	
-    	SampleObject sampleObj1 = new SampleObject();
-    	sampleObj1.setId("1");
-    	sampleObj1.setName("external data 1");
-    	
-    	SampleObject sampleObj2 = new SampleObject();
-    	sampleObj2.setId("2");
-    	sampleObj2.setName("external data 2");
-    	
-    	SampleObject sampleObj3 = new SampleObject();
-    	sampleObj3.setId("3");
-    	sampleObj3.setName("external data 3");
-       
-    	samples.add(sampleObj1);
-    	samples.add(sampleObj2);
-    	samples.add(sampleObj3);
+    	if (samples.isEmpty()) {
+    		
+    		// Mocking Data    	
+        	SampleObject sampleObj1 = new SampleObject();
+        	sampleObj1.setId("1");
+        	sampleObj1.setName("external data 1");
+
+        	SampleObject sampleObj2 = new SampleObject();
+        	sampleObj2.setId("2");
+        	sampleObj2.setName("external data 2");
+
+        	SampleObject sampleObj3 = new SampleObject();
+        	sampleObj3.setId("3");
+        	sampleObj3.setName("external data 3");
+
+        	samples.add(sampleObj1);
+        	samples.add(sampleObj2);
+        	samples.add(sampleObj3);
+        	
+    	}
         
         return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();  
         
@@ -74,6 +79,24 @@ public class SampleApplication extends Application {
     	   	
     	samples.add(sample);
 
+        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+    }
+    
+    @Path("/sample/update")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateSample(@Context HttpServletRequest request, String body) {
+        
+    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
+    	
+    	for (int i = 0; i < samples.size(); i++) {
+    		if (samples.get(i).getId().equals(sample.getId())) {
+    			
+    			// Update Fields
+    			samples.get(i).setName(sample.getName());
+    		}
+    	}
+    	
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
 

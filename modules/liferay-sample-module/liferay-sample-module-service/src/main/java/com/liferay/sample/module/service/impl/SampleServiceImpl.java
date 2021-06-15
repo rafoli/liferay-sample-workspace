@@ -42,6 +42,19 @@ public class SampleServiceImpl implements SampleService {
 
         return null;
 	}
+    
+    public SampleObject updateSample(SampleObject sampleObject) {
+    	
+    	try {
+    		SampleResponse entity = _sampleWSClient.updateSample(sampleObject);
+    		return _sampleServiceMapper.toSampleObject(entity);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return null;
+    	
+    }
 
     @Reference
     private SampleWSClient _sampleWSClient;

@@ -44,6 +44,12 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 
         	return _sampleWS.addSample(sampleObject);
     }
+    
+    public SampleResponse updateSample(SampleObject sampleObject) throws ApiResponseException, IOException {
+
+    	return _sampleWS.updateSample(sampleObject);
+        
+    }
 
     private SampleWS _sampleWS;
 
