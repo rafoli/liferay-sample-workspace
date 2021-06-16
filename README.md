@@ -39,7 +39,12 @@
 4. After that, you should submit a request and then have as a response the ***mock data*** defined within each sample method.
 
 ## Making Requests via Postman
-...
+* You can make requests for both `Sample Module External API` and `Sample Module Liferay API` collection, just opening the desired request and click on *Send* (Note: your Liferay DXP instance must be running!).
+* For instance, the response for the `GET Samples` request (for both collections) would be:
+
+> ![image](https://user-images.githubusercontent.com/83607914/122273806-3bf2bc00-ceb8-11eb-89eb-32212b161c5d.png)
+
+* The **mock data** is defined within the `OK` example file from the `Sample Module External API` collection to represent the response of each request.
 
 ## Making Requests via Frontend (Angular)
 ...
