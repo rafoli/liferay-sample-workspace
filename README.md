@@ -1,5 +1,7 @@
 # Liferay Sample Workspace
 
+![Build status](https://github.com/rafoli/liferay-sample-workspace/actions/workflows/gradle.yml/badge.svg?branch=main)
+
 ## Current stable version: v1.0.0
 
 ## Getting Started
@@ -15,7 +17,7 @@
 6. You should be redirected to the *Home* page of your Liferay DXP instance.
 
 ## Deploy Modules
-1. Go back to the first tab of your terminal, execute `blade gw deploy` command to download and install the dependencies needed to deploy the modules.
+1. Go back to the first tab of your terminal, execute `blade gw deploy` command to download aBadgend install the dependencies needed to deploy the modules.
 2. Next, you can check the activated modules via Gogo Shell, typing `blade sh lb sample`.
 3. You should see *five* Liferay Sample Modules from this project with `Active` state.
 
