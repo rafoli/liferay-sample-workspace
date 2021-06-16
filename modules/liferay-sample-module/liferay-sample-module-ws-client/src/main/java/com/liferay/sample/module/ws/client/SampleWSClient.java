@@ -39,22 +39,28 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 
             return _sampleWS.getSamples();
     }
-    
+
+    public SampleResponse getSample(String id) throws ApiResponseException {
+
+       return  _sampleWS.getSample(id);
+
+    }
+
     public SampleResponse addSample(SampleObject sampleObject) throws ApiResponseException, IOException {
 
         	return _sampleWS.addSample(sampleObject);
     }
-    
+
     public SampleResponse updateSample(SampleObject sampleObject) throws ApiResponseException, IOException {
 
     	return _sampleWS.updateSample(sampleObject);
-        
-    }
-    
-    public boolean deleteSample(SampleObject sampleObject) throws ApiResponseException, IOException {
 
-    	return _sampleWS.deleteSample(sampleObject);
-        
+    }
+
+    public void deleteSample(String id) throws ApiResponseException {
+
+    	_sampleWS.deleteSample(id);
+
     }
 
     private SampleWS _sampleWS;

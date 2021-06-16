@@ -9,9 +9,13 @@ import java.util.List;
  */
 public interface SampleService {
 
-    public List<SampleObject> getSamples();
-    public SampleObject addSample(SampleObject sampleObject);
-    public SampleObject updateSample(SampleObject sampleObject);
-    public boolean deleteSample(SampleObject sampleObject);
+    List<SampleObject> getSamples();
 
+    SampleObject addSample(SampleObject sampleObject);
+
+    SampleObject updateSample(SampleObject sampleObject);
+
+    void deleteSample(String id);
+
+    SampleObject getSample(String id);
 }
