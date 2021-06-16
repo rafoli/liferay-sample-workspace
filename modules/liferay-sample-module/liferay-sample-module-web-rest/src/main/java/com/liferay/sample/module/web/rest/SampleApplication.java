@@ -7,12 +7,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -34,8 +29,6 @@ import java.util.Set;
 )
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleApplication extends Application {
-	
-	List<SampleObject> samples = new ArrayList<SampleObject>();	
 
     public Set<Object> getSingletons() {
         return Collections.singleton(this);
@@ -44,79 +37,68 @@ public class SampleApplication extends Application {
     @Path("/samples")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getSamples(@Context HttpServletRequest request) {      	
-   	
-    	if (samples.isEmpty()) {
-    		
-    		// Mocking Data    	
-        	SampleObject sampleObj1 = new SampleObject();
-        	sampleObj1.setId("1");
-        	sampleObj1.setName("external data 1");
+    public Response getSamples(@Context HttpServletRequest request) {
 
-        	SampleObject sampleObj2 = new SampleObject();
-        	sampleObj2.setId("2");
-        	sampleObj2.setName("external data 2");
+        List<SampleObject> samples = _sampleService.getSamples();
 
-        	SampleObject sampleObj3 = new SampleObject();
-        	sampleObj3.setId("3");
-        	sampleObj3.setName("external data 3");
+        return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();
 
-        	samples.add(sampleObj1);
-        	samples.add(sampleObj2);
-        	samples.add(sampleObj3);
-        	
-    	}
-        
-        return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();  
-        
     }
-       
+
+    @Path("/samples/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSamples(@Context HttpServletRequest request, @PathParam("id") String id) {
+
+        SampleObject sample = _sampleService.getSample(id);
+
+        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+
+    }
+
     @Path("/samples")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response addSample(@Context HttpServletRequest request, String body) {
-    	
+
     	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
-    	   	
-    	samples.add(sample);
+
+        sample = _sampleService.addSample(sample);
 
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
-    
-    @Path("/samples")
+
+    @Path("/samples/{id}")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateSample(@Context HttpServletRequest request, String body) {
-        
+    public Response updateSample(@Context HttpServletRequest request, String body, String id) {
+
+        SampleObject s = _sampleService.getSample(id);
+
+        if(s == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
     	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
-    	
-    	for (int i = 0; i < samples.size(); i++) {
-    		if (samples.get(i).getId().equals(sample.getId())) {
-    			
-    			// Update Fields
-    			samples.get(i).setName(sample.getName());
-    		}
-    	}
-    	
+    	sample.setId(id);
+
+        sample = _sampleService.updateSample(sample);
+
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
-    
-    @Path("/samples")
+
+    @Path("/samples/{id}")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteSample(@Context HttpServletRequest request, String body) {
-        
-    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
-    	
-    	for (int i = 0; i < samples.size(); i++) {
-    		if (samples.get(i).getId().equals(sample.getId())) {
-    			
-    			// Delete from List
-    			samples.remove(i);
-    		}
-    	}
-    	
-        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+    public Response deleteSample(@Context HttpServletRequest request, String id) {
+
+        SampleObject s = _sampleService.getSample(id);
+
+        if(s == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        _sampleService.deleteSample(id);
+
+        return Response.status(Response.Status.OK).build();
     }
 
     @Reference

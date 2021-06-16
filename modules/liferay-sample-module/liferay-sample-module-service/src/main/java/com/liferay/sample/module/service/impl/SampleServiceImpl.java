@@ -30,9 +30,10 @@ public class SampleServiceImpl implements SampleService {
         return null;
 
     }
-    
+
+    @Override
     public SampleObject addSample(SampleObject sampleObject) {
-    	
+
     	try {
     		SampleResponse entity = _sampleWSClient.addSample(sampleObject);
             return _sampleServiceMapper.toSampleObject(entity);
@@ -42,36 +43,36 @@ public class SampleServiceImpl implements SampleService {
 
         return null;
 	}
-    
+
+    @Override
     public SampleObject updateSample(SampleObject sampleObject) {
-    	
+
     	try {
     		SampleResponse entity = _sampleWSClient.updateSample(sampleObject);
     		return _sampleServiceMapper.toSampleObject(entity);
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
-    	
+
     	return null;
-    	
+
     }
-    
-    public boolean deleteSample(SampleObject sampleObject) {
-    	
-    	try {
-    		 return _sampleWSClient.deleteSample(sampleObject);
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
-    	
-    	return false;
-    	    	
+
+    @Override
+    public void deleteSample(String id) {
+    	_sampleWSClient.deleteSample(id);
+    }
+
+    @Override
+    public SampleObject getSample(String id) {
+        SampleResponse entity =  _sampleWSClient.getSample(id);
+        return _sampleServiceMapper.toSampleObject(entity);
     }
 
     @Reference
     private SampleWSClient _sampleWSClient;
 
     @Reference
-    private SampleServiceMapper _sampleServiceMapper;	
+    private SampleServiceMapper _sampleServiceMapper;
 
 }
