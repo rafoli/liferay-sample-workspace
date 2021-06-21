@@ -26,7 +26,9 @@
 2. In the Control Menu, click on the *Edit* button.
 3. Search for *Liferay Sample Module JS*.
 4. Drag and drop the widget inside the page, and then click on *Publish".
-5. You should see a **mock data** set representing a sample response from the module (soon, you shall see it corresponds to a sample response of a sample GET request).
+5. Go to `Menu (CTRL+Shift+M) > control panel > System Settings > category.liferay-configuration`.
+6. In the `api-base-url` field, add this URL: `https://c59c0f03-154e-4b1f-b73f-ccc8210ffcf9.mock.pstmn.io`, and save it.   
+6. You should see a **mock data** set representing a sample response from the module (soon, you shall see it corresponds to a sample response of a sample GET request).
 
 ## Importing Collection into Postman
 1. Launch Postman and go to your workspace, if it's already created.
