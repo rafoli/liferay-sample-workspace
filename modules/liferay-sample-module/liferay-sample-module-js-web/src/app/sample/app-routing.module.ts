@@ -4,7 +4,7 @@ import { SampleDetailComponent } from './components/sample-detail/sample-detail.
 import { SampleListComponent } from './components/sample-list/sample-list.component'
 
 const routes: Routes = [
-  {path: "*", component: SampleListComponent},
+  {path: "", component: SampleListComponent},
   {path: "details/:id", component: SampleDetailComponent},
 ]
 
