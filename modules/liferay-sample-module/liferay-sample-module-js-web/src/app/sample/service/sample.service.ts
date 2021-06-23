@@ -45,4 +45,16 @@ export class SampleService {
         },
       });
   }
+
+  updateSample(sample:ISample){
+    return this._httpClient.put(
+      `/o/sample-module/samples/${sample.id}`,
+      sample,
+      {
+        params: {
+          "p_auth": Liferay.authToken
+        },
+      }
+    )
+  }
 }
