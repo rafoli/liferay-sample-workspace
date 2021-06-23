@@ -15,6 +15,7 @@ export class SampleListComponent implements OnInit {
   constructor(private _sampleService: SampleService) { }
 
   ngOnInit(): void {
+    console.log("CALLED HERE!!")
     this.samples = this._sampleService.getSamples()
   }
 

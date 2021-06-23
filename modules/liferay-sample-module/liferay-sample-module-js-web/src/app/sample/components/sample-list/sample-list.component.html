@@ -1,12 +1,14 @@
 <ng-container *ngIf="samples">
   <ul class="list-unstyled">
     <li *ngFor="let sample of samples | async">
-      <p>
-        <strong>Id: </strong>{{sample.id}}
-      </p>
-      <p>
-        <strong>Name: </strong>{{sample.name}}
-      </p>
+      <a routerLink="/details/{{sample.id}}">
+        <p>
+          <strong>Id: </strong>{{sample.id}}
+        </p>
+        <p>
+          <strong>Name: </strong>{{sample.name}}
+        </p>
+      </a>
     </li>
   </ul>
 </ng-container>
