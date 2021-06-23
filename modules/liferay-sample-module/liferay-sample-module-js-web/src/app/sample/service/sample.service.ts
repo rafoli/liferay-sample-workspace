@@ -32,4 +32,17 @@ export class SampleService {
         }
       });
   }
+
+  createSample(name:string): Observable<Sample> {
+    return this._httpClient.post<Sample>(
+      `/o/sample-module/samples`,
+      {
+        name
+      },
+      {
+        params: {
+          "p_auth": Liferay.authToken
+        },
+      });
+  }
 }
