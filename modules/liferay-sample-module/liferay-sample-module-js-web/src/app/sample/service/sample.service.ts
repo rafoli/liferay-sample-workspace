@@ -22,4 +22,14 @@ export class SampleService {
       }
     );
   }
+
+  getSample(id: number): Observable<Sample> {
+    return this._httpClient.get<Sample>(
+      `/o/sample-module/samples/${id}`,
+      {
+        params: {
+          "p_auth": Liferay.authToken
+        }
+      });
+  }
 }
