@@ -46,8 +46,8 @@ export class SampleService {
       });
   }
 
-  updateSample(sample:ISample){
-    return this._httpClient.put(
+  updateSample(sample:ISample): Observable<void>{
+    return this._httpClient.put<void>(
       `/o/sample-module/samples/${sample.id}`,
       sample,
       {
