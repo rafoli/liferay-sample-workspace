@@ -55,6 +55,10 @@ export class SampleService {
           "p_auth": Liferay.authToken
         },
       }
-    )
+    );
+  }
+
+  deleteSample(id: number): Observable<void>{
+    return this._httpClient.delete<void>(`/o/sample-module/samples/${id}`);
   }
 }
