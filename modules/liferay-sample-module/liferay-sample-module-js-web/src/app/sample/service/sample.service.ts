@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Sample} from "../model/sample";
+import {Sample, ISample} from "../model/sample";
 
 declare const Liferay: any;
 

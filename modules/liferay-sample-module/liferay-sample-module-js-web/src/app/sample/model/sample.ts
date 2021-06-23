@@ -5,3 +5,8 @@ export class Sample {
   ) {
   }
 }
+
+export interface ISample {
+  id: number;
+  name: string;
+}
