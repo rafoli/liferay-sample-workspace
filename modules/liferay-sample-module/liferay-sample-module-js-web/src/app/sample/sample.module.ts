@@ -16,7 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     CommonModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ]
 })
 export class SampleModule { }
