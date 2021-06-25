@@ -39,6 +39,7 @@ public class LiferaySampleTest {
 	
 	@Test
 	public void signInWithFail() {
+		
 		SampleHomePage sampleHomePage = new SampleHomePage(driver);
 		
 		sampleHomePage.clickOnSignIn();
@@ -51,6 +52,27 @@ public class LiferaySampleTest {
 		sampleLoginPage.clickOnSignIn();
 		
 		assertEquals(true, sampleLoginPage.alertErrorIsDisplayed());
+		
+	}
+	
+	@Test
+	public void checkIfSomeSampleObjectIDisplayed() {
+		
+		SampleHomePage sampleHomePage = new SampleHomePage(driver);
+		
+		sampleHomePage.clickOnSignIn();
+		
+		SampleLoginPage sampleLoginPage = new SampleLoginPage(driver);
+		
+		sampleLoginPage.fillEmailField("test@liferay.com");
+		sampleLoginPage.fillPasswordField("test");
+		
+		sampleLoginPage.clickOnSignIn();
+		
+		String sampleObjectName = "Sample 1";
+				
+		assertEquals(true, sampleHomePage.isSomeSampleDisplayed(sampleObjectName));	
+
 	}
 
 }
