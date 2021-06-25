@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Sample, ISample} from "../model/sample";
+import {Sample } from "../model/sample";
 
 declare const Liferay: any;
 
@@ -59,6 +59,10 @@ export class SampleService {
   }
 
   deleteSample(id: number): Observable<void>{
-    return this._httpClient.delete<void>(`/o/sample-module/samples/${id}`);
+    return this._httpClient.delete<void>(`/o/sample-module/samples/${id}`,{
+      params: {
+        "p_auth": Liferay.authToken
+      },
+    });
   }
 }
