@@ -68,22 +68,21 @@ public class SampleApplication extends Application {
         return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
 
-    @Path("/samples/{id}")
+    @Path("/samples")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateSample(@Context HttpServletRequest request, String body, String id) {
+    public Response updateSample(@Context HttpServletRequest request, String body) {
 
-        SampleObject s = _sampleService.getSample(id);
+    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
+    	
+        SampleObject s = _sampleService.getSample(sample.getId());
 
         if(s == null)
             return Response.status(Response.Status.NOT_FOUND).build();
-
-    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
-    	sample.setId(id);
-
-        sample = _sampleService.updateSample(sample);
-
-        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+        else
+        	sample = _sampleService.updateSample(sample);
+        	return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
+        	
     }
 
     @Path("/samples/{id}")
