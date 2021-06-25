@@ -48,7 +48,7 @@ export class SampleService {
 
   updateSample(sample:Sample): Observable<void>{
     return this._httpClient.put<void>(
-      `/o/sample-module/samples/${sample.id}`,
+      `/o/sample-module/samples`,
       sample,
       {
         params: {
