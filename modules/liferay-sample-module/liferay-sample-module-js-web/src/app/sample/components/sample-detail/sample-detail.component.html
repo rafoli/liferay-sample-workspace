@@ -1,0 +1,5 @@
+<div *ngIf="sample">
+  <input type="text"  [(ngModel)]="sample.name" placeholder="name"/>
+  <button (click)="save()">Save</button>
+</div>
+<button (click)="goBack()">Cancel</button>

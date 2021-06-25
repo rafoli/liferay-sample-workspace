@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Sample} from "../model/sample";
+import {Sample } from "../model/sample";
 
 declare const Liferay: any;
 
@@ -21,5 +21,48 @@ export class SampleService {
         }
       }
     );
+  }
+
+  getSample(id: number): Observable<Sample> {
+    return this._httpClient.get<Sample>(
+      `/o/sample-module/samples/${id}`,
+      {
+        params: {
+          "p_auth": Liferay.authToken
+        }
+      });
+  }
+
+  createSample(name:string): Observable<Sample> {
+    return this._httpClient.post<Sample>(
+      `/o/sample-module/samples`,
+      {
+        name
+      },
+      {
+        params: {
+          "p_auth": Liferay.authToken
+        },
+      });
+  }
+
+  updateSample(sample:Sample): Observable<void>{
+    return this._httpClient.put<void>(
+      `/o/sample-module/samples`,
+      sample,
+      {
+        params: {
+          "p_auth": Liferay.authToken
+        },
+      }
+    );
+  }
+
+  deleteSample(id: number): Observable<void>{
+    return this._httpClient.delete<void>(`/o/sample-module/samples/${id}`,{
+      params: {
+        "p_auth": Liferay.authToken
+      },
+    });
   }
 }
