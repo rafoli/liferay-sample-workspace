@@ -9,6 +9,8 @@
           <strong>Name: </strong>{{sample.name}}
         </p>
       </a>
+      <button (click)="delete(sample.id)">Delete</button>
     </li>
   </ul>
 </ng-container>
+<button (click)="create()">Add</button>
