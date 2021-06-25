@@ -46,6 +46,8 @@ project.pluginManager.withPlugin("java") {
 		compile 'org.seleniumhq.selenium:selenium-java:' + seleniumVersion
 		compile 'org.seleniumhq.selenium:selenium-remote-driver:' + seleniumVersion
 		compile 'org.seleniumhq.selenium:selenium-support:' + seleniumVersion
+		
+		compile group: "org.mockito", name: "mockito-all"
 	}
 
 	jacoco {

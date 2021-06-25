@@ -1,14 +1,13 @@
 package com.liferay.sample.module.functional.test.tests;
 
 import java.io.File;
-
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import com.liferay.gs.testFramework.FunctionalTest;
+import static org.mockito.Mockito.*;
 
 public class GoogleTest extends FunctionalTest {
 
