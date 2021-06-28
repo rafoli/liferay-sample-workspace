@@ -1,0 +1,206 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+/*
+plugins {
+	id "de.undercouch.download" version "3.1.2"
+}
+*/
+
+ext {
+    powerMockVersion = "2.0.4"
+    frwSeleniumCommonsVersion = '3.0.0'
+	seleniumVersion = '3.3.1'
+}
+
+jar {
+	enabled = false
+}
+
+repositories {
+	jcenter()
+	mavenCentral()
+	mavenLocal()
+}
+
+configurations.all {
+	resolutionStrategy {
+		force 'xml-apis:xml-apis:1.0.b2'
+	}
+}
+
+project.pluginManager.withPlugin("java") {
+    apply plugin: "jacoco"
+
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+
+	dependencies {
+		compile group: "com.github.javafaker", name: "javafaker", version: "1.0.2"
+		testCompile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
+		testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+		testCompile group: "io.takari.junit", name: "takari-cpsuite", version: "1.2.7"
+	
+  		compile 'com.liferay.gs:frw-selenium-commons:' + frwSeleniumCommonsVersion
+		compile 'org.codehaus.groovy:groovy-all:3.0.3'
+		compile 'org.seleniumhq.selenium:selenium-api:' + seleniumVersion
+		compile 'org.seleniumhq.selenium:selenium-java:' + seleniumVersion
+		compile 'org.seleniumhq.selenium:selenium-remote-driver:' + seleniumVersion
+		compile 'org.seleniumhq.selenium:selenium-support:' + seleniumVersion
+		
+		compile group: "org.mockito", name: "mockito-all"
+	}
+
+	jacoco {
+            group = "Coverage"
+            description = "Generate Jacoco coverage reports after running tests."
+    }
+    
+    afterEvaluate {
+
+		tasks.withType(Test) {
+			testLogging {
+			    events "passed", "skipped", "failed"
+			    showExceptions true
+			    exceptionFormat "short"
+			    showCauses true
+			    showStackTraces true
+			
+			    afterSuite { desc, result ->
+			        if (!desc.parent) {
+			            def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			            def startItem = '|  ', endItem = '  |'
+			            def repeatLength = startItem.length() + output.length() + endItem.length()
+			            println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+		        	}
+                }
+        	}
+        }
+    }
+    
+    tasks.withType(Test) {
+	    reports.html.destination = file("${reporting.baseDir}/${name}")
+	}
+}
+
+sourceSets {
+	functionalTest {
+		java {
+			compileClasspath += main.output + test.output
+			runtimeClasspath += main.output + test.output
+			srcDir file('src/functionalTest/java')
+		}
+		resources.srcDir file('src/functionalTest/resources')
+	}
+}
+
+configurations {
+	functionalTestCompile.extendsFrom testCompile
+	functionalTestRuntime.extendsFrom testRuntime
+}
+
+// Command to run this task: ./gradlew performTest
+
+task performTest(type: Test)
+task performTestClass(type: Test)
+task setupPerformTestWithGoogleChrome
+
+performTest {
+	description 'Runs the functional Tests without the BDD flow.'
+
+	testClassesDirs = sourceSets.functionalTest.output.classesDirs
+	classpath = sourceSets.functionalTest.runtimeClasspath
+
+	filter {
+		includeTestsMatching "RunAll*"
+	}
+
+	outputs.upToDateWhen { false }
+}
+
+// Command to run this task: ./gradlew performTestClass -PclassToBeTested=<Class Name>
+// Example: ./gradlew performTestClass -PclassToBeTested=SampleTest
+performTestClass {
+	description 'Run the Specific Functional Tests without the BDD flow.'
+
+	testClassesDirs = sourceSets.functionalTest.output.classesDirs
+	classpath = sourceSets.functionalTest.runtimeClasspath
+
+	scanForTestClasses = false
+
+	if (!(project.hasProperty('classToBeTested') == false)) {
+		includes = ['**/'+project.getProperty('classToBeTested')+'.class']
+	}
+
+	outputs.upToDateWhen { false }
+}
+
+gradle.taskGraph.whenReady { graph ->
+	if (graph.hasTask(build)) {
+		performTest.enabled = false
+	}
+}
+
+setupPerformTestWithGoogleChrome {
+	description 'Create the Functional Tests properties and Chrome Driver, for Functional Test without BDD flow, but only work if run on project root folder.'
+
+	doLast {
+		def baseDir = "${project.hasProperty('liferay.workspace.home.dir') ? project.property('liferay.workspace.home.dir') : 'modules'}"
+		def SeleniumPropertyKeysPath = new File( 'modules/test/functional-test-tdd/SeleniumProperties' )
+		def SeleniumPropertyKeysFile = new File( 'modules/test/functional-test-tdd/SeleniumProperties/SeleniumPropertyKeys.properties' )
+		println "You should run this task only on your project root folder"
+		if( !SeleniumPropertyKeysFile.exists() ) {
+			println "Create Configuration for use a local SeleniumPropertyKeys.properties"
+			SeleniumPropertyKeysPath.mkdirs()
+			SeleniumPropertyKeysFile.withWriterAppend { w ->
+				w << "browser=defaultGC\ntime-out=10\nenvironment=https://webserver-mboportal-qa.lfr.cloud\nusername=\npassword="
+			}
+		} else {
+			println "You already had the local SeleniumPropertyKeys.properties created"
+		}
+
+		if ( (Os.isFamily(Os.FAMILY_WINDOWS)) && (!new File( baseDir + '/test/functional-test-tdd/SeleniumProperties/chromedriver.exe').exists()) ) {
+			println "Create Configuration for Windows to use the Google Chrome Driver"
+			download {
+				src 'https://chromedriver.storage.googleapis.com/71.0.3578.137/chromedriver_win32.zip'
+				dest new File(SeleniumPropertyKeysPath, 'chromedriver_win32.zip')
+			}
+
+			copy {
+				def DriverPath = new File ('/SeleniumProperties/')
+				from zipTree('/SeleniumProperties/chromedriver_win32.zip')
+				into "SeleniumProperties/"
+			}
+			delete 'SeleniumProperties/chromedriver_win32.zip'
+
+		} else if ( (Os.isFamily(Os.FAMILY_MAC)) && (!new File( baseDir + '/test/functional-test-tdd/SeleniumProperties/chromedriver').exists()) ) {
+			println "Create Configuration for Mac to use the Google Chrome Driver"
+			download {
+				src 'https://chromedriver.storage.googleapis.com/71.0.3578.137/chromedriver_mac64.zip'
+				dest new File(SeleniumPropertyKeysPath, 'chromedriver_mac64.zip')
+			}
+
+			copy {
+				def DriverPath = new File ('/SeleniumProperties/')
+				from zipTree('SeleniumProperties/chromedriver_mac64.zip')
+				into "SeleniumProperties/"
+			}
+			delete 'SeleniumProperties/chromedriver_mac64.zip'
+
+		} else if ( (Os.isFamily(Os.FAMILY_UNIX)) && (!new File( baseDir + '/test/functional-test-tdd/SeleniumProperties/chromedriver').exists()) ) {
+			println "Create Configuration for Unix to use the Google Chrome Driver"
+			download {
+				src 'https://chromedriver.storage.googleapis.com/71.0.3578.137/chromedriver_linux64.zip'
+				dest new File(SeleniumPropertyKeysPath, 'chromedriver_linux64.zip')
+			}
+
+			copy {
+				from zipTree(new File('SeleniumProperties/', 'chromedriver_linux64.zip'))
+				into "SeleniumProperties/"
+			}
+			delete 'SeleniumProperties/chromedriver_linux64.zip'
+		} else {
+			println "You already had the local Google Chrome Driver created"
+		}
+	}
+}
+

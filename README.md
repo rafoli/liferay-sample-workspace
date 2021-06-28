@@ -77,8 +77,8 @@ The scheme below illustrates the workflow of a Liferay web service.
 ### liferay-sample-module-ws-client
 * The `liferay-sample-module-ws-client` module is the responsable for sending requests to external APIs and sending a `response` object back to the previous modules.
 
-
-
+### liferay-sample-module-tests
+* The `liferay-sample-module-tests` module includes all functional tests related to the Page Objects defined, leveraging Selenium framework features.
 
 
 
