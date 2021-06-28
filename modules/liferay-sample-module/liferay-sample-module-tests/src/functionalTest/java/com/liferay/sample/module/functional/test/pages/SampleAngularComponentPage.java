@@ -35,6 +35,8 @@ public class SampleAngularComponentPage {
 
         firstSample.findElement(driver).click();
 
+        SeleniumWaitMethods.getWaitDriver(driver).until(ExpectedConditions.visibilityOfElementLocated(editNameInput));
+
         editNameInput.findElement(driver).clear();
         editNameInput.findElement(driver).sendKeys(name);
         editSaveButton.findElement(driver).click();
@@ -56,5 +58,8 @@ public class SampleAngularComponentPage {
         deleteButton.findElement(driver).click();
     }
 
-
+    public boolean isSampleDisplayed () {
+        SeleniumWaitMethods.getWaitDriver(driver).until(ExpectedConditions.visibilityOfElementLocated(sampleList));
+        return sampleList.findElement(driver).isDisplayed();
+    }
 }
