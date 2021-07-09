@@ -1,9 +1,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router } from'react-router-dom'
 
-import AppComponent from './AppComponent';
-
+import App from './App';
 
 /**
  * This is the main entry point of the portlet.
@@ -17,14 +17,16 @@ import AppComponent from './AppComponent';
 export default function main({portletNamespace, contextPath, portletElementId, configuration}) {
     
     ReactDOM.render(
-        <AppComponent 
-            portletNamespace={portletNamespace} 
-            contextPath={contextPath}
-            portletElementId={portletElementId}
-            
-            configuration={configuration}
-            
-            />, 
+        <Router>
+            <App 
+                portletNamespace={portletNamespace} 
+                contextPath={contextPath}
+                portletElementId={portletElementId}
+                
+                configuration={configuration}
+                
+            />
+        </Router>, 
         document.getElementById(portletElementId)
     );
     
