@@ -2,7 +2,6 @@
  * File to access damples from server.
 */
 import api from '../utils/api'
-
 class SampleService {
     getAllSamples() {
         return api.get('/samples')
