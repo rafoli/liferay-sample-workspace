@@ -16,13 +16,13 @@ export default function Samples() {
 
     async function getAllSamples() {
         try {
-            const { data } = await SampleService.getAllSamples();
+            let { data } = await SampleService.getAllSamples();
 
-            data.samples = data.samples.map(sample => {
+            data = data.map(sample => {
                 return { ...sample, editing: false }
             })
 
-            setSampleList(data.samples);
+            setSampleList(data);
         } catch (error) {
             console.log(error);
         }
@@ -45,7 +45,7 @@ export default function Samples() {
         try {
             const response = await SampleService.createSample(name);
 
-            const newSample = { name: name, id: response.data.id, editing: false }
+            const newSample = { ...response.data, editing: false };
 
             samples.push(newSample)
 

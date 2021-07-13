@@ -8,7 +8,7 @@ class SampleService {
     }
 
     removeSample(sampleId) {
-        return api.delete(`/samples/${sampleId}`)
+        return api.delete(`/samples?id=${sampleId}`)
     }
 
     createSample(sampleName) {
@@ -16,7 +16,7 @@ class SampleService {
     }
 
     editSample(sample) {
-        return api.put(`/samples/${sample.id}`, sample)
+        return api.put(`/samples`, sample)
     }
 }
 
