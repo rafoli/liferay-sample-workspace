@@ -1,0 +1,11 @@
+{
+	"liferayDir": "/home/elmano/liferay/liferay-sample-workspace/bundles",
+	"webpack": {
+		"rules": [
+			{
+				"test": "src\\/.*\\.js$",
+				"use": "babel-loader"
+			}
+		]
+	}
+}
