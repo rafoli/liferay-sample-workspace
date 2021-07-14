@@ -6,6 +6,7 @@ import java.util.List;
 
 import feign.Param;
 import feign.RequestLine;
+import feign.Headers;
 
 /**
  * @author Rafael Oliveira
@@ -19,6 +20,7 @@ public interface SampleWS {
    SampleResponse getSample(@Param("id") String id);
 
    @RequestLine("POST /samples")
+   @Headers("Content-Type: application/json")
    SampleResponse addSample(SampleObject sampleObject);
 
    @RequestLine("PUT /samples")

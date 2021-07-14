@@ -51,6 +51,18 @@
 ## Making Requests via Frontend (Angular)
 ...
 
+
+## Importing Collection into Mockoon
+1. Download mockoon (https://mockoon.com/) and launch the application.
+2. Click on *Import/export -> Mockoons format -> import from a file (JSON)* button and search for `Liferay.mockoon_collection.json` within the `mockoon` folder. 
+3. After importing, you should see *4 methods*, it will to make available mocks for the application. You should click in play (green button) to start the server befor make the tests.
+4. Now, you can test the endpoints in the Postman, for instance, call endpoint: `http://localhost:3001/samples`
+
+## Configure System Settings
+1. In Liferay application, go to the *Control Panel -> System Settings -> category.liferay-confguration*.
+2. Search `api-base-url` and change it to `http://localhost:3001` and update.
+3. Now, you can do CRUD operations from your application.
+
 ## Liferay REST API Architecture Overview
 The scheme below illustrates the workflow of a Liferay web service.
 

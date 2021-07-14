@@ -1,7 +1,15 @@
+/**
+ * File to configure API access.
+*/
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001/'
+    params: {
+        "p_auth": window.Liferay.authToken
+    },
+    headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+    }
 })
 
 export default api
