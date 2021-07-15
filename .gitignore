@@ -24,5 +24,10 @@
 /plugins-sdk/lib
 test-results
 /dist/
+<<<<<<< HEAD
 /themes/**/dist
+=======
+/themes/**/*.jar
+>>>>>>> 40d7592 (dev: create themes)
 /modules/liferay-sample-module/liferay-sample-module-js-web/dist/
+/themes/**/dist
