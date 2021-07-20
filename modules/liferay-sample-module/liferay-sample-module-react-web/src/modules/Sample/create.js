@@ -17,7 +17,7 @@ export default function Create({ createSample }) {
     return (
         <form onSubmit={(e) => createNewSample(sampleName, e)}>
             <input type="text" placeholder="Name" value={sampleName} onChange={e => setSampleName(e.target.value)} />
-            <button disabled={!sampleName}>Add</button>
+            <button disabled={!sampleName} className="btn-base-app">Add</button>
         </form>
     )
 }
