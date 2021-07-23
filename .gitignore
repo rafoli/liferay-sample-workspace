@@ -24,5 +24,11 @@
 /plugins-sdk/lib
 test-results
 /dist/
+<<<<<<< HEAD
 /themes/**/*.jar
 /themes/**/dist
+=======
+/themes/**/dist
+/themes/**/*.jar
+/modules/liferay-sample-module/liferay-sample-module-js-web/dist/
+>>>>>>> upstream/main

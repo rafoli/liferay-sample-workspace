@@ -1,0 +1,27 @@
+/* These inject tags are used for dynamically creating imports for themelet styles, you can place them where ever you like in this file. */
+
+/* inject:imports */
+
+@import 'liferay-font-awesome/scss/font-awesome';
+@import 'liferay-font-awesome/scss/glyphicons';
+
+/* endinject */
+
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+
+$base-color-app: #33ff00;
+$font-color-app: #fff;
+
+@mixin style-btn {
+    background-color: $base-color-app;
+    color: $font-color-app;
+}
+
+.btn-base-app {
+    background-color: $base-color-app;
+    color: $font-color-app;
+}
+
+.btn-primary {
+    @include style-btn;
+}
