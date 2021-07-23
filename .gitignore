@@ -27,3 +27,4 @@ test-results
 /themes/**/*.jar
 /themes/**/dist
 /modules/liferay-sample-module/liferay-sample-module-js-web/dist/
+/themes/**/*.jar
