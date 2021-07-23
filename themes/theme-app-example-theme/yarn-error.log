@@ -1,0 +1,69 @@
+Arguments: 
+  /home/elmano/.nvm/versions/node/v12.13.0/bin/node /home/elmano/.nvm/versions/node/v12.13.0/bin/yarn add -D lcoal-package-publisher
+
+PATH: 
+  /home/elmano/.sdkman/candidates/java/8.0.265-open/bin:/home/elmano/.nvm/versions/node/v12.13.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/elmano/jpm/bin/
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.13.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.npmjs.org/lcoal-package-publisher: Not found
+      at Request.params.callback [as _callback] (/home/elmano/.nvm/versions/node/v12.13.0/lib/node_modules/yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/home/elmano/.nvm/versions/node/v12.13.0/lib/node_modules/yarn/lib/cli.js:140662:22)
+      at Request.emit (events.js:210:5)
+      at Request.<anonymous> (/home/elmano/.nvm/versions/node/v12.13.0/lib/node_modules/yarn/lib/cli.js:141634:10)
+      at Request.emit (events.js:210:5)
+      at IncomingMessage.<anonymous> (/home/elmano/.nvm/versions/node/v12.13.0/lib/node_modules/yarn/lib/cli.js:141556:12)
+      at Object.onceWrapper (events.js:299:28)
+      at IncomingMessage.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1183:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+  	"name": "theme-app-example-theme",
+  	"version": "1.0.0",
+  	"main": "package.json",
+  	"keywords": [
+  		"liferay-theme"
+  	],
+  	"liferayTheme": {
+  		"baseTheme": "styled",
+  		"fontAwesome": true,
+  		"screenshot": "",
+  		"templateLanguage": "ftl",
+  		"version": "7.3"
+  	},
+  	"devDependencies": {
+  		"compass-mixins": "0.12.10",
+  		"gulp": "4.0.2",
+  		"liferay-frontend-common-css": "1.0.4",
+  		"liferay-frontend-theme-styled": "5.0.15",
+  		"liferay-frontend-theme-unstyled": "5.0.20",
+  		"liferay-theme-tasks": "^10.5.0",
+  		"liferay-font-awesome": "3.4.0"
+  	},
+  	"scripts": {
+  		"init": "gulp init",
+  		"build": "gulp build",
+  		"deploy": "gulp deploy",
+  		"extend": "gulp extend",
+  		"kickstart": "gulp kickstart",
+  		"status": "gulp status",
+  		"upgrade": "gulp upgrade",
+  		"watch": "gulp watch"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
