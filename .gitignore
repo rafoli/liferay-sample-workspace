@@ -26,8 +26,5 @@ test-results
 /dist/
 /themes/**/*.jar
 /themes/**/dist
-<<<<<<< HEAD
-=======
 /themes/**/*.jar
 /modules/liferay-sample-module/liferay-sample-module-js-web/dist/
->>>>>>> f29b5ca (fix: update .gitignore)
