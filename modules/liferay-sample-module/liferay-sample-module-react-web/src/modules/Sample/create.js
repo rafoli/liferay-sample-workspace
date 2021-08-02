@@ -15,8 +15,6 @@ export default function Create({ createSample }) {
     }
 
     return (
-<<<<<<< HEAD
-<<<<<<< HEAD
         <div className="form-group">
             <form onSubmit={(e) => createNewSample(sampleName, e)}>
                 <div className="input-group">
@@ -33,21 +31,7 @@ export default function Create({ createSample }) {
                         <button disabled={!sampleName} className="btn btn-primary" id="btn-add-sample">Add</button>
                     </div>
                 </div>
-=======
-        <div className="dsd-app">
-            <form onSubmit={(e) => createNewSample(sampleName, e)}>
-                <input type="text" placeholder="Name" value={sampleName} onChange={e => setSampleName(e.target.value)} />
-                <button disabled={!sampleName} className="dsd__btn-primary">Add</button>
-                <button disabled={!sampleName} className="dsd btn-primary">Add</button>
-                <button disabled={!sampleName} className="btn-primary">Add</button>
->>>>>>> 4dbbd57 (dev: theme with namespace)
             </form>
         </div>
-=======
-        <form onSubmit={(e) => createNewSample(sampleName, e)}>
-            <input type="text" placeholder="Name" value={sampleName} onChange={e => setSampleName(e.target.value)} />
-            <button disabled={!sampleName} className="btn-base-app">Add</button>
-        </form>
->>>>>>> e29069c (Revert "Feature/fake theme")
     )
 }
