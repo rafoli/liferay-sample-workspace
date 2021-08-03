@@ -3,33 +3,19 @@ package com.liferay.sample.module.web.rest;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.service.SampleService;
-import com.liferay.sample.module.web.rest.exception.SampleApplicationException;
-
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Rafael Oliveira
@@ -43,7 +29,7 @@ import org.slf4j.LoggerFactory;
 )
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleApplication extends Application {
-	
+
     public Set<Object> getSingletons() {
         return Collections.singleton(this);
     }
@@ -51,31 +37,18 @@ public class SampleApplication extends Application {
     @Path("/samples")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getSamples(@Context HttpServletRequest request) throws SampleApplicationException {
-    	
-    	_logger.debug("Getting all samples available...");
-    	
-    	try {
-    		List<SampleObject> samples = _sampleService.getSamples();
-            
-            if (samples.isEmpty()) {
-            	throw new SampleApplicationException("No samples available!");
-            } else {
-            	_logger.info(samples.size() + " samples available");
-            	
-            	return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();        	
-            }
-    	} catch (Exception error) {
-    		_logger.error(new Date() + " :: " + _logger.getName() + " :: " + error.getMessage());
-    		return Response.status(Status.BAD_REQUEST.getStatusCode()).entity(error.getMessage()).build();
-    	}      
+    public Response getSamples(@Context HttpServletRequest request) {
+
+        List<SampleObject> samples = _sampleService.getSamples();
+
+        return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();
 
     }
 
     @Path("/samples/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getSample(@Context HttpServletRequest request, @PathParam("id") String id) {
+    public Response getSamples(@Context HttpServletRequest request, @PathParam("id") String id) {
 
         SampleObject sample = _sampleService.getSample(id);
 
@@ -87,13 +60,12 @@ public class SampleApplication extends Application {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response addSample(@Context HttpServletRequest request, String body) {
-    	
-		SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
-		
+
+    	SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
+
         sample = _sampleService.addSample(sample);
-        
-        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();            
-    	
+
+        return Response.ok(JSONFactoryUtil.looseSerialize(sample)).build();
     }
 
     @Path("/samples")
@@ -127,9 +99,6 @@ public class SampleApplication extends Application {
 
         return Response.status(Response.Status.OK).build();
     }
-    
-    // declare at the end, just like References annotations (Liferay best practices)
-    private static final Logger _logger = LoggerFactory.getLogger(SampleApplication.class.getName());
 
     @Reference
     private SampleService _sampleService;
