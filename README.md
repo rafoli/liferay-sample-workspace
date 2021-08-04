@@ -10,11 +10,11 @@
 
 ## Starting a Liferay Local Instance
 1. Open a new tab in your terminal, and go to `./bundles/tomcat-9.X.X/bin` subfolder.
-2. Run `./catalina.sh run` (for Linux users) to start a Liferay DXP local instance.
-3. Copy an activation key to the `deploy` folder to register a Liferay license for DXP Development.
-4. Open a tab in your browser and type `localhost:8080`.
-5. Follow the ***Basic Configuration*** steps, inserting an email and a password, and then accepting the ***Terms of Use***.
-6. You should be redirected to the *Home* page of your Liferay DXP instance.
+2. Run `blade server start` or `blade server start -d` debug mode (for Linux users) to start a Liferay DXP local instance.
+4. Copy an activation key to the `deploy` folder to register a Liferay license for DXP Development.
+5. Open a tab in your browser and type `localhost:8080`.
+6. Follow the ***Basic Configuration*** steps, inserting an email and a password, and then accepting the ***Terms of Use***.
+7. You should be redirected to the *Home* page of your Liferay DXP instance.
 
 ## Deploy Modules
 1. Go back to the first tab of your terminal, execute `blade gw deploy` command to download aBadgend install the dependencies needed to deploy the modules.
