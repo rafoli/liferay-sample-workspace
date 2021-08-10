@@ -31,6 +31,12 @@ import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.liferay.sample.module.ws.client.base.RestClientFactory;
+import com.liferay.sample.module.ws.config.RestAPIConfiguration;
+import com.liferay.sample.module.ws.circuitbreaker.RestFailuresService;
+
+
+
 /**
  * @author Rafael Oliveira
  */
@@ -44,6 +50,10 @@ import org.slf4j.LoggerFactory;
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleApplication extends Application {
 	
+	private RestClientFactory restClientFactory;
+	private RestFailuresService restFailuresService; 
+	private RestAPIConfiguration restAPIConfiguration;
+	
     public Set<Object> getSingletons() {
         return Collections.singleton(this);
     }
@@ -56,6 +66,7 @@ public class SampleApplication extends Application {
     	_logger.debug("Getting all samples available...");
     	
     	try {
+//    		List<SampleObject> samples = restClientFactory.getAPI(restAPIConfiguration.apiBaseUrl(), _sampleService.getSamples());
     		List<SampleObject> samples = _sampleService.getSamples();
             
             if (samples.isEmpty()) {
