@@ -948,6 +948,11 @@
     "@babel/helper-validator-identifier" "^7.14.5"
     to-fast-properties "^2.0.0"
 
+"@clayui/css@^3.32.1":
+  version "3.32.1"
+  resolved "https://registry.yarnpkg.com/@clayui/css/-/css-3.32.1.tgz#b9f5f36f9d714e9d3f1f87334f3b15d9a1389516"
+  integrity sha512-iJtgdbSX9T54+0B0uFG2tyqPJ3+mD5sj8wrI+fTl5BUg4tdqrv2gSdQelYLv4gT+e177GzafyKXaj8ti6jLV9w==
+
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.2":
   version "2.1.8-no-fsevents.2"
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.2.tgz#e324c0a247a5567192dd7180647709d7e2faf94b"
@@ -5213,11 +5218,6 @@ react-router@5.2.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
-
-react-uuid@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-uuid/-/react-uuid-1.0.2.tgz#c77cea91cf38eafb1aaa7910f92621b2ed91b969"
-  integrity sha512-5e0GM16uuQj9MdRJlZ0GdLC8LKMwpU9PIqYmF27s3fIV2z+rLyASTaiW4aKzSY4DyGanz+ImzsECkftwGWfAwA==
 
 react@16.8.6:
   version "16.8.6"
