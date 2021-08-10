@@ -24,6 +24,7 @@
 /plugins-sdk/lib
 test-results
 /dist/
+/themes/**/dist
 /themes/**/*.jar
 /themes/**/dist
 /themes/**/*.jar
