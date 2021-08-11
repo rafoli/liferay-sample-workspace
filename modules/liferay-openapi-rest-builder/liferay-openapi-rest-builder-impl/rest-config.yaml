@@ -4,6 +4,6 @@ application:
     baseURI: "/liferay-openapi-rest-builder"
     className: "LiferayOpenapiRestBuilderApplication"
     name: "LiferayOpenapiRestBuilder"
-author: "me"
+author: "Rennan Prysthon"
 clientDir: "../liferay-openapi-rest-builder-client/src/main/java"
 testDir: "../liferay-openapi-rest-builder-test/src/testIntegration/java"
