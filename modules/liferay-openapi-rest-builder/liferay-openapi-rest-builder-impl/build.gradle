@@ -1,5 +1,6 @@
 dependencies {
 	compile project(":modules:liferay-openapi-rest-builder:liferay-openapi-rest-builder-api")
+	compileOnly project(":modules:liferay-sample-module:liferay-sample-module-api")
 
 	compileOnly group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: "2.10.3"
 	compileOnly group: "com.liferay", name: "com.liferay.petra.function"
