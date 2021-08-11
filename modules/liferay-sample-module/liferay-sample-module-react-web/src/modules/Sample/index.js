@@ -86,23 +86,36 @@ export default function Samples() {
     }
 
     return (
-        <div>
-            <h1>Sample List</h1>
+        <div className="container">
+            <div className="sheet">
+                <div className="sheet-header">
+                    <h1 className="sheet-title">Samples List</h1>
+                </div>
 
-            <Create createSample={createSample} />
+                <div className="sheet-section">
+                    <Create createSample={createSample} />
 
-            <ul>
-                {sampleList.length > 0 && sampleList.map((sample, i) => (
-                    <li key={sample.id}>
-                        {!sample.editing && `${sample.name}`}
-                        {sample.editing && <input type="text" value={sample.name} onChange={e => changeSampleProperty(e.target.value, i, 'name')} />}
-                        <button 
-                            onClick={sample.editing ? () => saveSample(sample, i) : () => editSample(sample.id)}>{sample.editing ? 'Save' : 'Edit'}
-                        </button>
-                        <button onClick={() => removeSample(sample.id)}>Remove</button>
-                    </li>
-                ))}
-            </ul>
+                    <ul>
+                        {sampleList.length > 0 && sampleList.map((sample, i) => (
+                            <li key={sample.id}>
+                                {!sample.editing && `${sample.name}`}
+                                {sample.editing && 
+                                <input 
+                                    type="text" 
+                                    value={sample.name} 
+                                    onChange={e => changeSampleProperty(e.target.value, i, 'name')}
+                                    id={`input-sample-edit-${i}`} />}
+                                <button 
+                                    onClick={sample.editing ? () => saveSample(sample, i) : () => editSample(sample.id)}
+                                    id={`btn-sample-edit-${i}`}>
+                                        {sample.editing ? 'Save' : 'Edit'}
+                                </button>
+                                <button onClick={() => removeSample(sample.id)} id={`remove-${i}`}>Remove</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }
