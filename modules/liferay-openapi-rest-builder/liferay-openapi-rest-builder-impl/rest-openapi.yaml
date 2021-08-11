@@ -1,8 +1,134 @@
+components:
+    schemas:
+        Sample:
+            description: A sample entity
+            properties:
+                name:
+                    description: The sample name.
+                    type: string
+                id:
+                    description: The sample ID.
+                    type: string
+            type: object
 info:
-    description: "LiferayOpenapiRestBuilder REST API"
+    description:
+        "The Sample API made with rest builder. A Java client JAR is available for use with the group ID 'com.liferay',
+        artifact ID 'com.liferay.sample.client', and version '1.0.0'."
     license:
         name: "Apache 2.0"
         url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-    title: "LiferayOpenapiRestBuilder"
+    title: "Sample API"
     version: v1.0
 openapi: 3.0.1
+paths:
+    "/samples":
+        get:
+            operationId: getAllSamples
+            parameters:
+                - in: query
+                  name: pageNumber
+                  default: 1
+                  schema:
+                      type: integer
+                - in: query
+                  name: pageSize
+                  default: 4
+                  schema:
+                      type: integer
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Sample"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Sample"
+                                type: array
+            tags: [ "Sample" ]
+        post:
+            operationId: createSample
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Sample"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Sample"
+            responses:
+                201:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Sample"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Sample"
+            tags: [ "Sample" ]
+    "/samples/{sampleId}":
+        get:
+            operationId: getSample
+            parameters:
+                - in: path
+                  name: sampleId
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Sample"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Sample"
+                    description: ""
+            tags: ["Sample"]
+        delete:
+            operationId: deleteSample
+            parameters:
+                - in: path
+                  name: sampleId
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                204:
+                    content:
+                        application/json: { }
+                        application/xml: { }
+                    description: ""
+            tags: [ "Sample" ]
+        put:
+            operationId: putSample
+            parameters:
+                - in: path
+                  name: sampleId
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Sample"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Sample"
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Sample"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Sample"
+                    description: ""
+            tags: [ "Sample" ]
+
