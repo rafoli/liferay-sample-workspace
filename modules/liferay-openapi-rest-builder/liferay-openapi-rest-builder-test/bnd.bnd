@@ -1,0 +1,4 @@
+Bundle-Name: liferay-openapi-rest-builder-test
+Bundle-SymbolicName: liferay.openapi.rest.builder.test
+Bundle-Version: 1.0.0
+-includeresource: liferay.openapi.rest.builder.client.jar=../liferay-openapi-rest-builder-client/build/libs/liferay.openapi.rest.builder.client-1.0.0.jar;lib:=true
