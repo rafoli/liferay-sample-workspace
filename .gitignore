@@ -24,8 +24,7 @@
 /plugins-sdk/lib
 test-results
 /dist/
-/themes/**/dist
-/themes/**/*.jar
+**/dist
 /themes/**/dist
 /themes/**/*.jar
 /modules/liferay-sample-module/liferay-sample-module-js-web/dist/
