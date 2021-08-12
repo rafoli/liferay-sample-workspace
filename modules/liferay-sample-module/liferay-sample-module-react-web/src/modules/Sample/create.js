@@ -3,7 +3,6 @@
 */
 
 import React, { useState } from 'react';
-import ClayForm, { ClayInput } from '@clayui/form';
 
 export default function Create({ createSample }) {
     const [sampleName, setSampleName] = useState('');
@@ -16,11 +15,23 @@ export default function Create({ createSample }) {
     }
 
     return (
-        <ClayForm.FormGroup>
+        <div className="form-group">
             <form onSubmit={(e) => createNewSample(sampleName, e)}>
-                <input type="text" placeholder="Name" value={sampleName} onChange={e => setSampleName(e.target.value)} id="input-sample-name" />
-                <button disabled={!sampleName} className="btn-base-app" id="btn-add-sample">Add</button>
+                <div className="input-group">
+                    <div className="input-group-item-shrink">
+                        <input 
+                            type="text" 
+                            placeholder="Name" 
+                            value={sampleName} 
+                            onChange={e => setSampleName(e.target.value)} 
+                            className="form-control"
+                            id="input-sample-name" />
+                    </div>
+                    <div className="input-group-item">
+                        <button disabled={!sampleName} className="btn btn-primary" id="btn-add-sample">Add</button>
+                    </div>
+                </div>
             </form>
-        </ClayForm.FormGroup>
+        </div>
     )
 }
