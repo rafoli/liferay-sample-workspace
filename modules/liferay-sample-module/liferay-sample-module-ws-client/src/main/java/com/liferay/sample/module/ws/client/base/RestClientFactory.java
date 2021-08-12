@@ -20,6 +20,9 @@ import io.github.resilience4j.ratelimiter.RateLimiter;
 import java.time.Duration;
 
 import org.osgi.service.component.annotations.Component;
+import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 import org.slf4j.LoggerFactory;
 
