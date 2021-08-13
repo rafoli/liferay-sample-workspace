@@ -61,7 +61,7 @@ public interface RestAPIConfiguration {
     public int failureRateThresholdValue();
     
     @Meta.AD(
-            deflt="50",
+            deflt="20",
             name = "api-circuitbreaker-duration-open-state",
             required = false
     )
