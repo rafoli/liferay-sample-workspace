@@ -29,9 +29,9 @@ public class RestClientFactory<T> {
 
 		// Create a custom configuration for a CircuitBreaker
 		CircuitBreakerConfig circuitBreakerConfig = CircuitBreakerConfig.custom()
-				.minimumNumberOfCalls(2)
-				.failureRateThreshold(50)
-				.waitDurationInOpenState(Duration.ofSeconds(10))
+				.minimumNumberOfCalls(configuration.minimumNumberOfCallsValue())
+				.failureRateThreshold(configuration.failureRateThresholdValue())
+				.waitDurationInOpenState(Duration.ofSeconds(configuration.waitDurationInOpenStateValue()))
 				.build();
 
 		// Create a CircuitBreakerRegistry with a custom global configuration
