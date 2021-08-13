@@ -122,7 +122,6 @@ For this project, three settings have been defined to recognize and initiate the
 ## Front End 2E2 Tests
 * To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
 * Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
-=======
 ### Know Issues
 * If when you run the command `blade gw deploy` and occur this error: `Task :modules:liferay-sample-module:liferay-sample-module-js-web:packageRunTest FAILED`
 in you terminal go to the project workspace, in the modules folder, run the command `nano build.gradle` and change the value of `packageRunTest.enabled` to false, save the file, back to the project folder and run `blade gw deploy` again.
