@@ -21,7 +21,3 @@ $font-color-app: #fff;
     background-color: $base-color-app;
     color: $font-color-app;
 }
-
-.btn-primary {
-    @include style-btn;
-}

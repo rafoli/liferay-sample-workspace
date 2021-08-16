@@ -9,14 +9,21 @@
 		"@babel/preset-env": "^7.7.6",
 		"@babel/preset-react": "^7.7.4",
 		"copy-webpack-plugin": "4.6.0",
+		"css-loader": "^6.2.0",
+		"cypress": "^8.2.0",
+		"dotenv": "^10.0.0",
 		"liferay-npm-build-support": "^2.26.0",
 		"liferay-npm-bundler": "^2.26.0",
+		"liferay-npm-bundler-loader-css-loader": "^2.26.0",
+		"style-loader": "^3.2.1",
 		"webpack": "4.29.6",
 		"webpack-cli": "3.3.0",
 		"webpack-dev-server": "3.2.1"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.14.6",
+		"@clayui/css": "^3.32.1",
+		"@clayui/form": "^3.32.0",
 		"axios": "^0.21.1",
 		"react": "16.8.6",
 		"react-dom": "16.8.6",
@@ -26,7 +33,8 @@
 		"build": "babel --source-maps -d build src && npm run copy-assets && liferay-npm-bundler",
 		"copy-assets": "lnbs-copy-assets",
 		"deploy": "npm run build && lnbs-deploy",
-		"start": "lnbs-start"
+		"start": "lnbs-start",
+		"cypress:open": "cypress open"
 	},
 	"portlet": {
 		"com.liferay.portlet.display-category": "category.sample",

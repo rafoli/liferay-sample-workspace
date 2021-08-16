@@ -1,6 +1,14 @@
-<div>
-<input type="text" placeholder="Name" [(ngModel)]="sampleName"/>
-<button (click)="create()">Save</button>
-<Button (click)="goBack()">Cancel</Button>
+<div class="form-group">
+    <div class="input-group">
+        <div class="input-group-item-shrink">
+            <input type="text" placeholder="Name" [(ngModel)]="sampleName" class="form-control"/>
+        </div>
+        <div class="input-group-item-shrink c-ml-2">
+            <button (click)="create()" class="btn btn-primary">Save</button>
+        </div>
+        <div class="input-group-item">
+            <Button (click)="goBack()" class="btn btn-warning">Cancel</Button>
+        </div>
+    </div>
 </div>
 

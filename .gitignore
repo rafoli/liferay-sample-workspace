@@ -24,6 +24,10 @@
 /plugins-sdk/lib
 test-results
 /dist/
+**/dist
 /themes/**/dist
 /themes/**/*.jar
 /modules/liferay-sample-module/liferay-sample-module-js-web/dist/
+**/.env
+**/yarn-error.log
+**/build.liferay

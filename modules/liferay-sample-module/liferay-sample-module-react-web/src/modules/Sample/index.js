@@ -86,23 +86,60 @@ export default function Samples() {
     }
 
     return (
-        <div>
-            <h1>Sample List</h1>
+        <div className="container">
+            <div className="sheet">
+                <div className="sheet-header">
+                    <h1 className="sheet-title">Samples List</h1>
+                </div>
 
-            <Create createSample={createSample} />
+                <div className="sheet-section">
+                    <Create createSample={createSample} />
 
-            <ul>
-                {sampleList.length > 0 && sampleList.map((sample, i) => (
-                    <li key={sample.id}>
-                        {!sample.editing && `${sample.name}`}
-                        {sample.editing && <input type="text" value={sample.name} onChange={e => changeSampleProperty(e.target.value, i, 'name')} />}
-                        <button 
-                            onClick={sample.editing ? () => saveSample(sample, i) : () => editSample(sample.id)}>{sample.editing ? 'Save' : 'Edit'}
-                        </button>
-                        <button onClick={() => removeSample(sample.id)}>Remove</button>
-                    </li>
-                ))}
-            </ul>
+                    <div className="table-responsive">
+                        <table className="table table-autofit show-quick-actions-on-hover table-hover table-list">
+                            {sampleList.length > 0 && sampleList.map((sample, i) => (
+                                <tr>
+                                    <td>
+                                        {!sample.editing && `${sample.name}`}
+                                        {sample.editing &&
+                                            <input 
+                                                type="text" 
+                                                value={sample.name}
+                                                className="form-control"
+                                                onChange={e => changeSampleProperty(e.target.value, i, 'name')}
+                                                id={`input-sample-edit-${i}`} />
+                                        }
+                                    </td>
+                                    <td>
+                                        <div className="row justify-content-end c-mr-2">
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <div className="input-group-item input-group-item-shrink">
+                                                        <button 
+                                                            onClick={sample.editing ? () => saveSample(sample, i) : () => editSample(sample.id)}
+                                                            id={`btn-sample-edit-${i}`}
+                                                            className="btn btn-sm btn-primary">
+                                                                {sample.editing ? 'Save' : 'Edit'}
+                                                        </button>
+                                                    </div>
+                                                    <div className="input-group-item input-group-item-prepend">
+                                                        <button 
+                                                            onClick={() => removeSample(sample.id)} 
+                                                            id={`remove-${i}`}
+                                                            className="btn btn-sm btn-danger">
+                                                                Remove
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

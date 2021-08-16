@@ -7,5 +7,11 @@
 			"configuration": "features/configuration.json"
 		}
 	},
+	"rules": [
+		{
+			"test": "\\.css$",
+			"use": ["css-loader", "style-loader"]
+		}
+	],
 	"dump-report": true
 }
