@@ -1,0 +1,6 @@
+Bundle-Name: liferay-openapi-rest-builder-api
+Bundle-SymbolicName: liferay.openapi.rest.builder.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	liferay.openapi.rest.builder.dto.v1_0,\
+	liferay.openapi.rest.builder.resource.v1_0
