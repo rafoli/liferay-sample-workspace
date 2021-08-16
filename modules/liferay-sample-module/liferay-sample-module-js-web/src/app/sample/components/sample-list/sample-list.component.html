@@ -1,16 +1,31 @@
 <ng-container *ngIf="samples">
-  <ul class="list-unstyled">
-    <li *ngFor="let sample of samples | async">
-    <a routerLink="/details/{{sample.id}}" [skipLocationChange]="true">
-        <p>
-          <strong>Id: </strong>{{sample.id}}
-        </p>
-        <p>
-          <strong>Name: </strong>{{sample.name}}
-        </p>
-      </a>
-      <button (click)="delete(sample.id)">Delete</button>
-    </li>
-  </ul>
+  <div class="table-responsive">
+    <table class="table table-autofit show-quick-actions-on-hover table-hover table-list">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sample of samples | async">
+          <td>
+            <p>
+              {{sample.id}}
+            </p>
+          </td>
+          <td>
+            <p>
+              {{sample.name}}
+            </p>
+          </td>
+          <td>
+            <div class="row justify-content-end c-mr-2">
+              <button (click)="delete(sample.id)" class="btn btn-sm btn-danger">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </ng-container>
-<button (click)="create()">Add</button>
+<button (click)="create()" class="btn btn-primary">Add</button>

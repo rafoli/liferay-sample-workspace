@@ -1,0 +1,9 @@
+apiDir: "../liferay-openapi-rest-builder-api/src/main/java"
+apiPackagePath: "liferay.openapi.rest.builder"
+application:
+    baseURI: "/liferay-openapi-rest-builder"
+    className: "LiferayOpenapiRestBuilderApplication"
+    name: "LiferayOpenapiRestBuilder"
+author: "Rennan Prysthon"
+clientDir: "../liferay-openapi-rest-builder-client/src/main/java"
+testDir: "../liferay-openapi-rest-builder-test/src/testIntegration/java"

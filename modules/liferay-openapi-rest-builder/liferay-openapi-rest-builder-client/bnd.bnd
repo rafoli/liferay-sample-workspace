@@ -1,0 +1,3 @@
+Bundle-Name: liferay-openapi-rest-builder-client
+Bundle-SymbolicName: liferay.openapi.rest.builder.client
+Bundle-Version: 1.0.0
