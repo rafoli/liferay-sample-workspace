@@ -52,8 +52,8 @@ public class RestClientFactory<T> {
 		// Log emitted events
 		circuitBreaker.getEventPublisher()
 			.onEvent(event -> {
-				_logger.info("CircuitBreaker event log - type " + event.getEventType());
-				_logger.info("CircuitBreaker event log - details " + event);
+				_logger.info("CircuitBreaker {} event log - type " + event.getEventType());
+				_logger.info("CircuitBreaker {} event log - details " + event);
 			});
 		
 		RateLimiter rateLimiter = RateLimiter.ofDefaults(configuration.apiName());
