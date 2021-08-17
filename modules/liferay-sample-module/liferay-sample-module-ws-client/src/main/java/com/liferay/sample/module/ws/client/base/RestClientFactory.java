@@ -24,9 +24,9 @@ import java.time.Duration;
  */
 @Component(service = RestClientFactory.class)
 public class RestClientFactory<T> {
-
+	
 	public T getAPI(RestAPIConfiguration configuration, Class<T> serviceClass) {
-
+		
 		// Create a custom configuration for a CircuitBreaker
 		CircuitBreakerConfig circuitBreakerConfig = CircuitBreakerConfig.custom()
 				.minimumNumberOfCalls(configuration.minimumNumberOfCallsValue())
@@ -41,14 +41,22 @@ public class RestClientFactory<T> {
 		// Log
 		circuitBreakerRegistry.getEventPublisher()
 				.onEvent(event -> {
-					_logger.error("CircuitBreaker {} event type", event.getEventType());
-					_logger.error("CircuitBreaker {} event details", event);
+					_logger.error("CircuitBreaker {} event type ", event.getEventType());
+					_logger.error("CircuitBreaker {} event details ", event);
 				});
 
 		CircuitBreaker circuitBreaker = circuitBreakerRegistry
 				.circuitBreaker(configuration.apiName());
-
-//		RateLimiter rateLimiter = RateLimiter.ofDefaults(configuration.apiName());
+		
+		
+		// Log emitted events
+		circuitBreaker.getEventPublisher()
+			.onEvent(event -> {
+				_logger.info("CircuitBreaker event log - type " + event.getEventType());
+				_logger.info("CircuitBreaker event log - details " + event);
+			});
+		
+		RateLimiter rateLimiter = RateLimiter.ofDefaults(configuration.apiName());
 
 		FeignDecorators decorators =
 				FeignDecorators.builder()
@@ -61,6 +69,7 @@ public class RestClientFactory<T> {
 				.logger(new Slf4jLogger(RestClientFactory.class))
 				.logLevel(Logger.Level.FULL)
 				.target(serviceClass, configuration.apiBaseUrl());
+			    
 	}
 
 	// declare at the end, just like References annotations (Liferay best practices)
