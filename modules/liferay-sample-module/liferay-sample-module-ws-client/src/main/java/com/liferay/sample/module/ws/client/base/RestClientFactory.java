@@ -31,9 +31,9 @@ import org.slf4j.LoggerFactory;
  */
 @Component(service = RestClientFactory.class)
 public class RestClientFactory<T> {
-
+	
 	public T getAPI(RestAPIConfiguration configuration, Class<T> serviceClass) {
-
+		
 		// Create a custom configuration for a CircuitBreaker
 
 		CircuitBreakerConfig.Builder circuitBreakerBuilder = CircuitBreakerConfig.custom();
