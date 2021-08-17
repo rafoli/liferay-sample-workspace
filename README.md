@@ -92,8 +92,6 @@ The scheme below illustrates the workflow of a Liferay web service.
 ### liferay-sample-module-tests
 * The `liferay-sample-module-tests` module includes all functional tests related to the Page Objects defined, leveraging Selenium framework features.
 
-
-
-
-
-
+## Front End 2E2 Tests
+* To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
+* Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
