@@ -88,7 +88,11 @@ export default function Samples() {
                                     <th>Name</th>
                                 </tr>
                             </thead>
+<<<<<<< HEAD
                             <tbody id="react-portlet-table">
+=======
+                            <tbody>
+>>>>>>> 6ceb7cd (dev: cypress isolation)
                                 {sampleList.length > 0 && sampleList.map((sample, i) => (
                                     <tr key={sample.id}>
                                         <td>{sample.id}</td>
