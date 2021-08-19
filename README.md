@@ -190,3 +190,5 @@ The key verb should always be capitalized (firt letter in uppercase), for exampl
 
 - `LSW-46 Add documentation on README.MD`
 - `LSW-46 Fix merge conflicts`
+
+

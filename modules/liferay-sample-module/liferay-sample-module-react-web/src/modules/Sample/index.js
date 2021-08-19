@@ -88,7 +88,7 @@ export default function Samples() {
                                     <th>Name</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="react-portlet-table">
                                 {sampleList.length > 0 && sampleList.map((sample, i) => (
                                     <tr key={sample.id}>
                                         <td>{sample.id}</td>

@@ -23,6 +23,6 @@ describe('crud sample', () => {
     it('should remove all samples', () => {
         cy.get('#remove-1').click();
         cy.get('#remove-0').click();
-        cy.get('tbody').should('be.empty');
+        cy.get('#react-portlet-table').should('be.empty');
     });
 });
