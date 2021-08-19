@@ -68,6 +68,28 @@ The scheme below illustrates the workflow of a Liferay web service.
 
 ![Sample Module](https://user-images.githubusercontent.com/83607914/122243070-34241f00-ce9a-11eb-87bf-9c563813cb2a.png)
 
+## Fault Tolerance Testing And Details
+
+The Resilience4j library has some fault tolerance patterns and in this project, the Circuit Breaker pattern was implemented.
+
+The application recognizes by pre-defined configurations, to make the transition from close state to open state and the reestablishment of the closed circuit.
+
+Settings can be set in two places, in the project configuration file `/liferay-sample-workspace/bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config` and in the portal control panel `Control Panel -> System Settings -> category.liferay-confguration`.
+
+For this project, three settings have been defined to recognize and initiate the open state: Minimum Number Of Calls, Failure Rate Threshold and Wait Duration In Open State.
+
+### Testing Guide
+
+#### Event triggering
+
+* The way to trigger the event in the context of this project, can be via Postman calls or in the browser itself. In postman you need to have the credentials of a portal user and in your browser you need to be logged in to an valid account.
+
+### Testing Scenarios
+
+#### Open State
+
+* To simulate the open circuit mode, you need to change the settings in `Control Panel -> System Settings -> category.liferay-confguration -> api-base-url` in the portal or edit the value in line 1 of the `/liferay-sample project file -workspace/bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config` for a url that has no service/content to return. Upon reaching the values configured for: Minimum Number Of Calls, Failure Rate Threshold and Wait Duration In Open State, fault tolerance will occur and the message will be displayed: `CircuitBreaker 'api-name' is OPEN and does not allow further calls` at the Postman's response or in the browser's console.
+
 ### liferay-sample-module-js-web
 * The `liferay-sample-module-js-web` module corresponds to the frontend layer of the entire module, i.e., the **view** layer of the MVC portlet architecture. 
 * It is responsable to display the data on the page, using Angular technology (a JavaScript framework) and send the users' request to `liferay-sample-module-web-rest` .
