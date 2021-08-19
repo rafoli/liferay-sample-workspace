@@ -170,7 +170,8 @@ There are four important things to check in the template:
 4. Write the template logic (everything encapsulated by the `{template .content}...{/template}` block.
 
 ## Front End 2E2 Tests
-* To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
+* To perform the cypress tests, you will need to import the React portlet with data served by mock-server.
+* You should create a .env file with your USER and PASSWORD to login in DXP.
 * Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
 ## Naming Pattern
 
@@ -188,4 +189,8 @@ The key verb should always be capitalized (firt letter in uppercase), for exampl
   git commit -m "LSW-46 Add documentation on README.MD"
 ```
 #### Commit message examples:
+
+- `LSW-46 Add documentation on README.MD`
 - `LSW-46 Fix merge conflicts`
+
+

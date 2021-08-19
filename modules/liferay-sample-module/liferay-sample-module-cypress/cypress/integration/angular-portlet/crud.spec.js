@@ -20,8 +20,7 @@ describe('crud sample', () => {
     });
 
     it('should remove all samples', () => {
-        cy.get('#ng-btn-remove').click();
-        cy.get('#ng-btn-remove').click();
-        cy.get('#ng-table-samples').should('be.empty');
+        cy.get('.btn-danger').click({ multiple: true })
+        cy.get('#react-portlet-table').should('be.empty');
     });
 });
