@@ -37,6 +37,7 @@ project.pluginManager.withPlugin("java") {
 	dependencies {
 		compile group: "com.github.javafaker", name: "javafaker", version: "1.0.2"
 		compile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.3.2'
+		
 		testCompile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
 		testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 		testCompile group: "io.takari.junit", name: "takari-cpsuite", version: "1.2.7"
@@ -48,12 +49,9 @@ project.pluginManager.withPlugin("java") {
 		compile 'org.seleniumhq.selenium:selenium-remote-driver:' + seleniumVersion
 		compile 'org.seleniumhq.selenium:selenium-support:' + seleniumVersion
 		
-		testImplementation 'io.rest-assured:rest-assured:4.4.0'
 		testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
     	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
-		
-		compileOnly project(":modules:liferay-sample-module:liferay-sample-module-ws-client")
-		
+				
 		compile group: "org.mockito", name: "mockito-all"
 	}
 
