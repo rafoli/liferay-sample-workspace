@@ -7,8 +7,6 @@ dependencies {
 	compileOnly group: "javax.ws.rs", name: "javax.ws.rs-api"
 	
 	compileOnly group: "org.slf4j", name: "slf4j-api"
-	compileInclude group: "io.github.resilience4j", name: "resilience4j-circuitbreaker", version: "1.5.0"
-	
+
 	compileOnly project(":modules:liferay-sample-module:liferay-sample-module-api")
-	compileOnly project(":modules:liferay-sample-module:liferay-sample-module-ws-client")	
 }
