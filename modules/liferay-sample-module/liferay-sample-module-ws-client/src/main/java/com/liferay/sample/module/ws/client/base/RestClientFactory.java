@@ -72,6 +72,5 @@ public class RestClientFactory<T> {
 			    
 	}
 
-	// declare at the end, just like References annotations (Liferay best practices)
 	private static final org.slf4j.Logger _logger = LoggerFactory.getLogger(RestClientFactory.class.getName());
 }
