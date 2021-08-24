@@ -41,8 +41,8 @@ public class RestClientFactory<T> {
 		// Log
 		circuitBreakerRegistry.getEventPublisher()
 				.onEvent(event -> {
-					_logger.error("CircuitBreaker {} event type ", event.getEventType());
-					_logger.error("CircuitBreaker {} event details ", event);
+					_logger.info("CircuitBreaker {} event type ", event.getEventType());
+					_logger.info("CircuitBreaker {} event details ", event);
 				});
 
 		CircuitBreaker circuitBreaker = circuitBreakerRegistry
