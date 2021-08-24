@@ -137,6 +137,7 @@ For this project, three settings have been defined to recognize and initiate the
 * If when you run the command `blade gw deploy` and occur this error: `Task :modules:liferay-sample-module:liferay-sample-module-js-web:packageRunTest FAILED`
 in you terminal go to the project workspace, in the modules folder, run the command `nano build.gradle` and change the value of `packageRunTest.enabled` to false, save the file, back to the project folder and run `blade gw deploy` again.
 
+<<<<<<< HEAD
 ## Creating Form Field Types
 ### Create Liferay Module Project
 Create a Liferay Module Project inside a Liferay Workspace (`modules` directory). Make sure to use the `form-field` project template. For component class name, write `Sample` and for package, `com.liferay.sample.workspace`. A `sample-custom-form-field` project would have the following default files:
@@ -166,6 +167,10 @@ There are four important things to check in the template:
 2. Within `sample-custom-form-fieldRegister.soy` file, it is set the template that’s called to render the sample custom form field. The `variant="'sampleCustomFormField'"` identifies the sample field, and the `.render` names the template that renders it. The template itself follows and is defined through the block `{template .render}...{/template}`.
 3. The `sample-custom-form-field.soy` file describes the template parameters. All listed parameters are available by default through the `{template .render}...{/template}` block.
 4. Write the template logic (everything encapsulated by the `{template .content}...{/template}` block.
+
+## Front End 2E2 Tests
+* To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
+* Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
 
 ## Naming Pattern
 
