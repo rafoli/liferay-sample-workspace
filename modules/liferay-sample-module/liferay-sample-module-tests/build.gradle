@@ -36,6 +36,7 @@ project.pluginManager.withPlugin("java") {
 
 	dependencies {
 		compile group: "com.github.javafaker", name: "javafaker", version: "1.0.2"
+		compile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.3.2'
 		testCompile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
 		testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 		testCompile group: "io.takari.junit", name: "takari-cpsuite", version: "1.2.7"
