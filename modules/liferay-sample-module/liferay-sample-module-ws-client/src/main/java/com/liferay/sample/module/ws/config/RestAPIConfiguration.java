@@ -45,5 +45,25 @@ public interface RestAPIConfiguration {
             required = false
     )
     public int apiTimeoutSeconds();
-
+    
+    @Meta.AD(
+            deflt="5",
+            name = "api-circuitbreaker-minimum-calls",
+            required = false
+    )
+    public int minimumNumberOfCallsValue();
+    
+    @Meta.AD(
+            deflt="50",
+            name = "api-circuitbreaker-failure-rate-threshold",
+            required = false
+    )
+    public int failureRateThresholdValue();
+    
+    @Meta.AD(
+            deflt="20",
+            name = "api-circuitbreaker-duration-open-state",
+            required = false
+    )
+    public long waitDurationInOpenStateValue();
 }
