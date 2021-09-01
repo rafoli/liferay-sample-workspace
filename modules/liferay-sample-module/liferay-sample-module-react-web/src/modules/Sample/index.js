@@ -5,8 +5,8 @@
 import React, { useEffect, useState } from 'react';
 
 import Create from './create'
-import SampleService from '../../services/SampleService';
 import { useRoles } from '../../contexts/UserRolesProvider';
+import SampleController from '../../core/sample/sample.controller'
 
 export default function Samples() {
     const { isSignedIn, isAdmin } = useRoles()
@@ -20,13 +20,9 @@ export default function Samples() {
 
     async function getAllSamples() {
         try {
-            let { data: { items } } = await SampleService.getAllSamples();
+            const data = await SampleController.getAllSamples();
 
-            items = items.map(sample => {
-                return { ...sample, editing: false }
-            })
-
-            setSampleList(items);
+            setSampleList(data);
         } catch (error) {
             console.log(error);
         }
@@ -34,26 +30,19 @@ export default function Samples() {
 
     async function removeSample(sampleId) {
         try {
-            await SampleService.removeSample(sampleId);
+            const data = await SampleController.removeSample(sampleId, sampleList);
 
-            const newSamples = sampleList.filter(sample => sample.id !== sampleId);
-            setSampleList(newSamples);
+            setSampleList(data);
         } catch (error) {
             console.log(error);
         }
     }
 
     async function createSample({ name }) {
-        const samples = [...sampleList];
-
         try {
-            const response = await SampleService.createSample(name);
+            const data = await SampleController.createSample(name, sampleList);
 
-            const newSample = { ...response.data, editing: false };
-
-            samples.push(newSample)
-
-            setSampleList([...samples]);
+            setSampleList(data);
         } catch (error) {
             console.log(error);
         }
@@ -61,32 +50,26 @@ export default function Samples() {
 
     async function saveSample(sample, index) {
         try {
-            await SampleService.editSample(sample)
+            await SampleController.saveSample(sample, index, sampleList);
 
-            changeSampleProperty(false, index, 'editing')
+            const changeSampleList = SampleController.changeSampleProperty(false, index, 'editing', sampleList);
+
+            setSampleList(changeSampleList);
         } catch (error) {
-            console.log('erro')
+            console.log(error)
         }
     }
 
-    async function editSample(sampleId) {
-        const changeSample = sampleList.map(sample => {
-            if (sample.id === sampleId) {
-                return { ...sample, editing: !sample.editing }
-            }
+    function changeSampleProperty(newValue, index, property) {
+        const changeSampleList = SampleController.changeSampleProperty(newValue, index, property, sampleList);
 
-            return sample
-        })
-
-        setSampleList(changeSample)
+        setSampleList(changeSampleList);
     }
 
-    function changeSampleProperty(newValue, index, property) {
-        const oldSample = sampleList[index];
-        const updatedSample = { ...oldSample, [property]: newValue }
-        const cloneSampleList = [...sampleList];
-        cloneSampleList[index] = updatedSample;
-        setSampleList(cloneSampleList);
+    async function editSample(sampleId) {
+        const changeSampleList = SampleController.editSample(sampleId, sampleList)
+
+        setSampleList(changeSampleList)
     }
 
     return (
@@ -101,9 +84,16 @@ export default function Samples() {
 
                     <div className="table-responsive">
                         <table className="table table-autofit show-quick-actions-on-hover table-hover table-list">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {sampleList.length > 0 && sampleList.map((sample, i) => (
                                     <tr key={sample.id}>
+                                        <td>{sample.id}</td>
                                         <td>
                                             {!sample.editing && `${sample.name}`}
                                             {sample.editing &&
