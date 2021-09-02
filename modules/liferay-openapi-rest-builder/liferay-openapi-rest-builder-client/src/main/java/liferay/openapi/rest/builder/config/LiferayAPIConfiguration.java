@@ -18,10 +18,10 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 public interface LiferayAPIConfiguration {
     @Meta.AD(
         deflt="/",
-        name = "api-mock-url",
+        name = "api-jax-url",
         required = false
     )
-    public String apiMockUrl();
+    public String apiJaxUrl();
 
     @Meta.AD(
         deflt="/",
@@ -31,10 +31,10 @@ public interface LiferayAPIConfiguration {
     public String apiOpenUrl();
 
     @Meta.AD(
-        deflt = "mock",
+        deflt = "jax",
         name = "default-api-url",
-        optionLabels = {"MockUrl", "OpenApiUrl"},
-        optionValues = {"mock", "open"},
+        optionLabels = {"JaxUrl", "OpenApiUrl"},
+        optionValues = {"jax", "open"},
         required = false
     )
     public String defaultApi();

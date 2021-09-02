@@ -45,7 +45,7 @@ public class JSDynamicInclude implements DynamicInclude {
 		try (
 			PrintWriter printWriter = response.getWriter();
 		){
-			String url = _restConfig.defaultApi().equals("mock") ? _restConfig.apiMockUrl() : _restConfig.apiOpenUrl();
+			String url = _restConfig.defaultApi().equals("jax") ? _restConfig.apiJaxUrl() : _restConfig.apiOpenUrl();
 
 			printWriter.print(
 				_TPL_JAVASCRIPT.replace("[$API_BASE$]", url)
