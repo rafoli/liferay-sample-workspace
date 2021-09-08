@@ -127,6 +127,35 @@ For this project, three settings have been defined to recognize and initiate the
 * If when you run the command `blade gw deploy` and occur this error: `Task :modules:liferay-sample-module:liferay-sample-module-js-web:packageRunTest FAILED`
 in you terminal go to the project workspace, in the modules folder, run the command `nano build.gradle` and change the value of `packageRunTest.enabled` to false, save the file, back to the project folder and run `blade gw deploy` again.
 
+## Creating Form Field Types
+### Create Liferay Module Project
+Create a Liferay Module Project inside a Liferay Workspace (`modules` directory). Make sure to use the `form-field` project template. For component class name, write `Sample` and for package, `com.liferay.sample.workspace`. A `sample-custom-form-field` project would have the following default files:
+
+* `SampleDDMFormFieldType.java`: defines the form field type in the back-end.
+* `Language_xx_XX.properties`: defines any terms that must be translated into different languages.
+* `sample-custom-form-field.es.js`: this is the JavaScript file that configures the template rendering (the sample-custom-form-field.soy rendering).
+* `sample-custom-form-field.soy`: the template that defines the appearance of the custom field.
+* `sample-custom-form-fieldRegister.soy`: it defines the delegated template for the custom field.
+* `bnd.bnd`: the module’s metadata.
+* `build.gradle`: the module’s dependencies and build properties.
+* `package-lock.json`: automatically generated (after deploying) to track the npm modules dependencies.
+* `package.json`: the npm module manager.
+
+### The SampleDDMFormFieldType Component
+It extends the `BaseDDMFormFieldType` abstract class that implements the `DDMFormFieldType` interface, including the default form configuration options for our new form field type. Also, it overrides the interface’s `getName` method. `DDMFormFieldType` Components can have several properties:
+* `ddm.form.field.type.description`: an optional property describing the field type. Its localized value appears in the form builder’s sidebar, just below the field’s label.
+* `ddm.form.field.type.display.order`: an Integer defining the field type’s position in the sidebar.
+* `ddm.form.field.type.group`: a property describing the field type’s group.
+* `ddm.form.field.type.icon`: the icon for the field type. Choosing one of the Lexicon icons makes your form field blend in with the existing form field types.
+* `ddm.form.field.type.label`: the field type’s label. Its localized value appears in the form builder’s sidebar.
+* `ddm.form.field.type.name`: the field type’s name must be unique. Each Component in a field type module references the field type name, and it’s used by OSGi service trackers to filter the field’s capabilities (for example, rendering and validation).
+
+### The Soy Template
+There are four important things to check in the template:
+1. The template namespace which defines multiple templates for your field type by adding the namespace as a prefix.
+2. Within `sample-custom-form-fieldRegister.soy` file, it is set the template that’s called to render the sample custom form field. The `variant="'sampleCustomFormField'"` identifies the sample field, and the `.render` names the template that renders it. The template itself follows and is defined through the block `{template .render}...{/template}`.
+3. The `sample-custom-form-field.soy` file describes the template parameters. All listed parameters are available by default through the `{template .render}...{/template}` block.
+4. Write the template logic (everything encapsulated by the `{template .content}...{/template}` block.
 
 ## Naming Pattern
 
