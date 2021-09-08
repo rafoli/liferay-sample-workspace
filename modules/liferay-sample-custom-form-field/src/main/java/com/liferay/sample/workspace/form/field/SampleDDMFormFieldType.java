@@ -27,7 +27,7 @@ public class SampleDDMFormFieldType extends BaseDDMFormFieldType {
 	@Override
 	public String getModuleName() {
 		return _npmResolver.resolveModuleName(
-			"dynamic-data-liferay-sample-custom-form-field-form-field/liferay-sample-custom-form-field.es");
+			"dynamic-data-liferay-sample-custom-form-field/liferay-sample-custom-form-field.es");
 	}
 
 	@Override
