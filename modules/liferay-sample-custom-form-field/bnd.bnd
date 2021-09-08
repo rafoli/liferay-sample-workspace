@@ -1,4 +1,4 @@
-Bundle-Name: liferay-sample-custom-form-field
+Bundle-Name: Liferay Sample Custom Form Field
 Bundle-SymbolicName: com.liferay.sample.workspace
 Bundle-Version: 1.0.0
 Provide-Capability:\
