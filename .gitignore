@@ -34,4 +34,3 @@ test-results
 **/build.liferay
 .metadata
 /dump
-**/test-report.html
