@@ -29,7 +29,7 @@ class SampleController {
 
             return newSamples;
         } catch (error) {
-            throw new Error({ erro: 'Error!' });
+            throw new Error(error);
         }
     }
 
@@ -45,7 +45,7 @@ class SampleController {
 
             return samples;
         } catch (error) {
-            throw new Error({ erro: 'Error!' });
+            throw new Error(error);
         }
     }
 

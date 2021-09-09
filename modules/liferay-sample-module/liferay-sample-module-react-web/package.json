@@ -12,10 +12,18 @@
 		"css-loader": "^6.2.0",
 		"cypress": "^8.2.0",
 		"dotenv": "^10.0.0",
+		"isomorphic-fetch": "^3.0.0",
+		"jest": "^27.1.0",
+		"jest-environment-jsdom": "^27.1.0",
+		"jest-html-reporter": "^3.4.1",
+		"jest-playwright-jsdom": "^0.0.4",
 		"liferay-npm-build-support": "^2.26.0",
 		"liferay-npm-bundler": "^2.26.0",
 		"liferay-npm-bundler-loader-css-loader": "^2.26.0",
+		"liferay-npm-scripts": "^32.7.0",
+		"regenerator-runtime": "^0.13.9",
 		"style-loader": "^3.2.1",
+		"supertest": "^6.1.6",
 		"webpack": "4.29.6",
 		"webpack-cli": "3.3.0",
 		"webpack-dev-server": "3.2.1"
@@ -34,7 +42,7 @@
 		"copy-assets": "lnbs-copy-assets",
 		"deploy": "npm run build && lnbs-deploy",
 		"start": "lnbs-start",
-		"cypress:open": "cypress open"
+		"test": "jest test --env=jsdom"
 	},
 	"portlet": {
 		"com.liferay.portlet.display-category": "category.sample",
