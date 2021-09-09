@@ -1,0 +1,9 @@
+
+{
+	"testResultsProcessor": "./node_modules/jest-html-reporter",
+	"globals": {
+		"Liferay": {
+			"authToken": 112341234
+		}
+	}
+}
