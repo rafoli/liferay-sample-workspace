@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Sample } from '../model/sample';
+import { Sample, SamplePaginated } from '../model/sample';
 
 declare const Liferay: any;
 
@@ -12,10 +12,10 @@ declare const Liferay: any;
 export class SampleService {
   constructor(private _httpClient: HttpClient) {}
 
-  url = '/o/sample-module/samples';
+  url = (<any>window).SampleWorkspace.baseUrl + '/samples';
 
-  getSamples(): Observable<Sample[]> {
-    return this._httpClient.get<Sample[]>(this.url);
+  getSamples(): Observable<SamplePaginated> {
+    return this._httpClient.get<SamplePaginated>(this.url);
   }
 
   getSample(id: number): Observable<Sample> {

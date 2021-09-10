@@ -9,19 +9,10 @@
 
 /* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
 
-$base-color-app: #33ff00;
-$font-color-app: #fff;
-
-@mixin style-btn {
-    background-color: $base-color-app;
-    color: $font-color-app;
-}
-
-.btn-base-app {
-    background-color: $base-color-app;
-    color: $font-color-app;
+.form-control-sm {
+    background-color: black;
 }
 
 .btn-primary {
-    @include style-btn;
+    background-color: red;
 }

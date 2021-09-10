@@ -3,7 +3,6 @@ package com.liferay.sample.module.ws.config;
 import aQute.bnd.annotation.metatype.Meta;
 import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClassDefinition;
 
-
 /**
  * @author Rafael Oliveira
  */

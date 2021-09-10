@@ -9,19 +9,20 @@
 
 /* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
 
-$base-color-app: #33ff00;
-$font-color-app: #fff;
-
-@mixin style-btn {
-    background-color: $base-color-app;
-    color: $font-color-app;
+.dsd {
+    &__btn-primary {
+        background-color: red;
+    }
 }
 
-.btn-base-app {
-    background-color: $base-color-app;
-    color: $font-color-app;
+.dsd {
+    &.btn-test {
+        background-color: olive;
+    }
 }
 
-.btn-primary {
-    @include style-btn;
+.dsd-app {
+    .btn-primary {
+        background-color: purple;
+    }
 }
