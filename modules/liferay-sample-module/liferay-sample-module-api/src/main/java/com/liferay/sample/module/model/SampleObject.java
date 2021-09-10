@@ -5,24 +5,23 @@ package com.liferay.sample.module.model;
  */
 public class SampleObject {
 
-    private String id;
-    private String name;
+	public String getId() {
+		return _id;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public String getName() {
+		return _name;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(String id) {
+		_id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		_name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+	private String _id;
+	private String _name;
 
 }
