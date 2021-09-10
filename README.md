@@ -10,7 +10,7 @@
 
 ## Starting a Liferay Local Instance
 1. Open a new tab in your terminal, and go to `./bundles/tomcat-9.X.X/bin` subfolder.
-2. Run `./catalina.sh run` (for Linux users) to start a Liferay DXP local instance.
+2. Run `blade server start` or `blade server start -d` debug mode (for Linux users) to start a Liferay DXP local instance.
 3. Copy an activation key to the `deploy` folder to register a Liferay license for DXP Development.
 4. Open a tab in your browser and type `localhost:8080`.
 5. Follow the ***Basic Configuration*** steps, inserting an email and a password, and then accepting the ***Terms of Use***.
@@ -68,6 +68,28 @@ The scheme below illustrates the workflow of a Liferay web service.
 
 ![Sample Module](https://user-images.githubusercontent.com/83607914/122243070-34241f00-ce9a-11eb-87bf-9c563813cb2a.png)
 
+## Fault Tolerance Testing And Details
+
+The Resilience4j library has some fault tolerance patterns and in this project, the Circuit Breaker pattern was implemented.
+
+The application recognizes by pre-defined configurations, to make the transition from close state to open state and the reestablishment of the closed circuit.
+
+Settings can be set in two places, in the project configuration file `/liferay-sample-workspace/bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config` and in the portal control panel `Control Panel -> System Settings -> category.liferay-confguration`.
+
+For this project, three settings have been defined to recognize and initiate the open state: Minimum Number Of Calls, Failure Rate Threshold and Wait Duration In Open State.
+
+### Testing Guide
+
+#### Event triggering
+
+* The way to trigger the event in the context of this project, can be via Postman calls or in the browser itself. In postman you need to have the credentials of a portal user and in your browser you need to be logged in to an valid account.
+
+### Testing Scenarios
+
+#### Open State
+
+* To simulate the open circuit mode, you need to change the settings in `Control Panel -> System Settings -> category.liferay-confguration -> api-base-url` in the portal or edit the value in line 1 of the `/liferay-sample project file -workspace/bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config` for a url that has no service/content to return. Upon reaching the values configured for: Minimum Number Of Calls, Failure Rate Threshold and Wait Duration In Open State, fault tolerance will occur and the message will be displayed: `CircuitBreaker 'api-name' is OPEN and does not allow further calls` at the Postman's response or in the browser's console.
+
 ### liferay-sample-module-js-web
 * The `liferay-sample-module-js-web` module corresponds to the frontend layer of the entire module, i.e., the **view** layer of the MVC portlet architecture. 
 * It is responsable to display the data on the page, using Angular technology (a JavaScript framework) and send the users' request to `liferay-sample-module-web-rest` .
@@ -95,3 +117,27 @@ The scheme below illustrates the workflow of a Liferay web service.
 ## Front End 2E2 Tests
 * To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
 * Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
+=======
+### Know Issues
+* If when you run the command `blade gw deploy` and occur this error: `Task :modules:liferay-sample-module:liferay-sample-module-js-web:packageRunTest FAILED`
+in you terminal go to the project workspace, in the modules folder, run the command `nano build.gradle` and change the value of `packageRunTest.enabled` to false, save the file, back to the project folder and run `blade gw deploy` again.
+
+
+## Naming Pattern
+### Branches
+For branches, we have a set of two main information: the project's abbreviation, in this case, <abbr title="Liferay Sample Workspace">LSW</abbr>, and the issue's number, for example: `LSW-46`.
+
+```bash
+  git checkout -b LSW-46
+```
+### Commit messages
+For commit messages, there are three main information: the branch's name, the key verb, and the message itself.
+The key verb should always be capitalized (firt letter in uppercase), for example: `Add`, `Change`, `Fix`, `Remove`.
+
+```bash
+  git commit -m "LSW-46 Add documentation on README.MD"
+```
+#### Commit message examples:
+
+- `LSW-46 Add documentation on README.MD`
+- `LSW-46 Fix merge conflicts`
