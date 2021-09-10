@@ -1,51 +1,62 @@
 package com.liferay.sample.module.functional.test.tests;
 
 import com.liferay.sample.module.functional.test.pages.SampleAngularComponentPage;
-import static org.junit.Assert.assertEquals;
-
 import com.liferay.sample.module.functional.test.pages.SampleHomePage;
 import com.liferay.sample.module.functional.test.pages.SampleLoginPage;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * @author Brian Wing Shun Chan
+ */
 public class LiferaySampleAngularTest {
-    WebDriver driver;
 
-    @Before
-    public void setup () {
-        System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
+	@Test
+	public void createNewSample() {
+		login();
+		SampleAngularComponentPage samplePage = new SampleAngularComponentPage(_driver);
 
-        driver = new ChromeDriver();
-    }
+		samplePage.createSample("Sample X");
 
-    public void login () {
-        SampleHomePage sampleHomePage = new SampleHomePage(driver);
+		Assert.assertEquals(true, samplePage.isSampleDisplayed());
+	}
 
-        sampleHomePage.clickOnSignIn();
+	@Test
+	public void editSample() {
+		login();
 
-        SampleLoginPage sampleLoginPage = new SampleLoginPage(driver);
+		SampleAngularComponentPage samplePage = new SampleAngularComponentPage(_driver);
 
-        sampleLoginPage.fillEmailField("test@liferay.com");
-        sampleLoginPage.fillPasswordField("test");
+		samplePage.editSample("Sample W");
 
-        sampleLoginPage.clickOnSignIn();
-    }
+		Assert.assertEquals(true, samplePage.isSampleDisplayed());
+	}
 
-    @Test
-    public void createNewSample () {
-        login();
-        SampleAngularComponentPage samplePage = new SampleAngularComponentPage(driver);
-        samplePage.createSample("Sample X");
-        assertEquals(true, samplePage.isSampleDisplayed());
-    }
+	public void login() {
+		SampleHomePage sampleHomePage = new SampleHomePage(_driver);
 
-    @Test
-    public void editSample () {
-        login();
-        SampleAngularComponentPage samplePage = new SampleAngularComponentPage(driver);
-        samplePage.editSample("Sample W");
-        assertEquals(true, samplePage.isSampleDisplayed());
-    }
+		sampleHomePage.clickOnSignIn();
+
+		SampleLoginPage sampleLoginPage = new SampleLoginPage(_driver);
+
+		sampleLoginPage.fillEmailField("test@liferay.com");
+		sampleLoginPage.fillPasswordField("test");
+
+		sampleLoginPage.clickOnSignIn();
+	}
+
+	@Before
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
+
+		_driver = new ChromeDriver();
+	}
+
+	private WebDriver _driver;
+
 }

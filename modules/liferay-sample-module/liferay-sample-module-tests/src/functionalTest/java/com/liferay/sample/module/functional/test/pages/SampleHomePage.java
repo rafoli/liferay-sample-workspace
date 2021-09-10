@@ -7,38 +7,66 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * @author Brian Wing Shun Chan
+ */
 public class SampleHomePage {
 
-	private WebDriver driver;
-
-	private static String PAGE_URL = "http://localhost:8080/";
-
-	private final By signInButton = By.cssSelector("#_com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet_qfkd____ > span");
-
-	private final By samplesPortlet = By.id("js-portlet-_liferaysamplemodulejsweb_");
-	
-	private final By sampleObject = By.xpath("//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-list/ul/li[1]/p[2]");
-	
 	public SampleHomePage(WebDriver driver) {
-		this.driver = driver;
-		
-		driver.get(PAGE_URL);
+		_driver = driver;
+
+		driver.get(_pageUrl);
+
 		PageFactory.initElements(driver, this);
 	}
 
 	public void clickOnSignIn() {
-		SeleniumWaitMethods.getWaitDriver(driver).until(ExpectedConditions.visibilityOfElementLocated(signInButton));
-		signInButton.findElement(driver).click();
+		SeleniumWaitMethods.getWaitDriver(
+			_driver
+		).until(
+			ExpectedConditions.visibilityOfElementLocated(_signInButton)
+		);
+		_signInButton.findElement(
+			_driver
+		).click();
 	}
-	
+
 	public boolean isSamplesDisplayed() {
-		SeleniumWaitMethods.getWaitDriver(driver).until(ExpectedConditions.visibilityOfElementLocated(samplesPortlet));
-		return samplesPortlet.findElement(driver).isDisplayed();
+		SeleniumWaitMethods.getWaitDriver(
+			_driver
+		).until(
+			ExpectedConditions.visibilityOfElementLocated(_samplesPortlet)
+		);
+
+		return _samplesPortlet.findElement(
+			_driver
+		).isDisplayed();
 	}
-	
+
 	public boolean isSomeSampleDisplayed(String name) {
-		SeleniumWaitMethods.getWaitDriver(driver).until(ExpectedConditions.visibilityOfElementLocated(sampleObject));
-		return sampleObject.findElement(driver).getText().toString().contains(name);
+		SeleniumWaitMethods.getWaitDriver(
+			_driver
+		).until(
+			ExpectedConditions.visibilityOfElementLocated(_sampleObject)
+		);
+
+		return _sampleObject.findElement(
+			_driver
+		).getText(
+		).toString(
+		).contains(
+			name
+		);
 	}
+
+	private static String _pageUrl = "http://localhost:8080/";
+
+	private WebDriver _driver;
+	private final By _sampleObject = By.xpath(
+		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-list/ul/li[1]/p[2]");
+	private final By _samplesPortlet = By.id("js-portlet-_liferaysamplemodulejsweb_");
+	private final By _signInButton = By.cssSelector(
+		"#_com_liferay_product_navigation_user_personal_bar_web_portlet_" +
+			"ProductNavigationUserPersonalBarPortlet_qfkd____ > span");
 
 }

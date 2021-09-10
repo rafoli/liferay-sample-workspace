@@ -1,16 +1,17 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
-/*
 plugins {
-	id "de.undercouch.download" version "3.1.2"
+	id "de.undercouch.download"
 }
-*/
 
 ext {
-    powerMockVersion = "2.0.4"
-    frwSeleniumCommonsVersion = '3.0.0'
+	powerMockVersion = "2.0.4"
+	frwSeleniumCommonsVersion = '3.0.0'
 	seleniumVersion = '3.3.1'
 }
+
+/*
+*/
 
 jar {
 	enabled = false
@@ -29,57 +30,53 @@ configurations.all {
 }
 
 project.pluginManager.withPlugin("java") {
-    apply plugin: "jacoco"
-
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+	apply plugin: "jacoco"
 
 	dependencies {
+		compile "com.liferay.gs:frw-selenium-commons:" + frwSeleniumCommonsVersion
+		compile "org.seleniumhq.selenium:selenium-api:" + seleniumVersion
+		compile "org.seleniumhq.selenium:selenium-java:" + seleniumVersion
+		compile "org.seleniumhq.selenium:selenium-remote-driver:" + seleniumVersion
+		compile "org.seleniumhq.selenium:selenium-support:" + seleniumVersion
 		compile group: "com.github.javafaker", name: "javafaker", version: "1.0.2"
-		compile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.3.2'
-		testCompile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
+		compile group: "com.jayway.restassured", name: "rest-assured", version: "2.3.2"
+		compile group: "org.codehaus.groovy", name: "groovy-all", version: "3.0.3"
+		compile group: "org.mockito", name: "mockito-all"
+
 		testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 		testCompile group: "io.takari.junit", name: "takari-cpsuite", version: "1.2.7"
-	
-  		compile 'com.liferay.gs:frw-selenium-commons:' + frwSeleniumCommonsVersion
-		compile 'org.codehaus.groovy:groovy-all:3.0.3'
-		compile 'org.seleniumhq.selenium:selenium-api:' + seleniumVersion
-		compile 'org.seleniumhq.selenium:selenium-java:' + seleniumVersion
-		compile 'org.seleniumhq.selenium:selenium-remote-driver:' + seleniumVersion
-		compile 'org.seleniumhq.selenium:selenium-support:' + seleniumVersion
-		
-		compile group: "org.mockito", name: "mockito-all"
+		testCompile group: "org.yaml", name: "snakeyaml", version: "1.27"
 	}
 
 	jacoco {
-            group = "Coverage"
-            description = "Generate Jacoco coverage reports after running tests."
-    }
-    
-    afterEvaluate {
+		group = "Coverage"
+		description = "Generate Jacoco coverage reports after running tests."
+	}
+
+	afterEvaluate {
 
 		tasks.withType(Test) {
 			testLogging {
-			    events "passed", "skipped", "failed"
-			    showExceptions true
-			    exceptionFormat "short"
-			    showCauses true
-			    showStackTraces true
-			
-			    afterSuite { desc, result ->
-			        if (!desc.parent) {
-			            def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
-			            def startItem = '|  ', endItem = '  |'
-			            def repeatLength = startItem.length() + output.length() + endItem.length()
-			            println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
-		        	}
-                }
-        	}
-        }
-    }
-    
-    tasks.withType(Test) {
-	    reports.html.destination = file("${reporting.baseDir}/${name}")
+				events "passed", "skipped", "failed"
+				showExceptions true
+				exceptionFormat "short"
+				showCauses true
+				showStackTraces true
+
+				afterSuite { desc, result ->
+					if (!desc.parent) {
+						def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+						def startItem = '|  ', endItem = '  |'
+						def repeatLength = startItem.length() + output.length() + endItem.length()
+						println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+					}
+				}
+			}
+		}
+	}
+
+	tasks.withType(Test) {
+		reports.html.destination = file("${reporting.baseDir}/${name}")
 	}
 }
 
@@ -204,4 +201,3 @@ setupPerformTestWithGoogleChrome {
 		}
 	}
 }
-
