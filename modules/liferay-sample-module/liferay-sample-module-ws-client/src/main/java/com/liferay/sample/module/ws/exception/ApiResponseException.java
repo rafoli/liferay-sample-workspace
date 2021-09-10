@@ -1,4 +1,4 @@
-package com.liferay.sample.module.ws.api;
+package com.liferay.sample.module.ws.exception;
 
 /**
  * @author Rafael Oliveira
