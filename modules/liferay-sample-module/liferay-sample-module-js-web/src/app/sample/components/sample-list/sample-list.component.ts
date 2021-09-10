@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class SampleListComponent implements OnInit {
 
-  samples?: Observable<Sample[]>;
+  samples: Sample[] = []
 
   constructor(private _sampleService: SampleService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log("CALLED HERE!!")
-    this.samples = this._sampleService.getSamples()
+    this._sampleService.getSamples().subscribe(res => {
+      this.samples = res.items
+    })
   }
   create() {
     this.router.navigateByUrl("create", {skipLocationChange: true});

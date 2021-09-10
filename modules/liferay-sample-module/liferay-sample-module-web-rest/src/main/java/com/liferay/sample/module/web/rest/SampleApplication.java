@@ -1,5 +1,6 @@
 package com.liferay.sample.module.web.rest;
 
+import com.liferay.batch.engine.pagination.Page;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.service.SampleService;
@@ -63,7 +64,7 @@ public class SampleApplication extends Application {
             } else {
             	_logger.info(samples.size() + " samples available");
             	
-            	return Response.ok(JSONFactoryUtil.looseSerialize(samples)).build();        	
+            	return Response.ok(Page.of(samples)).build();
             }
     	} catch (Exception error) {
     		_logger.error(new Date() + " :: " + _logger.getName() + " :: " + error.getMessage());
