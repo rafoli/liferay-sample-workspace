@@ -2,10 +2,10 @@ package com.liferay.sample.module.ws.client;
 
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.sample.module.model.SampleObject;
-import com.liferay.sample.module.ws.api.ApiResponseException;
 import com.liferay.sample.module.ws.api.SampleWS;
 import com.liferay.sample.module.ws.client.base.RestClientFactory;
 import com.liferay.sample.module.ws.config.RestAPIConfiguration;
+import com.liferay.sample.module.ws.exception.ApiResponseException;
 import com.liferay.sample.module.ws.response.SampleResponse;
 
 import org.osgi.service.component.annotations.Activate;
