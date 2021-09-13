@@ -1,0 +1,18 @@
+#banner {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  #heading {
+    div.site-title {
+      display: flex;
+      align-items: center;
+      
+      h2.site-name { 
+        font-size: 21px;
+        margin: 0;
+        font-weight: bold;
+        margin-left: 15px;
+      }
+    }
+  }
+}
