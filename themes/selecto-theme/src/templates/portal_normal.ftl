@@ -8,9 +8,7 @@
 	<title>${html_title}</title>
 
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+
 	<@liferay_util["include"] page=top_head_include />
 </head>
 
@@ -23,27 +21,30 @@
 <@liferay.control_menu />
 
 <div class="container-fluid" id="wrapper">
-  <div class="container-fluid container-fluid-max-xl d-flex flex-column flex-fill">
-    <header id="banner" class="navbar navbar-classic navbar-expand-md navbar-light pb-3" role="banner">
-      <div id="heading">
-        <div aria-level="1" class="site-title" role="heading">
-          <a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
-            <img alt="${logo_description}" height="55px" src="${site_logo}" width="55px" />
-          </a>
+	<header id="banner" role="banner">
+		<div id="heading">
+			<div aria-level="1" class="site-title" role="heading">
+				<a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+					<img alt="${logo_description}" height="${site_logo_height}" src="${site_logo}" width="${site_logo_width}" />
+				</a>
 
-          <#if show_site_name>
-            <h2 class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
-              ${site_name}
-            </h2>
-          </#if>
-        </div>
-      </div>
+				<#if show_site_name>
+					<span class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+						${site_name}
+					</span>
+				</#if>
+			</div>
+		</div>
 
-      <#if has_navigation && is_setup_complete>
-        <#include "${full_templates_path}/navigation.ftl" />
-      </#if>
-    </header>
-  </div>
+		<#if !is_signed_in>
+			<a data-redirect="${is_login_redirect_required?string}" href="${sign_in_url}" id="sign-in" rel="nofollow">${sign_in_text}</a>
+		</#if>
+
+		<#if has_navigation && is_setup_complete>
+			<#include "${full_templates_path}/navigation.ftl" />
+		</#if>
+	</header>
+
 	<section id="content">
 		<h2 class="hide-accessible" role="heading" aria-level="1">${the_title}</h2>
 
