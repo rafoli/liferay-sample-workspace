@@ -23,7 +23,7 @@
 <@liferay.control_menu />
 
 <div class="container-fluid" id="wrapper">
-	<header id="banner" role="banner">
+	<header id="banner" class="container" role="banner">
 		<div id="heading">
 			<div aria-level="1" class="site-title" role="heading">
 				<a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
@@ -31,9 +31,9 @@
 				</a>
 
 				<#if show_site_name>
-					<span class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+					<h2 class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
 						${site_name}
-					</span>
+					</h2>
 				</#if>
 			</div>
 		</div>
