@@ -8,9 +8,10 @@ const UserRolesProvider = ({ children }) => {
     const [isSignedIn, setIsSignedIn] = useState(false)
 
     function loadUserRoles() {
+        const isSigned = Liferay.ThemeDisplay.isSignedIn();
         setIsAdmin(SampleWorkspace.isAdmin)
         setIsUser(SampleWorkspace.isUser)
-        setIsSignedIn(Liferay.ThemeDisplay.isSignedIn())
+        setIsSignedIn(isSigned)
     }
 
     useEffect(() => {
