@@ -2,6 +2,8 @@
   border-radius: 0;
   color: $primary;
   padding: 0.75rem 1rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
 
   &:active {
     border: 1px solid $primary;
@@ -45,31 +47,22 @@
 }
 
 .btn-secondary {
-  background-color: transparent;
-  border-width: 2px;
-  color: $primary;
-  border-color: $primary;
+  background-color: $secondary;
+  color: $white;
 
   &:active {
-    border-color: $primary !important;
-    box-shadow: none !important;
-    color: $primary !important;
-  }
-
-  &:disabled {
-    color: $primary;
-    border-color: $primary;
+    background-color: $secondary-d2 !important;
+    color: $white;
   }
 
   &:focus {
-    border-color: $primary-d1;
     box-shadow: none !important;
+    color: $white;
   }
 
   &:hover {
-    border-width: 2px;
-    color: $primary-d1;
-    border-color: $primary-d1;
+    background-color: $secondary-d2;
+    color: $white;
   }
 }
 
