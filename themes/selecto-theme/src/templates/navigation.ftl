@@ -82,7 +82,11 @@
 			</div>
 		<#else>
 			<div class="d-flex selecto-user" role="toolbar">
+<<<<<<< HEAD
 				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-transparent" href="${sign_out_url}" id="sign-out" rel="nofollow">Sign out</a>
+=======
+				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-transparent" href="/c/portal/logout" id="sign-out" rel="nofollow">Sign out</a>
+>>>>>>> 81bfa9c (INLSW-16 Add logout button)
 			</div>
 		</#if>
 
