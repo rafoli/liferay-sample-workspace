@@ -6,11 +6,10 @@ import com.liferay.sample.module.service.mapper.SampleServiceMapper;
 import com.liferay.sample.module.ws.client.SampleWSClient;
 import com.liferay.sample.module.ws.response.SampleResponse;
 
+import java.util.List;
+
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * @author Rafael Oliveira
@@ -18,61 +17,63 @@ import java.util.List;
 @Component(immediate = true, service = SampleService.class)
 public class SampleServiceImpl implements SampleService {
 
-    public List<SampleObject> getSamples() {
+	@Override
+	public SampleObject addSample(SampleObject sampleObject) {
+		try {
+			SampleResponse entity = _sampleWSClient.addSample(sampleObject);
 
-        try {
-            List<SampleResponse> entities = _sampleWSClient.getSamples();
-            return _sampleServiceMapper.toSampleObjects(entities);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+			return _sampleServiceMapper.toSampleObject(entity);
+		}
+		catch (Exception exception) {
+			exception.printStackTrace();
+		}
 
-        return null;
-
-    }
-
-    @Override
-    public SampleObject addSample(SampleObject sampleObject) {
-
-    	try {
-    		SampleResponse entity = _sampleWSClient.addSample(sampleObject);
-            return _sampleServiceMapper.toSampleObject(entity);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+		return null;
 	}
 
-    @Override
-    public SampleObject updateSample(SampleObject sampleObject) {
+	@Override
+	public void deleteSample(String id) {
+		_sampleWSClient.deleteSample(id);
+	}
 
-    	try {
-    		SampleResponse entity = _sampleWSClient.updateSample(sampleObject);
-    		return _sampleServiceMapper.toSampleObject(entity);
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+	@Override
+	public SampleObject getSample(String id) {
+		SampleResponse entity = _sampleWSClient.getSample(id);
 
-    	return null;
+		return _sampleServiceMapper.toSampleObject(entity);
+	}
 
-    }
+	public List<SampleObject> getSamples() {
+		try {
+			List<SampleResponse> entities = _sampleWSClient.getSamples();
 
-    @Override
-    public void deleteSample(String id) {
-    	_sampleWSClient.deleteSample(id);
-    }
+			return _sampleServiceMapper.toSampleObjects(entities);
+		}
+		catch (Exception exception) {
+			exception.printStackTrace();
+		}
 
-    @Override
-    public SampleObject getSample(String id) {
-        SampleResponse entity =  _sampleWSClient.getSample(id);
-        return _sampleServiceMapper.toSampleObject(entity);
-    }
+		return null;
+	}
 
-    @Reference
-    private SampleWSClient _sampleWSClient;
+	@Override
+	public SampleObject updateSample(SampleObject sampleObject) {
+		try {
+			SampleResponse entity = _sampleWSClient.updateSample(sampleObject);
 
-    @Reference
-    private SampleServiceMapper _sampleServiceMapper;
+			return _sampleServiceMapper.toSampleObject(entity);
+		}
+		catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Reference
+	private SampleServiceMapper _sampleServiceMapper;
+
+	@Reference
+	private SampleWSClient _sampleWSClient;
 
 }
