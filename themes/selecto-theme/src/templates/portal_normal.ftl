@@ -23,30 +23,27 @@
 <@liferay.control_menu />
 
 <div class="container-fluid" id="wrapper">
-	<header id="banner" class="container" role="banner">
-		<div id="heading">
-			<div aria-level="1" class="site-title" role="heading">
-				<a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
-					<img alt="${logo_description}" height="55px" src="${site_logo}" width="55px" />
-				</a>
+  <div class="container d-flex flex-column flex-fill" id="wrapper">
+    <header id="banner" class="navbar navbar-classic navbar-expand-md navbar-light pb-3" role="banner">
+      <div id="heading">
+        <div aria-level="1" class="site-title" role="heading">
+          <a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+            <img alt="${logo_description}" height="55px" src="${site_logo}" width="55px" />
+          </a>
 
-				<#if show_site_name>
-					<h2 class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
-						${site_name}
-					</h2>
-				</#if>
-			</div>
-		</div>
+          <#if show_site_name>
+            <h2 class="site-name" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
+              ${site_name}
+            </h2>
+          </#if>
+        </div>
+      </div>
 
-		<#if !is_signed_in>
-			<a data-redirect="${is_login_redirect_required?string}" href="${sign_in_url}" id="sign-in" rel="nofollow">${sign_in_text}</a>
-		</#if>
-
-		<#if has_navigation && is_setup_complete>
-			<#include "${full_templates_path}/navigation.ftl" />
-		</#if>
-	</header>
-
+      <#if has_navigation && is_setup_complete>
+        <#include "${full_templates_path}/navigation.ftl" />
+      </#if>
+    </header>
+  </div>
 	<section id="content">
 		<h2 class="hide-accessible" role="heading" aria-level="1">${the_title}</h2>
 
