@@ -49,23 +49,49 @@
 .btn-secondary {
   background-color: $secondary;
   color: $white;
+  border: 0;
 
   &:active {
     background-color: $secondary-d2 !important;
     color: $white;
+    border: 0;
   }
 
   &:focus {
     box-shadow: none !important;
     color: $white;
+    border: 0;
   }
 
   &:hover {
     background-color: $secondary-d2;
     color: $white;
+    border: 0;
   }
 }
 
+
+.btn-transparent {
+  background-color: transparent;
+  color: $secondary;
+  border: 1px solid $secondary;
+
+  &:active {
+    border-color: $secondary;
+    color: $secondary;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    border-color: $secondary;
+    color: $secondary;
+  }
+
+  &:hover {
+    border-color: $secondary;
+    color: $secondary;
+  }
+}
 .btn-lg {
   font-size: 1.125rem;
   padding: 0.875rem 1.125rem;

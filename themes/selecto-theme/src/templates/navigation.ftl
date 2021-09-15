@@ -72,10 +72,12 @@
 			</#list>
 		</ul>
 		<#if !is_signed_in>
-			<div class="autofit-col selecto-user">
-				<a data-redirect="${is_login_redirect_required?string}" class="btn btn-secondary" href="${sign_in_url}" id="sign-in" rel="nofollow">Sign up</a>
+			<div class="d-flex selecto-user" role="toolbar">
+				<a data-redirect="${is_login_redirect_required?string}" class="btn btn-transparent" href="${sign_in_url}" id="sign-in" rel="nofollow">Sign up</a>
+				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-secondary" href="${sign_in_url}" id="sign-in" rel="nofollow">Get started</a>
 			</div>
 		</#if>
+
 	</nav>
 </div>
 
