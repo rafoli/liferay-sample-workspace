@@ -9,13 +9,14 @@ import java.util.List;
  */
 public interface SampleService {
 
-    List<SampleObject> getSamples();
+	public SampleObject addSample(SampleObject sampleObject);
 
-    SampleObject addSample(SampleObject sampleObject);
+	public void deleteSample(String id);
 
-    SampleObject updateSample(SampleObject sampleObject);
+	public SampleObject getSample(String id);
 
-    void deleteSample(String id);
+	public List<SampleObject> getSamples();
 
-    SampleObject getSample(String id);
+	public SampleObject updateSample(SampleObject sampleObject);
+
 }

@@ -1,7 +1,5 @@
 dependencies {
 	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
-
 	compileOnly project(":modules:liferay-sample-module:liferay-sample-module-api")
-	
 	compileOnly project(":modules:liferay-sample-module:liferay-sample-module-ws-client")
 }
