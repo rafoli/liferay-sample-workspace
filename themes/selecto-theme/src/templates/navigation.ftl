@@ -3,7 +3,7 @@
 </button>
 
 <div class="collapse navbar-collapse" id="navigationCollapse">
-	<nav class="${nav_css_class}" id="navigation" role="navigation">
+	<nav class="${nav_css_class} selecto-nav" id="navigation" role="navigation">
 		<ul aria-label="<@liferay.language key="site-pages" />" class="navbar-nav mr-auto" role="menubar">
 			<#list nav_items as nav_item>
 				<#assign
@@ -72,7 +72,7 @@
 
 			</#list>
 		</ul>
-		<div class="autofit-col">
+		<div class="autofit-col selecto-user">
 			<@liferay.user_personal_bar />
 		</div>
 	</nav>
