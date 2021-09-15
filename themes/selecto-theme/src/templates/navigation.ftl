@@ -76,6 +76,10 @@
 				<a data-redirect="${is_login_redirect_required?string}" class="btn btn-transparent" href="${sign_in_url}" id="sign-in" rel="nofollow">Sign up</a>
 				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-secondary" href="${sign_in_url}" id="sign-in" rel="nofollow">Get started</a>
 			</div>
+		<#else>
+			<div class="d-flex selecto-user" role="toolbar">
+				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-transparent" href="/c/portal/logout" id="sign-out" rel="nofollow">Sign out</a>
+			</div>
 		</#if>
 
 	</nav>
