@@ -80,6 +80,10 @@
 			<div class="d-flex selecto-user" role="toolbar">
 				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-transparent" href="${sign_out_url}" id="sign-out" rel="nofollow">Sign out</a>
 			</div>
+		<#else>
+			<div class="d-flex selecto-user" role="toolbar">
+				<a data-redirect="${is_login_redirect_required?string}" class="ml-2 btn btn-transparent" href="/c/portal/logout" id="sign-out" rel="nofollow">Sign out</a>
+			</div>
 		</#if>
 
 	</nav>
