@@ -187,6 +187,5 @@ The key verb should always be capitalized (firt letter in uppercase), for exampl
   git commit -m "LSW-46 Add documentation on README.MD"
 ```
 #### Commit message examples:
-- `LSW-46 Add documentation on README.MD`
 - `LSW-46 Fix merge conflicts`
-
+- `LSW-46 Fix merge conflicts`
