@@ -23,7 +23,7 @@
 <@liferay.control_menu />
 
 <div class="container-fluid" id="wrapper">
-  <div class="container d-flex flex-column flex-fill" id="wrapper">
+  <div class="container-fluid container-fluid-max-xl d-flex flex-column flex-fill" id="wrapper">
     <header id="banner" class="navbar navbar-classic navbar-expand-md navbar-light pb-3" role="banner">
       <div id="heading">
         <div aria-level="1" class="site-title" role="heading">
