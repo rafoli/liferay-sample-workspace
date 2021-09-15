@@ -69,6 +69,7 @@
 						</ul>
 					</#if>
 				</li>
+
 			</#list>
 		</ul>
 		<#if !is_signed_in>
