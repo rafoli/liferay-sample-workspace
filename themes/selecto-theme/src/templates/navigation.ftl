@@ -69,12 +69,13 @@
 						</ul>
 					</#if>
 				</li>
-
 			</#list>
 		</ul>
-		<div class="autofit-col selecto-user">
-			<@liferay.user_personal_bar />
-		</div>
+		<#if !is_signed_in>
+			<div class="autofit-col selecto-user">
+				<a data-redirect="${is_login_redirect_required?string}" class="btn btn-secondary" href="${sign_in_url}" id="sign-in" rel="nofollow">Sign up</a>
+			</div>
+		</#if>
 	</nav>
 </div>
 
