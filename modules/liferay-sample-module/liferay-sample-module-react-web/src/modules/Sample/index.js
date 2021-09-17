@@ -6,13 +6,17 @@ import React, { useEffect, useState } from 'react';
 
 import Create from './create'
 import SampleService from '../../services/SampleService';
+import { useRoles } from '../../contexts/UserRolesProvider';
 
 export default function Samples() {
+    const { isSignedIn, isAdmin } = useRoles()
     const [sampleList, setSampleList] = useState([]);
 
     useEffect(() => {
-        getAllSamples();
-    }, []);
+        if (isSignedIn) {
+            getAllSamples();
+        }
+    }, [isSignedIn]);
 
     async function getAllSamples() {
         try {
@@ -93,7 +97,7 @@ export default function Samples() {
                 </div>
 
                 <div className="sheet-section">
-                    <Create createSample={createSample} />
+                    { isAdmin && <Create createSample={createSample} /> }
 
                     <div className="table-responsive">
                         <table className="table table-autofit show-quick-actions-on-hover table-hover table-list">
