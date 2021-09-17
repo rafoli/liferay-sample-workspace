@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core'
 
+declare const Liferay:any;
+declare const SampleWorkspace: any;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -7,14 +10,14 @@ export class RoleService {
   constructor() {}
 
   public isAdmin() {
-    return (<any>window).SampleWorkspace.isAdmin;
+    return SampleWorkspace.isAdmin;
   }
 
   public isUser() {
-    return (<any>window).SampleWorkspace.isUser;
+    return SampleWorkspace.isUser;
   }
 
   public isSignedIn() {
-    return (<any>window).Liferay.ThemeDisplay.isSignedIn();
+    return Liferay.ThemeDisplay.isSignedIn();
   }
 }
