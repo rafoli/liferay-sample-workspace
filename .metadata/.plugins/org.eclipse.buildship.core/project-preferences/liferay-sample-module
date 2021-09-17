@@ -1,0 +1,12 @@
+#
+#Fri Sep 17 16:40:49 BRT 2021
+classpath=<?xml version\="1.0" encoding\="UTF-8"?>\n<classpath>\n</classpath>\n
+buildScriptPath=build.gradle
+linkedResources=
+subprojectPaths=liferay-sample-module-api\:liferay-sample-module-js-web\:liferay-sample-module-react-web\:liferay-sample-module-service\:liferay-sample-module-tests\:liferay-sample-module-web-rest\:liferay-sample-module-ws-client
+managedNatures=
+hasAutoBuildTasks=false
+gradleVersion=6.6.1
+buildDir=build
+managedBuilders=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><commands/>
+derivedResources=.gradle\:build\:liferay-sample-module-api/build\:liferay-sample-module-js-web/build\:liferay-sample-module-react-web/build\:liferay-sample-module-service/build\:liferay-sample-module-tests/build\:liferay-sample-module-web-rest/build\:liferay-sample-module-ws-client/build
