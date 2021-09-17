@@ -1,0 +1,99 @@
+ext {
+	powerMockVersion = "2.0.4"
+	frwSeleniumCommonsVersion = '3.0.0'
+}
+
+description = """LSW Project - Test Automation API"""
+jar {
+	enabled = false
+}
+repositories {
+	jcenter()
+	mavenCentral()
+	mavenLocal()
+}
+project.pluginManager.withPlugin("java") {
+	apply plugin: "jacoco"
+	dependencies {
+		compile group: "com.github.javafaker", name: "javafaker", version: "1.0.2"
+		compile group: "io.rest-assured", name: "rest-assured", version: "4.4.0"
+		compile group: "org.codehaus.groovy", name: "groovy-all", version: "3.0.3"
+		compile group: "org.mockito", name: "mockito-all"
+
+		compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+		compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+
+		testCompile group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+		testCompile group: "io.takari.junit", name: "takari-cpsuite", version: "1.2.7"
+		testCompile group: "org.yaml", name: "snakeyaml", version: "1.27"
+	}
+	jacoco {
+		group = "Coverage"
+		description = "Generate Jacoco coverage reports after running tests."
+	}
+	afterEvaluate {
+		tasks.withType(Test) {
+			testLogging {
+				events "passed", "skipped", "failed"
+				showExceptions true
+				exceptionFormat "short"
+				showCauses true
+				showStackTraces true
+				afterSuite { desc, result ->
+					if (!desc.parent) {
+						def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+						def startItem = '|  ', endItem = '  |'
+						def repeatLength = startItem.length() + output.length() + endItem.length()
+						println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+					}
+				}
+			}
+		}
+	}
+	tasks.withType(Test) {
+		reports.html.destination = file("${reporting.baseDir}/${name}")
+	}
+}
+sourceSets {
+	apiTest {
+		java {
+			compileClasspath += main.output + test.output
+			runtimeClasspath += main.output + test.output
+			srcDir file('src/apiTest/java')
+
+		}
+	}
+}
+configurations {
+	apiTestCompile.extendsFrom testCompile
+	apiTestRuntime.extendsFrom testRuntime
+}
+
+task apiTest(type: Test)
+task apiTestClass(type: Test)
+
+apiTest() {
+	description '***** RUNS THE API TESTS *****'
+	testClassesDirs = sourceSets.apiTest.output.classesDirs
+	classpath = sourceSets.apiTest.runtimeClasspath
+	filter {
+		includeTestsMatching "RunAll*"
+	}
+	outputs.upToDateWhen { false }
+}
+apiTestClass() {
+	description '***** Run the Specific API Tests *****'
+	testClassesDirs = sourceSets.apiTest.output.classesDirs
+	classpath = sourceSets.apiTest.runtimeClasspath
+	scanForTestClasses = false
+	if (project.hasProperty('classToBeTested') == false) {
+	} else {
+		includes = ['**/'+project.getProperty('classToBeTested')+'.class']
+	}
+	outputs.upToDateWhen { false }
+}
+gradle.taskGraph.whenReady { graph ->
+	if (graph.hasTask(build)) {
+		apiTest.enabled = false
+	}
+}

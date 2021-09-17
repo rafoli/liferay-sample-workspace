@@ -1,0 +1,12 @@
+#
+#Fri Sep 17 16:40:49 BRT 2021
+classpath=<?xml version\="1.0" encoding\="UTF-8"?>\n<classpath>\n</classpath>\n
+buildScriptPath=build.gradle
+linkedResources=
+subprojectPaths=broken-theme\:theme-app-example-theme\:unbroken-theme\:wrapper-theme
+managedNatures=
+hasAutoBuildTasks=false
+gradleVersion=6.6.1
+buildDir=build
+managedBuilders=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><commands/>
+derivedResources=.gradle\:build\:broken-theme/build_gradle\:theme-app-example-theme/build_gradle\:unbroken-theme/build_gradle\:wrapper-theme/build_gradle
