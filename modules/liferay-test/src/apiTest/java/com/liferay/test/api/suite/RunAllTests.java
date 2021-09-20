@@ -1,6 +1,6 @@
-package com.liferay.testes.api.suite;
+package com.liferay.test.api.suite;
 
-import com.liferay.tests.api.tests.LiferaySampleCircuitBreakerTest;
+import com.liferay.test.api.tests.LiferaySampleCircuitBreakerTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

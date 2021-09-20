@@ -1,4 +1,4 @@
-package com.liferay.tests.api.tests;
+package com.liferay.test.api.tests;
 
 import com.liferay.portal.kernel.util.GetterUtil;
 
@@ -23,27 +23,42 @@ import org.junit.Test;
  * @author Andre Batista
  */
 public class LiferaySampleCircuitBreakerTest {
-
+	
 	@Before
-	public void getParameters() throws IOException {
+	public void getCircuitBreakerConfigureParameters() throws IOException {
 		Path currentPath = Paths.get("");
 
-		Properties properties = new Properties();
+		Properties restApiProperties = new Properties();
+
+		Properties apiProperties = new Properties();
 
 		String toAbsolutPathStr = String.valueOf(currentPath.toAbsolutePath());
 
-		FileInputStream setupFile = new FileInputStream(
-			toAbsolutPathStr.replace(_CURRENT_SUBFOLDER, _CONFIG_FILE_PATH));
+		FileInputStream restConfig = new FileInputStream(
+			toAbsolutPathStr.replace(_CURRENT_SUBFOLDER, _REST_API_CONFIG));
 
-		properties.load(setupFile);
+		FileInputStream apiConfig = new FileInputStream(toAbsolutPathStr.replace(_CURRENT_SUBFOLDER, _API_CONFIG));
 
-		String attempts = properties.getProperty(_PROPERTIE_ATTEMPTS);
+		restApiProperties.load(restConfig);
 
-		String url = properties.getProperty(_PROPERTIE_URL);
+		apiProperties.load(apiConfig);
+
+		String api = apiProperties.getProperty(_PROPERTIE_API);
+
+		api = api.replaceAll("\"", "");
+
+		String attempts = restApiProperties.getProperty(_PROPERTIE_ATTEMPTS);
+
+		String path = apiProperties.getProperty(
+			api.equalsIgnoreCase("jax") ? _PROPERTIE_JAX_URL : _PROPERTIE_OPENAPI_URL);
+
+		String url = restApiProperties.getProperty(_PROPERTIE_URL);
 
 		_attempts = GetterUtil.getInteger(attempts.replaceAll("[^\\d.]", ""));
 
 		_baseUrl = _baseUrl.isEmpty() ? url.replaceAll("\"", "") : _baseUrl;
+
+		_basePAth = path.replaceAll("\"", "");
 	}
 
 	@Test
@@ -62,7 +77,11 @@ public class LiferaySampleCircuitBreakerTest {
 			).basic(
 				_AUTH_USER, _AUTH_PSW
 			).get(
-				_baseUrl.concat(_BASE_PATH.isEmpty() ? "" : _BASE_PATH)
+				_baseUrl.concat(
+					_basePAth
+				).concat(
+					_API_ENDPOINT
+				)
 			).asString();
 		}
 
@@ -75,26 +94,36 @@ public class LiferaySampleCircuitBreakerTest {
 		Assert.assertEquals(true, result);
 	}
 
+	private static final String _API_CONFIG =
+		"bundles/osgi/configs/liferay.openapi.rest.builder.config.LiferayAPIConfiguration.config";
+
+	private static final String _API_ENDPOINT = "/samples";
+
 	private static final String _AUTH_PSW = "test";
 
 	private static final String _AUTH_USER = "test@liferay.com";
-
-	private static final String _BASE_PATH = "";
-
-	private static final String _CONFIG_FILE_PATH =
-		"bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
 
 	private static final String _CURRENT_SUBFOLDER = "modules/liferay-test";
 
 	private static final String _HEADER_ACCEPT = "application/json";
 
+	private static final String _PROPERTIE_API = "defaultApi";
+
 	private static final String _PROPERTIE_ATTEMPTS = "minimumNumberOfCallsValue";
 
+	private static final String _PROPERTIE_JAX_URL = "apiJaxUrl";
+
+	private static final String _PROPERTIE_OPENAPI_URL = "apiOpenUrl";
+
 	private static final String _PROPERTIE_URL = "apiBaseUrl";
+
+	private static final String _REST_API_CONFIG =
+		"bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
 
 	private static final String _RESULT_PATTERN = "CircuitBreaker|OPEN";
 
 	private int _attempts;
-	private String _baseUrl = "https://775155f1-2b8e-498e-bcbf-896a98c04e55.mock.pstmn.io/";
+	private String _basePAth;
+	private String _baseUrl = "https://4ddd4e2b-8354-46fe-940c-331229556ad1.mock.pstmn.io";
 
 }
