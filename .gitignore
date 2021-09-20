@@ -30,3 +30,4 @@ test-results
 **/.env
 **/yarn-error.log
 **/build.liferay
+.metadata
