@@ -23,7 +23,7 @@ import org.junit.Test;
  * @author Andre Batista
  */
 public class LiferaySampleCircuitBreakerTest {
-	
+
 	@Before
 	public void getCircuitBreakerConfigureParameters() throws IOException {
 		Path currentPath = Paths.get("");
@@ -50,7 +50,7 @@ public class LiferaySampleCircuitBreakerTest {
 		String attempts = restApiProperties.getProperty(_PROPERTIE_ATTEMPTS);
 
 		String path = apiProperties.getProperty(
-			api.equalsIgnoreCase("jax") ? _PROPERTIE_JAX_URL : _PROPERTIE_OPENAPI_URL);
+			api.equalsIgnoreCase(_API_TYPE) ? _PROPERTIE_JAX_URL : _PROPERTIE_OPENAPI_URL);
 
 		String url = restApiProperties.getProperty(_PROPERTIE_URL);
 
@@ -95,9 +95,11 @@ public class LiferaySampleCircuitBreakerTest {
 	}
 
 	private static final String _API_CONFIG =
-		"bundles/osgi/configs/liferay.openapi.rest.builder.config.LiferayAPIConfiguration.config";
+		"configs/local/osgi/configs/liferay.openapi.rest.builder.config.LiferayAPIConfiguration.config";
 
 	private static final String _API_ENDPOINT = "/samples";
+	
+	private static final String _API_TYPE = "jax";
 
 	private static final String _AUTH_PSW = "test";
 
@@ -118,7 +120,7 @@ public class LiferaySampleCircuitBreakerTest {
 	private static final String _PROPERTIE_URL = "apiBaseUrl";
 
 	private static final String _REST_API_CONFIG =
-		"bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
+		"configs/local/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
 
 	private static final String _RESULT_PATTERN = "CircuitBreaker|OPEN";
 
