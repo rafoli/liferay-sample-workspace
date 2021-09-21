@@ -43,22 +43,22 @@ public class LiferaySampleCircuitBreakerTest {
 
 		apiProperties.load(apiConfig);
 
-		String api = apiProperties.getProperty(_PROPERTIE_API);
+		String api = apiProperties.getProperty(_PROPERTIES_API);
 
 		api = api.replaceAll("\"", "");
 
-		String attempts = restApiProperties.getProperty(_PROPERTIE_ATTEMPTS);
+		String attempts = restApiProperties.getProperty(_PROPERTIES_ATTEMPTS);
 
 		String path = apiProperties.getProperty(
-			api.equalsIgnoreCase(_API_TYPE) ? _PROPERTIE_JAX_URL : _PROPERTIE_OPENAPI_URL);
+			api.equalsIgnoreCase(_API_TYPE) ? _PROPERTIES_JAX_URL : _PROPERTIES_OPENAPI_URL);
 
-		String url = restApiProperties.getProperty(_PROPERTIE_URL);
+		String url = restApiProperties.getProperty(_PROPERTIES_URL);
 
 		_attempts = GetterUtil.getInteger(attempts.replaceAll("[^\\d.]", ""));
 
 		_baseUrl = _baseUrl.isEmpty() ? url.replaceAll("\"", "") : _baseUrl;
 
-		_basePAth = path.replaceAll("\"", "");
+		_basePath = path.replaceAll("\"", "");
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class LiferaySampleCircuitBreakerTest {
 				_AUTH_USER, _AUTH_PSW
 			).get(
 				_baseUrl.concat(
-					_basePAth
+					_basePath
 				).concat(
 					_API_ENDPOINT
 				)
@@ -98,7 +98,7 @@ public class LiferaySampleCircuitBreakerTest {
 		"configs/local/osgi/configs/liferay.openapi.rest.builder.config.LiferayAPIConfiguration.config";
 
 	private static final String _API_ENDPOINT = "/samples";
-	
+
 	private static final String _API_TYPE = "jax";
 
 	private static final String _AUTH_PSW = "test";
@@ -109,15 +109,15 @@ public class LiferaySampleCircuitBreakerTest {
 
 	private static final String _HEADER_ACCEPT = "application/json";
 
-	private static final String _PROPERTIE_API = "defaultApi";
+	private static final String _PROPERTIES_API = "defaultApi";
 
-	private static final String _PROPERTIE_ATTEMPTS = "minimumNumberOfCallsValue";
+	private static final String _PROPERTIES_ATTEMPTS = "minimumNumberOfCallsValue";
 
-	private static final String _PROPERTIE_JAX_URL = "apiJaxUrl";
+	private static final String _PROPERTIES_JAX_URL = "apiJaxUrl";
 
-	private static final String _PROPERTIE_OPENAPI_URL = "apiOpenUrl";
+	private static final String _PROPERTIES_OPENAPI_URL = "apiOpenUrl";
 
-	private static final String _PROPERTIE_URL = "apiBaseUrl";
+	private static final String _PROPERTIES_URL = "apiBaseUrl";
 
 	private static final String _REST_API_CONFIG =
 		"configs/local/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
@@ -125,7 +125,7 @@ public class LiferaySampleCircuitBreakerTest {
 	private static final String _RESULT_PATTERN = "CircuitBreaker|OPEN";
 
 	private int _attempts;
-	private String _basePAth;
+	private String _basePath;
 	private String _baseUrl = "https://4ddd4e2b-8354-46fe-940c-331229556ad1.mock.pstmn.io";
 
 }
