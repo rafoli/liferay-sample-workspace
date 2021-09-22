@@ -12,6 +12,18 @@ buildscript {
 	}
 }
 
+plugins {
+	id "org.sonarqube" version "3.3"
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "rafoli_liferay-sample-workspace"
+		property "sonar.organization", "rafoli"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
+}
+
 allprojects {
 	plugins.withId("com.liferay.node") {
 		afterEvaluate {
