@@ -1,6 +1,6 @@
 # Liferay Sample Workspace
 
-## Sonar metrics
+## Sonarcloud
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=coverage)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=code_smells)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
