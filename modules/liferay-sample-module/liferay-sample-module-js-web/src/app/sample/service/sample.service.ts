@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ declare const Liferay: any;
 export class SampleService {
   constructor(private _httpClient: HttpClient) {}
 
-  url = (<any>window).SampleWorkspace.baseUrl + '/samples';
+  url = !isDevMode() ? (<any>window).SampleWorkspace.baseUrl + '/samples' : 'http://localhost:8080/samples';
 
   getSamples(): Observable<SamplePaginated> {
     return this._httpClient.get<SamplePaginated>(this.url);
