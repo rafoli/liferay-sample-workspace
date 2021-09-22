@@ -1,15 +1,15 @@
 #banner {
-  padding-top: 20px;
+  padding-top: 2rem;
   #heading {
-    div.site-title {
+    .site-title {
       display: flex;
       align-items: center;
       
-      h2.site-name { 
-        font-size: 21px;
+      .site-name { 
+        font-size: 1.4rem;
         margin: 0;
         font-weight: bold;
-        margin-left: 15px;
+        margin-left: 1rem;
       }
     }
   }
