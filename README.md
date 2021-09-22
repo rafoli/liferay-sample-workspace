@@ -124,6 +124,7 @@ in you terminal go to the project workspace, in the modules folder, run the comm
 
 
 ## Naming Pattern
+
 ### Branches
 For branches, we have a set of two main information: the project's abbreviation, in this case, <abbr title="Liferay Sample Workspace">LSW</abbr>, and the issue's number, for example: `LSW-46`.
 
