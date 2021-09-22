@@ -6,7 +6,8 @@
   .selecto-user {
     margin-left: auto;
   }
-  @media(max-width:767px) {
+
+  @include media-breakpoint-down(sm) {
     flex-direction: column;
 
     .selecto-user {
