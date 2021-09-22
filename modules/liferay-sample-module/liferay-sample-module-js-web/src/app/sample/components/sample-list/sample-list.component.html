@@ -1,6 +1,6 @@
 <ng-container *ngIf="samples">
   <div class="table-responsive">
-    <table class="table table-autofit show-quick-actions-on-hover table-hover table-list">
+    <table class="table table-autofit show-quick-actions-on-hover table-hover table-list" id="ng-table-samples">
       <thead>
         <th>ID</th>
         <th>Name</th>
@@ -9,7 +9,7 @@
       <tbody>
         <tr *ngFor="let sample of samples">
           <td>
-          <td id="ng-table-samples">
+          <td>
             <p>
               {{sample.id}}
             </p>
@@ -29,4 +29,4 @@
     </table>
   </div>
 </ng-container>
-<button *ngIf="roles.isAdmin()" (click)="create()" class="btn btn-primary">Add</button>
+<button *ngIf="_roles.isAdmin()" (click)="create()" class="btn btn-primary" id="ng-btn-add">Add</button>
