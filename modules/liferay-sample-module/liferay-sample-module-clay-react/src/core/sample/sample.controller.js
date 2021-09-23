@@ -81,4 +81,4 @@ class SampleController {
     }
 }
 
-export default new SampleController(); 
+export default new SampleController();
