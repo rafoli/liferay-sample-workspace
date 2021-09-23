@@ -1,109 +1,85 @@
+$btn-font-family: 'Ubuntu', sans-serif;
+$btn-padding: 0.75rem 1rem;
+
+
+$btn-selecto: () !default;
+$btn-selecto: map-merge((
+  border-radius: 0,
+  font-family: $btn-font-family,
+  padding: $btn-padding,
+), $btn-selecto);
+
 .btn {
-  border-radius: 0;
-  color: $primary;
-  padding: 0.75rem 1rem;
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: bold;
-
-  &:active {
-    border: 1px solid $primary;
-    border-radius: 2px;
-    color: $primary;
-  }
-
-  &:focus {
-    box-shadow: none !important;
-  }
-
-  &:hover {
-    border: 1px solid $primary-d1;
-    border-radius: 2px;
-    color: $primary-d1;
-  }
-}
-.btn-unstyled {
-  border: 0;
-
-  &:hover {
-    border: 0;
-  }
+  @include clay-button-variant($btn-selecto);
 }
 
-.btn-primary {
-  color: #fff;
 
-  &:active {
-    background-color: $primary !important;
-  }
+$btn-primary: () !default;
+$btn-primary: map-merge((
+    border: 0,
+    color: $white,
+    font-weight: bold,
+    background-color: $primary,
+    active: (
+      background-color: $primary,
+    ),
+    focus: (
+      box-shadow: none,
+    ),
+    hover: (
+      background-color: $primary-d1,
+      color: $white,
+      transform: scale(1.1),
+    )
+), $btn-primary);
 
-  &:focus {
-    box-shadow: none !important;
-  }
+$btn-secondary: () !default;
+$btn-secondary: map-merge((
+  background-color: $secondary,
+  color: $white,
+  border: 0,
+  active: (
+    background-color: $secondary-d2,
+    color: $white,
+    border: 0,
+  ),
+  focus: (
+    box-shadow: none,
+    color: $white,
+    border: 0,
+  ),
+  hover: (
+    background-color: $secondary-d2,
+    color: $white,
+    border: 0,
+  ),
 
-  &:hover {
-    background-color: $primary-d1;
-    color: #fff;
-  }
-}
+), $btn-secondary);
 
-.btn-secondary {
-  background-color: $secondary;
-  color: $white;
-  border: 0;
 
-  &:active {
-    background-color: $secondary-d2 !important;
-    color: $white;
-    border: 0;
-  }
+$btn-transparent: () !default;
+$btn-transparent: map-merge((
+  background-color: transparent,
+  color: $secondary,
+  border: 1px solid $secondary,
 
-  &:focus {
-    box-shadow: none !important;
-    color: $white;
-    border: 0;
-  }
+  active: (
+    border-color: $secondary,
+    color: $secondary,
+  ),
 
-  &:hover {
-    background-color: $secondary-d2;
-    color: $white;
-    border: 0;
-  }
-}
-
+  focus: (
+    box-shadow: none,
+    border-color: $secondary,
+    color: $secondary,
+  ),
+  hover: (
+    border-color: $secondary,
+    color: $secondary,
+  )
+), $btn-transparent);
 
 .btn-transparent {
-  background-color: transparent;
-  color: $secondary;
-  border: 1px solid $secondary;
-
-  &:active {
-    border-color: $secondary;
-    color: $secondary;
-  }
-
-  &:focus {
-    box-shadow: none !important;
-    border-color: $secondary;
-    color: $secondary;
-  }
-
-  &:hover {
-    border-color: $secondary;
-    color: $secondary;
-  }
-}
-.btn-lg {
-  font-size: 1.125rem;
-  padding: 0.875rem 1.125rem;
+	@include clay-button-variant($btn-transparent);
 }
 
-.btn-sm {
-  font-size: 0.75rem;
-  padding: 0.5rem 0.75rem;
-}
-
-.btn-link {
-  border: none !important;
-  font-weight: bold;
-  padding: 0;
-}
