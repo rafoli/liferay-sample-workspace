@@ -3,18 +3,18 @@
 	"version": "1.0.0",
 	"description": "Liferay Sample Module Clay React",
 	"devDependencies": {
-		"liferay-npm-build-support": "^2.26.0",
-		"liferay-npm-bundler": "^2.26.0",
-		"liferay-npm-bundler-loader-css-loader": "^2.26.0",
-		"copy-webpack-plugin": "4.6.0",
-		"webpack": "4.29.6",
-		"webpack-cli": "3.3.0",
-		"webpack-dev-server": "3.2.1",
 		"@babel/cli": "^7.7.5",
 		"@babel/core": "^7.7.5",
 		"@babel/plugin-transform-runtime": "^7.14.5",
+		"@babel/preset-env": "^7.7.6",
 		"@babel/preset-react": "^7.7.4",
-		"@babel/preset-env": "^7.7.6"
+		"copy-webpack-plugin": "4.6.0",
+		"liferay-npm-build-support": "^2.26.0",
+		"liferay-npm-bundler": "^2.26.0",
+		"liferay-npm-bundler-loader-css-loader": "^2.26.0",
+		"webpack": "4.29.6",
+		"webpack-cli": "3.3.0",
+		"webpack-dev-server": "3.2.1"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.14.6",
@@ -24,9 +24,13 @@
 		"@clayui/layout": "^3.32.0",
 		"@clayui/provider": "^3.35.3",
 		"@clayui/table": "^3.32.0",
+		"@testing-library/jest-dom": "^5.11.4",
+		"@testing-library/react": "^11.1.0",
+		"@testing-library/user-event": "^12.1.10",
 		"axios": "^0.21.4",
 		"react": "16.8.6",
-		"react-dom": "16.8.6"
+		"react-dom": "16.8.6",
+		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
 		"build": "babel --source-maps -d build src && npm run copy-assets && liferay-npm-bundler",
