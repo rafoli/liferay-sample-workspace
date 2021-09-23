@@ -1,11 +1,6 @@
-$btn-font-family: 'Ubuntu', sans-serif;
-$btn-padding: 0.75rem 1rem;
-
-
 $btn-selecto: () !default;
 $btn-selecto: map-merge((
   border-radius: 0,
-  font-family: $btn-font-family,
   padding: $btn-padding,
 ), $btn-selecto);
 
