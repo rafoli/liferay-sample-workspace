@@ -1,3 +1,13 @@
 {
-	"liferayDir": "/home/elmano/liferay/liferay-sample-workspace/bundles"
+	"translatorTextKey": "",
+	"supportedLocales": [],
+	"liferayDir": "../../../bundles",
+	"webpack": {
+		"rules": [
+			{
+				"test": "src\\/.*\\.js$",
+				"use": "babel-loader"
+			}
+		]
+	}
 }
