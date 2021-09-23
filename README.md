@@ -1,6 +1,11 @@
 # Liferay Sample Workspace
 
-![Build status](https://github.com/rafoli/liferay-sample-workspace/actions/workflows/gradle.yml/badge.svg?branch=main)
+## Sonarcloud
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=coverage)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=code_smells)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=sqale_index)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rafoli_liferay-sample-workspace&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=rafoli_liferay-sample-workspace)
 
 ## Current stable version: v1.0.0
 
@@ -124,6 +129,7 @@ in you terminal go to the project workspace, in the modules folder, run the comm
 
 
 ## Naming Pattern
+
 ### Branches
 For branches, we have a set of two main information: the project's abbreviation, in this case, <abbr title="Liferay Sample Workspace">LSW</abbr>, and the issue's number, for example: `LSW-46`.
 
