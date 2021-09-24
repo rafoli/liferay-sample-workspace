@@ -62,7 +62,9 @@ save_backup(){
 
 	log_info "Info: Exporting document and library";
 	if [ -d "bundles/data/document_library" ]; then
-	  log_debug tar -czvf backups/"$PROJECT"_document_library.tgz $LIFERAY_HOME/data/document_library*
+	  cd $LIFERAY_HOME/data/document_library
+	  log_debug tar -czvf "${CURRENT_DIR}"/backups/"$PROJECT"_document_library.tgz *
+	  cd -
 	fi
 }
 
