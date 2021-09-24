@@ -3,9 +3,12 @@ package com.liferay.test.functional.test.tdd.tests;
 import com.liferay.test.functional.test.tdd.pages.SampleAngularComponentPage;
 import com.liferay.test.functional.test.tdd.pages.SampleHomePage;
 import com.liferay.test.functional.test.tdd.pages.SampleLoginPage;
+<<<<<<< HEAD
 import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 
 import java.io.IOException;
+=======
+>>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +16,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import org.openqa.selenium.WebDriver;
+<<<<<<< HEAD
+=======
+import org.openqa.selenium.chrome.ChromeDriver;
+>>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 
 /**
  * @author Brian Wing Shun Chan
@@ -56,11 +63,21 @@ public class LiferaySampleAngularTest {
 	}
 
 	@Before
+<<<<<<< HEAD
 	public void setup() throws IOException {
 		_driver = _utils.setupAll();
 	}
 
 	private WebDriver _driver;
 	private CommonMethods _utils = new CommonMethods();
+=======
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
+
+		_driver = new ChromeDriver();
+	}
+
+	private WebDriver _driver;
+>>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 
 }
