@@ -1,0 +1,4 @@
+Bundle-Name: apiTest
+Bundle-SymbolicName: apiTest
+Bundle-Version: 1.0.0
+Export-Package: apiTest.constants

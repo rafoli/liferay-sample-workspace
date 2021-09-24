@@ -1,0 +1,4 @@
+Bundle-Name: functional-test-tdd
+Bundle-SymbolicName: functional.test.tdd
+Bundle-Version: 1.0.0
+Export-Package: functional.test.tdd.constants
