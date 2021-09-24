@@ -15,7 +15,7 @@
 
 ## Starting a Liferay Local Instance
 1. Open a new tab in your terminal, and go to `./bundles/tomcat-9.X.X/bin` subfolder.
-2. Run `blade server start` or `blade server start -d` debug mode (for Linux users) to start a Liferay DXP local instance.
+2. Run `blade server start` or `blade server start -d -t` (for debug and tail mode), to start a Liferay DXP local instance.
 3. Copy an activation key to the `deploy` folder to register a Liferay license for DXP Development.
 4. Open a tab in your browser and type `localhost:8080`.
 5. Follow the ***Basic Configuration*** steps, inserting an email and a password, and then accepting the ***Terms of Use***.
@@ -95,6 +95,8 @@ For this project, three settings have been defined to recognize and initiate the
 
 * To simulate the open circuit mode, you need to change the settings in `Control Panel -> System Settings -> category.liferay-confguration -> api-base-url` in the portal or edit the value in line 1 of the `/liferay-sample project file -workspace/bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config` for a url that has no service/content to return. Upon reaching the values configured for: Minimum Number Of Calls, Failure Rate Threshold and Wait Duration In Open State, fault tolerance will occur and the message will be displayed: `CircuitBreaker 'api-name' is OPEN and does not allow further calls` at the Postman's response or in the browser's console.
 
+## Project Overview
+
 ### liferay-sample-module-js-web
 * The `liferay-sample-module-js-web` module corresponds to the frontend layer of the entire module, i.e., the **view** layer of the MVC portlet architecture. 
 * It is responsable to display the data on the page, using Angular technology (a JavaScript framework) and send the users' request to `liferay-sample-module-web-rest` .
@@ -123,7 +125,7 @@ For this project, three settings have been defined to recognize and initiate the
 * To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
 * Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
 =======
-### Know Issues
+## Know Issues
 * If when you run the command `blade gw deploy` and occur this error: `Task :modules:liferay-sample-module:liferay-sample-module-js-web:packageRunTest FAILED`
 in you terminal go to the project workspace, in the modules folder, run the command `nano build.gradle` and change the value of `packageRunTest.enabled` to false, save the file, back to the project folder and run `blade gw deploy` again.
 
