@@ -1,13 +1,3 @@
 {
-	"translatorTextKey": "",
-	"supportedLocales": [],
-	"liferayDir": "../../../bundles",
-	"webpack": {
-		"rules": [
-			{
-				"test": "src\\/.*\\.js$",
-				"use": "babel-loader"
-			}
-		]
-	}
+	"liferayDir": "../../../bundles"
 }

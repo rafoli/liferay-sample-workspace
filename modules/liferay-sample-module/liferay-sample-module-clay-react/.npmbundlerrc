@@ -1,12 +1,3 @@
 {
-	"create-jar": {
-		"output-dir": "dist",
-		"features": {
-			"js-extender": true,
-			"web-context": "/liferay-sample-module-clay-react",
-			"localization": "features/localization/Language",
-			"configuration": "features/configuration.json"
-		}
-	},
-	"dump-report": true
+	"preset": "liferay-npm-bundler-preset-create-react-app"
 }
