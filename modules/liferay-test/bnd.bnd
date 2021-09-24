@@ -1,4 +1,0 @@
-Bundle-Name: liferay-test
-Bundle-SymbolicName: liferay.test
-Bundle-Version: 1.0.0
-Export-Package: liferay.test.constants
