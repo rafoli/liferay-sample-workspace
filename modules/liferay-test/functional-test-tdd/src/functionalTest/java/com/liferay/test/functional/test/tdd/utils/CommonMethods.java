@@ -1,5 +1,6 @@
 package com.liferay.test.functional.test.tdd.utils;
 
+<<<<<<< HEAD
 import com.liferay.gs.testFramework.core.SeleniumReadPropertyKeys;
 
 import java.io.FileInputStream;
@@ -12,6 +13,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+=======
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+>>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -53,13 +59,18 @@ public class CommonMethods {
 	}
 
 	public void getWaitDriver(WebDriver driver, By element) {
+<<<<<<< HEAD
 		int time_out = SeleniumReadPropertyKeys.getTimeOut();
 
 		WebDriverWait wait = new WebDriverWait(driver, time_out);
+=======
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+>>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
 
+<<<<<<< HEAD
 	public WebDriver setupAll() throws IOException {
 		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
 
@@ -84,4 +95,6 @@ public class CommonMethods {
 
 	private static final String _PROPERTIES_BROWSER_MODE = "browser";
 
+=======
+>>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 }
