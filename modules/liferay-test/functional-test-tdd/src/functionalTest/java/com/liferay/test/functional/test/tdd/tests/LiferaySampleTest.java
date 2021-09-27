@@ -2,6 +2,7 @@ package com.liferay.test.functional.test.tdd.tests;
 
 import com.liferay.test.functional.test.tdd.pages.SampleHomePage;
 import com.liferay.test.functional.test.tdd.pages.SampleLoginPage;
+import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -36,9 +37,8 @@ public class LiferaySampleTest {
 
 	@Before
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
-
-		_driver = new ChromeDriver();
+		
+		_driver = _utils.setupAll();
 	}
 
 	@Test
@@ -74,5 +74,6 @@ public class LiferaySampleTest {
 	}
 
 	private WebDriver _driver;
+	private CommonMethods _utils = new CommonMethods();
 
 }
