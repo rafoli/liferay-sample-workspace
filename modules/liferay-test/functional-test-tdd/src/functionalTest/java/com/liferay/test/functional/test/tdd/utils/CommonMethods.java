@@ -1,8 +1,12 @@
 package com.liferay.test.functional.test.tdd.utils;
 
+import com.liferay.gs.testFramework.core.SeleniumReadPropertyKeys;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -44,9 +48,23 @@ public class CommonMethods {
 	}
 
 	public void getWaitDriver(WebDriver driver, By element) {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		int timeOut = SeleniumReadPropertyKeys.getTimeOut();
+
+		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+	}
+
+	public WebDriver setupAll() {
+		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
+		
+		ChromeOptions options = new ChromeOptions();
+
+		options.addArguments("--headless");
+		
+		WebDriver driver = new ChromeDriver(options);
+		
+		return driver;
 	}
 
 }

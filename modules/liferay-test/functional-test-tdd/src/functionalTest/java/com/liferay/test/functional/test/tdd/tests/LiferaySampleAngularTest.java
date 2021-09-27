@@ -3,6 +3,7 @@ package com.liferay.test.functional.test.tdd.tests;
 import com.liferay.test.functional.test.tdd.pages.SampleAngularComponentPage;
 import com.liferay.test.functional.test.tdd.pages.SampleHomePage;
 import com.liferay.test.functional.test.tdd.pages.SampleLoginPage;
+import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -55,11 +56,11 @@ public class LiferaySampleAngularTest {
 
 	@Before
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
-
-		_driver = new ChromeDriver();
+		
+		_driver = _utils.setupAll();
 	}
 
 	private WebDriver _driver;
+	private CommonMethods _utils = new CommonMethods();
 
 }
