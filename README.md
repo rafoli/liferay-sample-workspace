@@ -63,6 +63,13 @@
 3. After importing, you should see *4 methods*, it will to make available mocks for the application. You should click in play (green button) to start the server befor make the tests.
 4. Now, you can test the endpoints in the Postman, for instance, call endpoint: `http://localhost:3001/samples`
 
+## Creating a mock server inside a Docker
+1. Run `docker build -t mock-server-image db`
+2. Run `docker run --rm -d -p 3000:3000 --name mock-server mock-server-image`
+3. Go to `http://localhost:3000/samples` 
+4. Change the api-base-url on *Control Panel -> System Settings -> category.liferay-confguration*. 
+
+To stop, run `docker rm -f mock-server` and then `docker rmi -f mock-server-image`
 ## Configure System Settings
 1. In Liferay application, go to the *Control Panel -> System Settings -> category.liferay-confguration*.
 2. Search `api-base-url` and change it to `http://localhost:3001` and update.
