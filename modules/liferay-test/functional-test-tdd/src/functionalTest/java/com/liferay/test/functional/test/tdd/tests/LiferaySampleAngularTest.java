@@ -8,11 +8,14 @@ import com.liferay.test.functional.test.tdd.pages.SampleLoginPage;
 import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 
 import java.io.IOException;
+<<<<<<< HEAD
 =======
 >>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 =======
 import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 >>>>>>> d113a58 (INLSW-33 fix: run tests with browser headless mode)
+=======
+>>>>>>> 4482eb4 (INLSW-33 fix: formatting, conflicts and update methods)
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,9 +24,12 @@ import org.junit.Test;
 
 import org.openqa.selenium.WebDriver;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import org.openqa.selenium.chrome.ChromeDriver;
 >>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
+=======
+>>>>>>> 4482eb4 (INLSW-33 fix: formatting, conflicts and update methods)
 
 /**
  * @author Brian Wing Shun Chan
@@ -68,6 +74,7 @@ public class LiferaySampleAngularTest {
 
 	@Before
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void setup() throws IOException {
 		_driver = _utils.setupAll();
 	}
@@ -77,6 +84,9 @@ public class LiferaySampleAngularTest {
 =======
 	public void setup() {
 		
+=======
+	public void setup() throws IOException {
+>>>>>>> 4482eb4 (INLSW-33 fix: formatting, conflicts and update methods)
 		_driver = _utils.setupAll();
 	}
 
