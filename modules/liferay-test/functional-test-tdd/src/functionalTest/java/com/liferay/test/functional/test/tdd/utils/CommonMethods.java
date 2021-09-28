@@ -88,6 +88,7 @@ public class CommonMethods {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public WebDriver setupAll() throws IOException {
 		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
 
@@ -116,16 +117,34 @@ public class CommonMethods {
 >>>>>>> d9c4f18 (INLSW-33 refactor: functional test module into test module)
 =======
 	public WebDriver setupAll() {
+=======
+	public WebDriver setupAll() throws IOException {
+>>>>>>> 4482eb4 (INLSW-33 fix: formatting, conflicts and update methods)
 		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
-		
+
+		String propertiesPath = SeleniumReadPropertyKeys.getSeleniumPropertyKeysFilePath();
+
+		Properties properties = new Properties();
+
+		FileInputStream config = new FileInputStream(propertiesPath);
+
+		properties.load(config);
+
+		String browserMode = properties.getProperty(_PROPERTIES_BROWSER_MODE);
+
+		config.close();
+
 		ChromeOptions options = new ChromeOptions();
 
-		options.addArguments("--headless");
-		
-		WebDriver driver = new ChromeDriver(options);
-		
-		return driver;
+		options.addArguments(browserMode.contentEquals("defaultGCHeadless") ? "--headless" : "--start-maximized");
+
+		return new ChromeDriver(options);
 	}
 
+<<<<<<< HEAD
 >>>>>>> d113a58 (INLSW-33 fix: run tests with browser headless mode)
+=======
+	private static final String _PROPERTIES_BROWSER_MODE = "browser";
+
+>>>>>>> 4482eb4 (INLSW-33 fix: formatting, conflicts and update methods)
 }
