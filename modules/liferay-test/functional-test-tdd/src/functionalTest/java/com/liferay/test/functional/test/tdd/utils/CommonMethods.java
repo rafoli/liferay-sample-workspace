@@ -53,9 +53,9 @@ public class CommonMethods {
 	}
 
 	public void getWaitDriver(WebDriver driver, By element) {
-		int timeOut = SeleniumReadPropertyKeys.getTimeOut();
+		int time_out = SeleniumReadPropertyKeys.getTimeOut();
 
-		WebDriverWait wait = new WebDriverWait(driver, timeOut);
+		WebDriverWait wait = new WebDriverWait(driver, time_out);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
