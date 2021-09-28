@@ -2,6 +2,11 @@ package com.liferay.test.functional.test.tdd.utils;
 
 import com.liferay.gs.testFramework.core.SeleniumReadPropertyKeys;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,16 +60,28 @@ public class CommonMethods {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
 
-	public WebDriver setupAll() {
+	public WebDriver setupAll() throws IOException {
 		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
-		
+
+		String propertiesPath = SeleniumReadPropertyKeys.getSeleniumPropertyKeysFilePath();
+
+		Properties properties = new Properties();
+
+		FileInputStream config = new FileInputStream(propertiesPath);
+
+		properties.load(config);
+
+		String browserMode = properties.getProperty(_PROPERTIES_BROWSER_MODE);
+
+		config.close();
+
 		ChromeOptions options = new ChromeOptions();
 
-		options.addArguments("--headless");
-		
-		WebDriver driver = new ChromeDriver(options);
-		
-		return driver;
+		options.addArguments(browserMode.contentEquals("defaultGCHeadless") ? "--headless" : "--start-maximized");
+
+		return new ChromeDriver(options);
 	}
+
+	private static final String _PROPERTIES_BROWSER_MODE = "browser";
 
 }

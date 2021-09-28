@@ -59,6 +59,10 @@ public class LiferaySampleCircuitBreakerTest {
 		_baseUrl = _baseUrl.isEmpty() ? url.replaceAll("\"", "") : _baseUrl;
 
 		_basePath = path.replaceAll("\"", "");
+		
+		restConfig.close();
+		
+		apiConfig.close();
 	}
 
 	@Test
