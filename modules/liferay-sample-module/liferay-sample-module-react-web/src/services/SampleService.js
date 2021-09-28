@@ -19,8 +19,11 @@ class SampleService {
         return api.post(`/samples`, { name: sampleName })
     }
 
-    editSample(sample) {
-        return api.put(`/samples/`, sample)
+    editSample(id, sampleObject) {
+        let sample = {name: sampleObject.name, id}
+        console.table({...sample})
+        
+        return api.put(`/samples/${id}`, sample)
     }
 }
 

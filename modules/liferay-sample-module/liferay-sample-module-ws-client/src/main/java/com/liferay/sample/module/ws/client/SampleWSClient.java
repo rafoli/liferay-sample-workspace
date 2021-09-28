@@ -27,7 +27,7 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class SampleWSClient extends RestClientFactory<SampleWS> {
 
-	public SampleResponse addSample(SampleObject sampleObject) throws ApiResponseException, IOException {
+	public SampleResponse addSample(SampleObject sampleObject) throws ApiResponseException {
 		return _sampleWS.addSample(sampleObject);
 	}
 
@@ -39,12 +39,12 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 		return _sampleWS.getSample(id);
 	}
 
-	public List<SampleResponse> getSamples() throws ApiResponseException, IOException {
+	public List<SampleResponse> getSamples() throws ApiResponseException {
 		return _sampleWS.getSamples();
 	}
 
-	public SampleResponse updateSample(SampleObject sampleObject) throws ApiResponseException, IOException {
-		return _sampleWS.updateSample(sampleObject);
+	public SampleResponse updateSample(String id, SampleObject sampleObject) throws ApiResponseException {
+		return _sampleWS.updateSample(id, sampleObject);
 	}
 
 	@Activate
@@ -52,7 +52,7 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 	protected void activate(Map<String, Object> properties) {
 		RestAPIConfiguration sampleConfig = ConfigurableUtil.createConfigurable(RestAPIConfiguration.class, properties);
 
-		_sampleWS = (SampleWS)_restClientFactory.getAPI(sampleConfig, SampleWS.class);
+		_sampleWS = _restClientFactory.getAPI(sampleConfig, SampleWS.class);
 	}
 
 	@Reference
