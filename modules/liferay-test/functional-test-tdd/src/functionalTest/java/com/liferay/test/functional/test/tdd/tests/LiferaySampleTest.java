@@ -4,13 +4,14 @@ import com.liferay.test.functional.test.tdd.pages.SampleHomePage;
 import com.liferay.test.functional.test.tdd.pages.SampleLoginPage;
 import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * @author Brian Wing Shun Chan
@@ -36,8 +37,7 @@ public class LiferaySampleTest {
 	}
 
 	@Before
-	public void setup() {
-		
+	public void setup() throws IOException {
 		_driver = _utils.setupAll();
 	}
 
