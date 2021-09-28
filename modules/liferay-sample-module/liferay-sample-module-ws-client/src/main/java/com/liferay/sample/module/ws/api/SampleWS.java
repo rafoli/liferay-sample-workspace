@@ -3,11 +3,11 @@ package com.liferay.sample.module.ws.api;
 import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.ws.response.SampleResponse;
 
+import java.util.List;
+
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-
-import java.util.List;
 
 /**
  * @author Rafael Oliveira
@@ -26,8 +26,9 @@ public interface SampleWS {
 
 	@RequestLine("GET /samples")
 	public List<SampleResponse> getSamples();
-
-	@RequestLine("PUT /samples")
-	public SampleResponse updateSample(SampleObject sampleObject);
+	
+	@Headers("Content-Type: application/json")
+	@RequestLine("PUT /samples/{id}")
+	public SampleResponse updateSample(@Param("id") String id, SampleObject sampleObject);
 
 }

@@ -12,44 +12,48 @@ import org.osgi.service.component.annotations.ServiceScope;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Rennan Prysthon
  */
 @Component(
 	properties = "OSGI-INF/liferay/rest/v1_0/sample.properties",
-	scope = ServiceScope.PROTOTYPE, service = SampleResource.class
+	scope = ServiceScope.PROTOTYPE,
+	service = SampleResource.class
 )
 public class SampleResourceImpl extends BaseSampleResourceImpl {
 
 	@Override
-	public Page<Sample> getAllSamples(Integer pageNumber, Integer pageSize) throws Exception {
-		List<Sample> samples = this._sampleService.getSamples().stream().map(this::convertToSample).collect(Collectors.toList());
+	public Page<Sample> getAllSamples(Integer pageNumber, Integer pageSize) {
+		List<SampleObject> sampleObjectList = this._sampleService.getSamples();
+		Stream<SampleObject> sampleStream = sampleObjectList.stream();
+		List<Sample> samples = sampleStream.map(this::convertToSample).collect(Collectors.toList());
 
 		return Page.of(samples);
 	}
 
 	@Override
-	public Sample createSample(Sample sample) throws Exception {
+	public Sample createSample(Sample sample) {
 		SampleObject sampleObject = this._sampleService.addSample(convertToSampleObject(sample));
 		return convertToSample(sampleObject);
 	}
 
 	@Override
-	public void deleteSample(String sampleId) throws Exception {
+	public void deleteSample(String sampleId) {
 		this._sampleService.deleteSample(sampleId);
 	}
 
 	@Override
-	public Sample getSample(String sampleId) throws Exception {
+	public Sample getSample(String sampleId)  {
 		SampleObject sampleObject = this._sampleService.getSample(sampleId);
 
 		return convertToSample(sampleObject);
 	}
 
 	@Override
-	public Sample putSample(String sampleId, Sample sample) throws Exception {
-		SampleObject sampleObject = this._sampleService.updateSample(convertToSampleObject(sample));
+	public Sample putSample(String sampleId, Sample sample) {
+		SampleObject sampleObject = this._sampleService.updateSample(sampleId, convertToSampleObject(sample));
 
 		return convertToSample(sampleObject);
 	}

@@ -57,9 +57,9 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 	@Override
-	public SampleObject updateSample(SampleObject sampleObject) {
+	public SampleObject updateSample(String id, SampleObject sampleObject) {
 		try {
-			SampleResponse entity = _sampleWSClient.updateSample(sampleObject);
+			SampleResponse entity = _sampleWSClient.updateSample(id, sampleObject);
 
 			return _sampleServiceMapper.toSampleObject(entity);
 		}

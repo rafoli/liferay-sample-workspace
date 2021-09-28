@@ -17,6 +17,6 @@ public interface SampleService {
 
 	public List<SampleObject> getSamples();
 
-	public SampleObject updateSample(SampleObject sampleObject);
+	public SampleObject updateSample(String id, SampleObject sampleObject);
 
 }
