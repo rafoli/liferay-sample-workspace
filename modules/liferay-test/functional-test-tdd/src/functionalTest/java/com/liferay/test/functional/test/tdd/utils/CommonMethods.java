@@ -71,6 +71,7 @@ public class CommonMethods {
 	public void getWaitDriver(WebDriver driver, By element) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int time_out = SeleniumReadPropertyKeys.getTimeOut();
 
 		WebDriverWait wait = new WebDriverWait(driver, time_out);
@@ -82,6 +83,11 @@ public class CommonMethods {
 
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 >>>>>>> d113a58 (INLSW-33 fix: run tests with browser headless mode)
+=======
+		int time_out = SeleniumReadPropertyKeys.getTimeOut();
+
+		WebDriverWait wait = new WebDriverWait(driver, time_out);
+>>>>>>> 76d5f17 (INLSW-33 fix: conflicts)
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
