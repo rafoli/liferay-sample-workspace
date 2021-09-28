@@ -20,14 +20,3 @@ test('should edit a sample', async () => {
     const { data } = await SampleController.saveSample(newSample);
     expect(data).toMatchObject({ name: 'Sample edited!' });
 });
-
-
-// test('remove sample by id', async () => {
-//     const response = await SampleController.getAllSamples();
-
-//     const { id } = response[0];
-
-//     const newList = await SampleController.removeSample(id, response);
-
-//     expect(newList).toHaveLength(1);
-// });
