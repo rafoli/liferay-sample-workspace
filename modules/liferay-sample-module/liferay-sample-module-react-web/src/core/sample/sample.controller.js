@@ -17,7 +17,7 @@ class SampleController {
 
             return items;
         } catch (error) {
-            throw new Error({ erro: 'Error!' });
+            throw new Error(error);
         }
     }
 

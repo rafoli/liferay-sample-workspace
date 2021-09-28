@@ -16,11 +16,8 @@ test('should create a sample', async () => {
 
 test('should edit a sample', async () => {
     const sampleList = await SampleController.getAllSamples();
-    
     const newSample = { ...sampleList[0], name: 'Sample edited!' };
-
     const { data } = await SampleController.saveSample(newSample);
-
     expect(data).toMatchObject({ name: 'Sample edited!' });
 });
 
