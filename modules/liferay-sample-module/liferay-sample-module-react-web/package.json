@@ -42,7 +42,7 @@
 		"copy-assets": "lnbs-copy-assets",
 		"deploy": "npm run build && lnbs-deploy",
 		"start": "lnbs-start",
-		"test": "jest test --env=jsdom"
+		"test": "npx jest test --env=jsdom"
 	},
 	"portlet": {
 		"com.liferay.portlet.display-category": "category.sample",

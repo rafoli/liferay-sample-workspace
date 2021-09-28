@@ -4,6 +4,9 @@
 	"globals": {
 		"Liferay": {
 			"authToken": 112341234
+		},
+		"SampleWorkspace": {
+			"baseUrl": "http://localhost:3001"
 		}
 	}
 }

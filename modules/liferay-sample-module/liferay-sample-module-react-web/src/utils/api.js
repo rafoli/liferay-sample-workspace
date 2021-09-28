@@ -4,7 +4,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: SampleWorkspace.baseUrl,
+    baseURL: window.SampleWorkspace.baseUrl,
     params: {
         "p_auth": window.Liferay.authToken
     },
