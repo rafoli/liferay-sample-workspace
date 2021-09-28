@@ -21,7 +21,7 @@ public interface SampleWS {
 	@RequestLine("DELETE /samples/{id}")
 	public void deleteSample(@Param("id") String id);
 
-	@RequestLine("GET /samples?id={id}")
+	@RequestLine("GET /samples/{id}")
 	public SampleResponse getSample(@Param("id") String id);
 
 	@RequestLine("GET /samples")

@@ -61,7 +61,7 @@ public class SampleApplication extends Application {
 	@DELETE
 	@Path("/samples/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteSample(@Context HttpServletRequest request, String id) {
+	public Response deleteSample(@Context HttpServletRequest request, @PathParam("id") String id) {
 		SampleObject s = _sampleService.getSample(id);
 
 		if (s == null)
