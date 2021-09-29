@@ -4,7 +4,7 @@
       <thead>
         <th>ID</th>
         <th>Name</th>
-        <th></th>
+        <th *ngIf="roles.isAdmin()"></th>
       </thead>
       <tbody>
         <tr *ngFor="let sample of samples">
@@ -18,7 +18,7 @@
               {{sample.name}}
             </p>
           </td>
-          <td *ngIf="_roles.isAdmin()">
+          <td *ngIf="roles.isAdmin()">
             <div class="row justify-content-end c-mr-2">
               <button (click)="delete(sample.id)" class="btn btn-sm btn-danger">Delete</button>
             </div>
@@ -28,4 +28,4 @@
     </table>
   </div>
 </ng-container>
-<button *ngIf="_roles.isAdmin()" (click)="create()" class="btn btn-primary">Add</button>
+<button *ngIf="roles.isAdmin()" (click)="create()" class="btn btn-primary">Add</button>
