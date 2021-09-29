@@ -1,3 +1,5 @@
 Bundle-Name: liferay-openapi-rest-builder-impl
 Bundle-SymbolicName: liferay.openapi.rest.builder.impl
 Bundle-Version: 1.0.0
+Export-Package: \
+    liferay.openapi.rest.builder.internal.resource.v1_0
