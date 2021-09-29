@@ -12,7 +12,7 @@ declare const Liferay: any;
 export class SampleService {
   constructor(private _httpClient: HttpClient) {}
 
-  url = !isDevMode() ? (<any>window).SampleWorkspace.baseUrl + '/samples' : 'http://localhost:8080/samples';
+  url = !isDevMode() ? (<any>window).SampleWorkspace.baseUrl + '/samples';
 
   getSamples(): Observable<SamplePaginated> {
     return this._httpClient.get<SamplePaginated>(this.url);
