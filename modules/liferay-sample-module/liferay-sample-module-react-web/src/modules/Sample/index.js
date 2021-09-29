@@ -13,9 +13,7 @@ export default function Samples() {
     const [sampleList, setSampleList] = useState([]);
 
     useEffect(() => {
-        if (isSignedIn) {
-            getAllSamples();
-        }
+        getAllSamples();
     }, [isSignedIn]);
 
     async function getAllSamples() {
@@ -105,30 +103,32 @@ export default function Samples() {
                                                     id={`input-sample-edit-${i}`} />
                                             }
                                         </td>
-                                        <td>
-                                            <div className="row justify-content-end c-mr-2">
-                                                <div className="form-group">
-                                                    <div className="input-group">
-                                                        <div className="input-group-item input-group-item-shrink">
-                                                            <button 
-                                                                onClick={sample.editing ? () => saveSample(sample, i) : () => editSample(sample.id)}
-                                                                id={`btn-sample-edit-${i}`}
-                                                                className="btn btn-sm btn-primary">
-                                                                    {sample.editing ? 'Save' : 'Edit'}
-                                                            </button>
-                                                        </div>
-                                                        <div className="input-group-item input-group-item-prepend">
-                                                            <button 
-                                                                onClick={() => removeSample(sample.id)} 
-                                                                id={`remove-${i}`}
-                                                                className="btn btn-sm btn-danger">
-                                                                    Remove
-                                                            </button>
+                                        { isAdmin &&
+                                            <td>
+                                                <div className="row justify-content-end c-mr-2">
+                                                    <div className="form-group">
+                                                        <div className="input-group">
+                                                            <div className="input-group-item input-group-item-shrink">
+                                                                <button 
+                                                                    onClick={sample.editing ? () => saveSample(sample, i) : () => editSample(sample.id)}
+                                                                    id={`btn-sample-edit-${i}`}
+                                                                    className="btn btn-sm btn-primary">
+                                                                        {sample.editing ? 'Save' : 'Edit'}
+                                                                </button>
+                                                            </div>
+                                                            <div className="input-group-item input-group-item-prepend">
+                                                                <button 
+                                                                    onClick={() => removeSample(sample.id)} 
+                                                                    id={`remove-${i}`}
+                                                                    className="btn btn-sm btn-danger">
+                                                                        Remove
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                        }
                                     </tr>
                                 ))}
                             </tbody>

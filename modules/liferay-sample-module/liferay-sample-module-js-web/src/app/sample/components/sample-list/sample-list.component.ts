@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SampleService} from "../../service/sample.service";
-import {Sample} from "sample/model/sample";
-import {Observable} from "rxjs";
 import { Router } from '@angular/router';
+
 import { RoleService } from 'src/app/auth/roles.service';
+import { Sample } from "sample/model/sample";
+import { SampleService } from "../../service/sample.service";
 @Component({
   selector: 'app-sample-list',
   templateUrl: './sample-list.component.html',
@@ -16,14 +16,11 @@ export class SampleListComponent implements OnInit {
   constructor(
     private _sampleService: SampleService,
     private router: Router,
-    public _roles: RoleService
+    public roles: RoleService
   ) { }
 
-
   ngOnInit(): void {
-    if (this._roles.isSignedIn()) {
-      this.loadSamples()
-    }
+    this.loadSamples()
   }
 
   loadSamples() {
