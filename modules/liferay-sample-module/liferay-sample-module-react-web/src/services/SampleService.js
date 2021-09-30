@@ -21,7 +21,6 @@ class SampleService {
 
     editSample(id, sampleObject) {
         let sample = {name: sampleObject.name, id}
-        console.table({...sample})
         
         return api.put(`/samples/${id}`, sample)
     }
