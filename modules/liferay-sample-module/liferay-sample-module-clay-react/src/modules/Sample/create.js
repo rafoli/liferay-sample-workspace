@@ -24,7 +24,6 @@ function Create({ createSample }) {
                             type="text"
                             onChange={e => setSampleName(e.target.value)}
                             value={sampleName}
-                            id="input-sample-name"
                         />
                     </ClayInput.GroupItem>
                     <ClayInput.GroupItem append shrink>
