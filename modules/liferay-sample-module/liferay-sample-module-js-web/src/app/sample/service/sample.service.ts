@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Sample, SamplePaginated } from '../model/sample';
 
-declare const Liferay: any;
+declare const SampleWorkspace: any;
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ declare const Liferay: any;
 export class SampleService {
   constructor(private _httpClient: HttpClient) {}
 
-  url = (<any>window).SampleWorkspace.baseUrl + '/samples';
+  url = SampleWorkspace.baseUrl + '/samples';
 
   getSamples(): Observable<SamplePaginated> {
     return this._httpClient.get<SamplePaginated>(this.url);
