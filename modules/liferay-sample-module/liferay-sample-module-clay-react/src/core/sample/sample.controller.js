@@ -5,8 +5,6 @@
 import SampleService from '../../services/SampleService';
 
 class SampleController {
-    constructor() {}
-
     async getAllSamples() {
         try {
             let { data: { items } } = await SampleService.getAllSamples();
