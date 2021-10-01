@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="0" hostname="" id="0" name="Jest" package=".home.elmano.liferay.liferay-sample-workspace.modules.liferay-sample-module.liferay-sample-module-react-web" skipped="0" tests="3" time="0" timestamp="1630956914661">
-  <testcase classname=".home.elmano.liferay.liferay-sample-workspace.modules.liferay-sample-module.liferay-sample-module-react-web.test" name="get all samples" time="0.058">
-  </testcase>
-  <testcase classname=".home.elmano.liferay.liferay-sample-workspace.modules.liferay-sample-module.liferay-sample-module-react-web.test" name="should create a sample" time="0.032">
-  </testcase>
-  <testcase classname=".home.elmano.liferay.liferay-sample-workspace.modules.liferay-sample-module.liferay-sample-module-react-web.test" name="should edit a sample" time="0.029">
-  </testcase>
-</testsuite>
