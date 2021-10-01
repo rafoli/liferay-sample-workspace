@@ -64,8 +64,8 @@
 4. Now, you can test the endpoints in the Postman, for instance, call endpoint: `http://localhost:3001/samples`
 
 ## Creating a mock server inside a Docker
-1. Run `docker build -t mock-server-image db`
-2. Run `docker run --rm -d -p 3000:3000 --name mock-server -v mock-data:/db mock-server-image`
+1. Run `docker build -t mock-server-image mock-server`
+2. Run `docker run --rm -d -p 3000:3000 --name mock-server -v "$(pwd)/mock-server/samples:/db" mock-server-image`
 3. Go to `http://localhost:3000/samples` 
 4. Change the api-base-url on *Control Panel -> System Settings -> category.liferay-confguration*. 
 

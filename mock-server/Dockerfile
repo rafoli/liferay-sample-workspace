@@ -2,9 +2,9 @@ FROM node:alpine
 
 RUN mkdir /db
 
-EXPOSE 3000
+VOLUME /db
 
-COPY samples.json /db/samples.json
+EXPOSE 3000
 
 RUN yarn global add json-server
 
