@@ -6,21 +6,21 @@ package com.liferay.sample.module.ws.response;
 public class SampleResponse {
 
 	public String getId() {
-		return id;
+		return resId;
 	}
 
 	public String getName() {
-		return name;
+		return resName;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.resId = resId;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.resName = resName;
 	}
 
-	private String id;
-	private String name;
+	private String resId;
+	private String resName;
 }
