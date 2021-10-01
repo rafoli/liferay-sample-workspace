@@ -14,11 +14,11 @@ public class SampleResponse {
 	}
 
 	public void setId(String id) {
-		this.resId = resId;
+		this.resId = id;
 	}
 
 	public void setName(String name) {
-		this.resName = resName;
+		this.resName = name;
 	}
 
 	private String resId;
