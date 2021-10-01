@@ -8,8 +8,6 @@ import com.liferay.sample.module.ws.config.RestAPIConfiguration;
 import com.liferay.sample.module.ws.exception.ApiResponseException;
 import com.liferay.sample.module.ws.response.SampleResponse;
 
-import java.io.IOException;
-
 import java.util.List;
 import java.util.Map;
 

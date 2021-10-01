@@ -21,6 +21,6 @@ public class SampleObject {
 		this.name = name;
 	}
 
-	public String id;
-	public String name;
+	private String id;
+	private String name;
 }
