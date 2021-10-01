@@ -61,7 +61,7 @@ public class SampleApplication extends Application {
 	@DELETE
 	@Path("/samples/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteSample(@Context HttpServletRequest request, String id) {
+	public Response deleteSample(@Context HttpServletRequest request, @PathParam("id") String id) {
 		SampleObject s = _sampleService.getSample(id);
 
 		if (s == null)
@@ -120,21 +120,22 @@ public class SampleApplication extends Application {
 		return Collections.singleton(this);
 	}
 
-	@Path("/samples")
+	@Path("/samples/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@PUT
-	public Response updateSample(@Context HttpServletRequest request, String body) {
-		SampleObject sample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
+	public Response updateSample(@Context HttpServletRequest request, @PathParam("id") String id, String body) {
+		SampleObject newSample = JSONFactoryUtil.looseDeserialize(body, SampleObject.class);
 
-		SampleObject s = _sampleService.getSample(sample.getId());
+		SampleObject sample = _sampleService.getSample(id);
 
-		if (s == null)
-
+		if (sample == null) {
 			return Response.status(
 				Response.Status.NOT_FOUND
 			).build();
-			else
-			sample = _sampleService.updateSample(sample);
+		}
+
+		sample.setName(newSample.getName());
+		sample = _sampleService.updateSample(id, sample);
 
 		return Response.ok(
 			JSONFactoryUtil.looseSerialize(sample)

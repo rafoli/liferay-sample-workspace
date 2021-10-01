@@ -6,22 +6,21 @@ package com.liferay.sample.module.model;
 public class SampleObject {
 
 	public String getId() {
-		return _id;
+		return id;
 	}
 
 	public String getName() {
-		return _name;
+		return name;
 	}
 
 	public void setId(String id) {
-		_id = id;
+		this.id = id;
 	}
 
 	public void setName(String name) {
-		_name = name;
+		this.name = name;
 	}
 
-	private String _id;
-	private String _name;
-
+	private String id;
+	private String name;
 }
