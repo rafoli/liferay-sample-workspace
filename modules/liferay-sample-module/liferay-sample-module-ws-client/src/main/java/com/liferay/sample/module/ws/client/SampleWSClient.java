@@ -24,8 +24,13 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class SampleWSClient extends RestClientFactory<SampleWS> {
 
+<<<<<<< HEAD
 	public SampleResponse addSample(SampleResponse sampleResponse) throws ApiResponseException {
 		return _sampleWS.addSample(sampleResponse);
+=======
+	public SampleResponse addSample(SampleResponse sampleObject) throws ApiResponseException {
+		return _sampleWS.addSample(sampleObject);
+>>>>>>> 2c191ef (INLSW-61 fix: Fix some rest errors)
 	}
 
 	public void deleteSample(String id) throws ApiResponseException {
@@ -40,8 +45,13 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 		return _sampleWS.getSamples();
 	}
 
+<<<<<<< HEAD
 	public SampleResponse updateSample(String id, SampleResponse sampleResponse) throws ApiResponseException {
 		return _sampleWS.updateSample(id, sampleResponse);
+=======
+	public SampleResponse updateSample(String id, SampleResponse sampleObject) throws ApiResponseException {
+		return _sampleWS.updateSample(id, sampleObject);
+>>>>>>> 2c191ef (INLSW-61 fix: Fix some rest errors)
 	}
 
 	@Activate

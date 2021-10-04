@@ -15,7 +15,11 @@ public interface SampleWS {
 
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /samples")
+<<<<<<< HEAD
 	public SampleResponse addSample(SampleResponse sampleResponse);
+=======
+	public SampleResponse addSample(SampleResponse sampleObject);
+>>>>>>> 2c191ef (INLSW-61 fix: Fix some rest errors)
 
 	@RequestLine("DELETE /samples/{id}")
 	public void deleteSample(@Param("id") String id);
@@ -28,6 +32,10 @@ public interface SampleWS {
 	
 	@Headers("Content-Type: application/json")
 	@RequestLine("PUT /samples/{id}")
+<<<<<<< HEAD
 	public SampleResponse updateSample(@Param("id") String id, SampleResponse sampleResponse);
+=======
+	public SampleResponse updateSample(@Param("id") String id, SampleResponse sampleObject);
+>>>>>>> 2c191ef (INLSW-61 fix: Fix some rest errors)
 
 }
