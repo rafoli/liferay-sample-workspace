@@ -35,4 +35,9 @@ public class SampleServiceMapper {
 		return objects;
 	}
 
+	public SampleResponse toSampleResponse(SampleObject sampleObject) {
+		SampleResponse sampleResponse = new SampleResponse();
+		sampleResponse.setName(sampleObject.getName());
+		return sampleResponse;
+	}
 }
