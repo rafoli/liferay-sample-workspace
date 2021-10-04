@@ -51,7 +51,7 @@ class SampleController {
 
     async saveSample(sample) {
         try {
-            const data = await SampleService.editSample(sample);
+            const data = await SampleService.editSample(sample.id, sample);
 
             return data;
         } catch (error) {

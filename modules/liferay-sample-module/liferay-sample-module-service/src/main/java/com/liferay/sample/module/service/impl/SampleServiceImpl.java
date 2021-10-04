@@ -20,7 +20,8 @@ public class SampleServiceImpl implements SampleService {
 	@Override
 	public SampleObject addSample(SampleObject sampleObject) {
 		try {
-			SampleResponse entity = _sampleWSClient.addSample(sampleObject);
+			SampleResponse sample = _sampleServiceMapper.toSampleResponse(sampleObject);
+			SampleResponse entity = _sampleWSClient.addSample(sample);
 
 			return _sampleServiceMapper.toSampleObject(entity);
 		}
@@ -59,7 +60,8 @@ public class SampleServiceImpl implements SampleService {
 	@Override
 	public SampleObject updateSample(String id, SampleObject sampleObject) {
 		try {
-			SampleResponse entity = _sampleWSClient.updateSample(id, sampleObject);
+			SampleResponse sample = _sampleServiceMapper.toSampleResponse(sampleObject);
+			SampleResponse entity = _sampleWSClient.updateSample(id, sample);
 
 			return _sampleServiceMapper.toSampleObject(entity);
 		}

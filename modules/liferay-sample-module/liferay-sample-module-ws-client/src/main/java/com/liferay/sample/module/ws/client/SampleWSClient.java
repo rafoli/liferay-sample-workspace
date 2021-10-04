@@ -25,7 +25,7 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class SampleWSClient extends RestClientFactory<SampleWS> {
 
-	public SampleResponse addSample(SampleObject sampleObject) throws ApiResponseException {
+	public SampleResponse addSample(SampleResponse sampleObject) throws ApiResponseException {
 		return _sampleWS.addSample(sampleObject);
 	}
 
@@ -41,7 +41,7 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 		return _sampleWS.getSamples();
 	}
 
-	public SampleResponse updateSample(String id, SampleObject sampleObject) throws ApiResponseException {
+	public SampleResponse updateSample(String id, SampleResponse sampleObject) throws ApiResponseException {
 		return _sampleWS.updateSample(id, sampleObject);
 	}
 

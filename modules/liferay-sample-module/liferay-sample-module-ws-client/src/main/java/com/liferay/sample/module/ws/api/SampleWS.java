@@ -1,6 +1,5 @@
 package com.liferay.sample.module.ws.api;
 
-import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.ws.response.SampleResponse;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public interface SampleWS {
 
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /samples")
-	public SampleResponse addSample(SampleObject sampleObject);
+	public SampleResponse addSample(SampleResponse sampleObject);
 
 	@RequestLine("DELETE /samples/{id}")
 	public void deleteSample(@Param("id") String id);
@@ -29,6 +28,6 @@ public interface SampleWS {
 	
 	@Headers("Content-Type: application/json")
 	@RequestLine("PUT /samples/{id}")
-	public SampleResponse updateSample(@Param("id") String id, SampleObject sampleObject);
+	public SampleResponse updateSample(@Param("id") String id, SampleResponse sampleObject);
 
 }
