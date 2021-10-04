@@ -127,7 +127,8 @@ For this project, three settings have been defined to recognize and initiate the
 * The `liferay-sample-module-tests` module includes all functional tests related to the Page Objects defined, leveraging Selenium framework features.
 
 ## Front End 2E2 Tests
-* To perform the cypress tests, you will need to import the React portlet with data served by Mockoon.
+* To perform the cypress tests, you should start a mock server, you'll find it in this README.
+* You should create a .env file on module cypress root folder with your credentials for DXP login.
 * Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
 ### liferay-sample-module-react-web unit tests
 * If you can run the unit tests, you need to run Mockoon before in port `3001`.
