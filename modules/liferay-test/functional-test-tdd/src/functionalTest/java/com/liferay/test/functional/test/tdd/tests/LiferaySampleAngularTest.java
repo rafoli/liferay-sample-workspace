@@ -20,6 +20,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * @author Brian Wing Shun Chan
  */
+@Ignore
 public class LiferaySampleAngularTest {
 
 	@Test
