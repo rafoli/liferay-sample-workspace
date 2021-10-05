@@ -171,7 +171,7 @@ There are four important things to check in the template:
 
 ## Front End 2E2 Tests
 * To perform the cypress tests, you will need to import the React portlet with data served by mock-server.
-* You should create a .env file with your USER and PASSWORD to login in DXP.
+* You should create a .env file in root folder of module with your USER and PASSWORD to login in DXP.
 * Once that's done, you just join in react app module path and run: `npm cypress:open` or `yarn cypress:open`.
 ## Naming Pattern
 
