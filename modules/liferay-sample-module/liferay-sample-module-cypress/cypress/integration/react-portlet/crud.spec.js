@@ -21,8 +21,8 @@ describe('crud sample', () => {
     });
 
     it('should remove all samples', () => {
-        cy.get('#remove-1').click();
-        cy.get('#remove-0').click();
+        cy.get('.btn-danger').click({ multiple: true })
         cy.get('#react-portlet-table').should('be.empty');
+        
     });
 });
