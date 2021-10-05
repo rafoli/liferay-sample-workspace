@@ -15,7 +15,7 @@ public interface SampleWS {
 
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /samples")
-	public SampleResponse addSample(SampleResponse sampleObject);
+	public SampleResponse addSample(SampleResponse sampleResponse);
 
 	@RequestLine("DELETE /samples/{id}")
 	public void deleteSample(@Param("id") String id);
@@ -28,6 +28,6 @@ public interface SampleWS {
 	
 	@Headers("Content-Type: application/json")
 	@RequestLine("PUT /samples/{id}")
-	public SampleResponse updateSample(@Param("id") String id, SampleResponse sampleObject);
+	public SampleResponse updateSample(@Param("id") String id, SampleResponse sampleResponse);
 
 }

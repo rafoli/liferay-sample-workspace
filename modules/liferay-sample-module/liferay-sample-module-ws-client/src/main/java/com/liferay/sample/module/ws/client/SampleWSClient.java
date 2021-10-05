@@ -1,7 +1,6 @@
 package com.liferay.sample.module.ws.client;
 
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
-import com.liferay.sample.module.model.SampleObject;
 import com.liferay.sample.module.ws.api.SampleWS;
 import com.liferay.sample.module.ws.client.base.RestClientFactory;
 import com.liferay.sample.module.ws.config.RestAPIConfiguration;
@@ -25,8 +24,8 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class SampleWSClient extends RestClientFactory<SampleWS> {
 
-	public SampleResponse addSample(SampleResponse sampleObject) throws ApiResponseException {
-		return _sampleWS.addSample(sampleObject);
+	public SampleResponse addSample(SampleResponse sampleResponse) throws ApiResponseException {
+		return _sampleWS.addSample(sampleResponse);
 	}
 
 	public void deleteSample(String id) throws ApiResponseException {
@@ -41,8 +40,8 @@ public class SampleWSClient extends RestClientFactory<SampleWS> {
 		return _sampleWS.getSamples();
 	}
 
-	public SampleResponse updateSample(String id, SampleResponse sampleObject) throws ApiResponseException {
-		return _sampleWS.updateSample(id, sampleObject);
+	public SampleResponse updateSample(String id, SampleResponse sampleResponse) throws ApiResponseException {
+		return _sampleWS.updateSample(id, sampleResponse);
 	}
 
 	@Activate
