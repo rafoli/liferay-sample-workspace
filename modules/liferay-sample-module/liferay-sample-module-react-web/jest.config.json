@@ -1,0 +1,12 @@
+
+{
+	"testResultsProcessor": "./node_modules/jest-html-reporter",
+	"globals": {
+		"Liferay": {
+			"authToken": 112341234
+		},
+		"SampleWorkspace": {
+			"baseUrl": "http://localhost:3000"
+		}
+	}
+}
