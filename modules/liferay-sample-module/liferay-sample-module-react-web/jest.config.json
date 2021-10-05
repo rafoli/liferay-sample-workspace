@@ -6,7 +6,7 @@
 			"authToken": 112341234
 		},
 		"SampleWorkspace": {
-			"baseUrl": "http://localhost:3001"
+			"baseUrl": "http://localhost:3000/samples"
 		}
 	}
 }
