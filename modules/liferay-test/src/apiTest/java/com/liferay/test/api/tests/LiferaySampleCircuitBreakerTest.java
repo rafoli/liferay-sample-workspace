@@ -23,6 +23,7 @@ import org.junit.Test;
  * @author Andre Batista
  */
 public class LiferaySampleCircuitBreakerTest {
+
 	@Before
 	public void getCircuitBreakerConfigureParameters() throws IOException {
 		Path currentPath = Paths.get("");
@@ -108,18 +109,18 @@ public class LiferaySampleCircuitBreakerTest {
 
 	private static final String _HEADER_ACCEPT = "application/json";
 
-	private static final String _PROPERTIE_API = "defaultApi";
+	private static final String _PROPERTIES_API = "defaultApi";
 
-	private static final String _PROPERTIE_ATTEMPTS = "minimumNumberOfCallsValue";
+	private static final String _PROPERTIES_ATTEMPTS = "minimumNumberOfCallsValue";
 
-	private static final String _PROPERTIE_JAX_URL = "apiJaxUrl";
+	private static final String _PROPERTIES_JAX_URL = "apiJaxUrl";
 
-	private static final String _PROPERTIE_OPENAPI_URL = "apiOpenUrl";
+	private static final String _PROPERTIES_OPENAPI_URL = "apiOpenUrl";
 
-	private static final String _PROPERTIE_URL = "apiBaseUrl";
+	private static final String _PROPERTIES_URL = "apiBaseUrl";
 
 	private static final String _REST_API_CONFIG =
-		"bundles/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
+		"configs/local/osgi/configs/com.liferay.sample.module.ws.config.RestAPIConfiguration.config";
 
 	private static final String _RESULT_PATTERN = "CircuitBreaker|OPEN";
 
