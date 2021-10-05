@@ -92,6 +92,7 @@ public class SamplesSAPEntryActivator {
 
     private class SamplesPortalInstanceLifecycleListener
         extends BasePortalInstanceLifecycleListener {
+            @Override
             public void portalInstanceRegistered(Company company) throws Exception{
                 try {
                     addSAPEntry(company.getCompanyId());
