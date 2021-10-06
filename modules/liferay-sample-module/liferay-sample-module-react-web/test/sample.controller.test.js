@@ -24,24 +24,24 @@ const samples = {
     "page":1
  }
 
-test('get all samples', async () => {
-    const { items } = samples;
+// test('get all samples', async () => {
+//     const { items } = samples;
 
-    expect(items[0]).toHaveProperty('id');
-    expect(items[0]).toHaveProperty('name');
-});
+//     expect(items[0]).toHaveProperty('id');
+//     expect(items[0]).toHaveProperty('name');
+// });
 
-test('should create a sample', async () => {
-    const { items } = samples;
+// test('should create a sample', async () => {
+//     const { items } = samples;
 
-    const response = await SampleController.createSample('Sample test', items);
-    expect(response[response.length-1]).toMatchObject({ name: 'Sample test' });
-})
+//     const response = await SampleController.createSample('Sample test', items);
+//     expect(response[response.length-1]).toMatchObject({ name: 'Sample test' });
+// })
 
-test('should edit a sample', async () => {
-    const { items } = samples;
+// test('should edit a sample', async () => {
+//     const { items } = samples;
 
-    const newSample = { ...items[0], name: 'Sample edited!' };
-    const { data } = await SampleController.saveSample(newSample);
-    expect(data).toMatchObject({ name: 'Sample edited!' });
-});
+//     const newSample = { ...items[0], name: 'Sample edited!' };
+//     const { data } = await SampleController.saveSample(newSample);
+//     expect(data).toMatchObject({ name: 'Sample edited!' });
+// });
