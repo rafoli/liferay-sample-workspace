@@ -3,24 +3,19 @@ package com.liferay.test.functional.test.tdd.tests;
 import com.liferay.test.functional.test.tdd.pages.SampleAngularComponentPage;
 import com.liferay.test.functional.test.tdd.pages.SampleHomePage;
 import com.liferay.test.functional.test.tdd.pages.SampleLoginPage;
-
 import com.liferay.test.functional.test.tdd.utils.CommonMethods;
 
 import java.io.IOException;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import org.openqa.selenium.WebDriver;
 
-
-
 /**
  * @author Brian Wing Shun Chan
  */
-@Ignore
 public class LiferaySampleAngularTest {
 
 	@Test
@@ -29,20 +24,20 @@ public class LiferaySampleAngularTest {
 
 		SampleAngularComponentPage samplePage = new SampleAngularComponentPage(_driver);
 
-		samplePage.createSample("Sample X");
+		samplePage.createSample(_SAMPLE_TEST);
 
-		Assert.assertEquals(true, samplePage.isSampleDisplayed());
+		Assert.assertTrue(samplePage.isSampleTextDisplayed(_SAMPLE_TEST));
 	}
 
 	@Test
-	public void editSample() {
+	public void deleteFirstSample() {
 		login();
 
 		SampleAngularComponentPage samplePage = new SampleAngularComponentPage(_driver);
 
-		samplePage.editSample("Sample W");
+		samplePage.deleteSample();
 
-		Assert.assertEquals(true, samplePage.isSampleDisplayed());
+		Assert.assertFalse(samplePage.isSampleTextDisplayed(_SAMPLE_ONE));
 	}
 
 	public void login() {
@@ -62,6 +57,10 @@ public class LiferaySampleAngularTest {
 	public void setup() throws IOException {
 		_driver = _utils.setupAll();
 	}
+
+	private static final String _SAMPLE_ONE = "Sample 1";
+
+	private static final String _SAMPLE_TEST = "Sample Test";
 
 	private WebDriver _driver;
 	private CommonMethods _utils = new CommonMethods();

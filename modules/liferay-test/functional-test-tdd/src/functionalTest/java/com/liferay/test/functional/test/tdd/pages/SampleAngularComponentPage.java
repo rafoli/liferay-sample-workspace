@@ -55,23 +55,30 @@ public class SampleAngularComponentPage {
 		return _utils.findElementIsDisplayed(_sampleList, _driver);
 	}
 
+	public boolean isSampleTextDisplayed(String text) {
+		WebDriver.Navigation url = _driver.navigate();
+
+		url.refresh();
+
+		String pageSource = _driver.getPageSource();
+
+		return pageSource.contains(text);
+	}
+
 	private static final String _PAGE_URL = "http://localhost:8080/";
 
-	private final By _addButton = By.xpath("//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-list/button");
+	private static final String _PREFIX = "//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]";
+
+	private final By _addButton = By.xpath(_PREFIX.concat("/div/div/app-sample-list/button"));
 	private final By _deleteButton = By.xpath(
-		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-list/ul/li[1]/button");
+		_PREFIX.concat("/div/div/app-sample-list/div/table/tbody/tr[1]/td[3]/div/button"));
 	private final WebDriver _driver;
-	private final By _editNameInput = By.xpath(
-		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-detail/div/input");
-	private final By _editSaveButton = By.xpath(
-		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-detail/div/button");
-	private final By _firstSample = By.xpath(
-		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-list/ul/li[1]/a");
-	private final By _newNameInput = By.xpath(
-		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-create/div/input");
-	private final By _newSaveButton = By.xpath(
-		"//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-create/div/button[1]");
-	private final By _sampleList = By.xpath("//*[@id=\"js-portlet-_liferaysamplemodulejsweb_\"]/app-sample-list/ul");
+	private final By _editNameInput = By.xpath(_PREFIX.concat("/app-sample-detail/div/input"));
+	private final By _editSaveButton = By.xpath(_PREFIX.concat("/app-sample-detail/div/button"));
+	private final By _firstSample = By.xpath(_PREFIX.concat("/app-sample-list/ul/li[1]/a"));
+	private final By _newNameInput = By.xpath(_PREFIX.concat("/div/div/app-sample-create/div/div/div[1]/input"));
+	private final By _newSaveButton = By.xpath(_PREFIX.concat("/div/div/app-sample-create/div/div/div[2]/button"));
+	private final By _sampleList = By.xpath(_PREFIX.concat("/div/div/app-sample-list/div/table/tbody"));
 	private CommonMethods _utils = new CommonMethods();
 
 }

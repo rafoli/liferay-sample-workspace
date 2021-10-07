@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -61,6 +60,12 @@ public class CommonMethods {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
 
+	public boolean isSampleRemoved(WebDriver driver, String sample, String target) {
+		WebElement lastSample = driver.findElement(By.cssSelector(target));
+
+		return lastSample.equals(sample);
+	}
+
 	public WebDriver setupAll() throws IOException {
 		System.setProperty("webdriver.chrome.driver", "SeleniumProperties/chromedriver");
 
@@ -84,6 +89,5 @@ public class CommonMethods {
 	}
 
 	private static final String _PROPERTIES_BROWSER_MODE = "browser";
-
 
 }
