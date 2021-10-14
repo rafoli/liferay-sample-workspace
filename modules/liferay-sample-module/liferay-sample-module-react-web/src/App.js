@@ -1,18 +1,14 @@
-/**
- * File main App.
- */
-
 import React from 'react';
 
-import UserRolesProvider from './contexts/UserRolesProvider'
+import SampleProvider from './contexts/SampleProvider'
 
-import Samples from './modules/Sample/index';
+import Home from './pages/Home/index'
 
 export default function App() {
  
   return (
-    <UserRolesProvider>
-      <Samples />
-    </UserRolesProvider>
+    <SampleProvider>
+      <Home />
+    </SampleProvider>
   );
 }
