@@ -8,6 +8,8 @@
 		"@babel/plugin-transform-runtime": "^7.14.5",
 		"@babel/preset-env": "^7.7.6",
 		"@babel/preset-react": "^7.7.4",
+		"@testing-library/jest-dom": "^5.14.1",
+		"@testing-library/react": "^12.1.2",
 		"copy-webpack-plugin": "4.6.0",
 		"css-loader": "^6.2.0",
 		"cypress": "^8.2.0",
@@ -42,7 +44,7 @@
 		"copy-assets": "lnbs-copy-assets",
 		"deploy": "npm run build && lnbs-deploy",
 		"start": "lnbs-start",
-		"test": "npx jest test --env=jsdom"
+		"test": "npx jest test --env=jsdom --coverage"
 	},
 	"portlet": {
 		"com.liferay.portlet.display-category": "category.sample",

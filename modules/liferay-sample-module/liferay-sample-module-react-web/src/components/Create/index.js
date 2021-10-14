@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSamples } from '../../contexts/SampleProvider';
 
 export default function Create() {
@@ -11,6 +11,11 @@ export default function Create() {
         setSampleName('')
     }
 
+    const isFormInvalid = useMemo(() => {
+        const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        return (sampleName.trim().length === 0 || regex.test(sampleName))
+    } ,[sampleName])
+    
     return (
         <div className="form-group">
             <form onSubmit={handleCreateSample}>
@@ -22,10 +27,11 @@ export default function Create() {
                             value={sampleName} 
                             onChange={e => setSampleName(e.target.value)} 
                             className="form-control"
-                            id="input-sample-name" />
+                            id="input-sample-name" 
+                        />
                     </div>
                     <div className="input-group-item">
-                        <button disabled={!sampleName} className="btn btn-primary" id="btn-add-sample">Add</button>
+                        <button disabled={isFormInvalid} className="btn btn-primary">Add</button>
                     </div>
                 </div>
             </form>
