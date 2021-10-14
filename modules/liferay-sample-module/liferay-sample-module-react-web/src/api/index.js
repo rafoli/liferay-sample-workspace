@@ -1,6 +1,3 @@
-/**
- * File to configure API access.
-*/
 import axios from 'axios';
 
 const api = axios.create({

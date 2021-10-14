@@ -1,22 +1,19 @@
-/**
- * File to create a new sample.
-*/
-
 import React, { useState } from 'react';
+import { useSamples } from '../../contexts/SampleProvider';
 
-export default function Create({ createSample }) {
+export default function Create() {
+    const { createSample } = useSamples()
     const [sampleName, setSampleName] = useState('');
 
-    async function createNewSample(sampleName, event) {
-        event.preventDefault();
-
-        setSampleName('');
-        createSample({ name: sampleName });
+    function handleCreateSample(e) {
+        e.preventDefault()
+        createSample(sampleName)
+        setSampleName('')
     }
 
     return (
         <div className="form-group">
-            <form onSubmit={(e) => createNewSample(sampleName, e)}>
+            <form onSubmit={handleCreateSample}>
                 <div className="input-group">
                     <div className="input-group-item-shrink">
                         <input 
