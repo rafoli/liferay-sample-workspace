@@ -18,6 +18,11 @@ export default function SampleTable() {
             </tr>
           </thead>
           <tbody>
+            {sampleList.length === 0 && (
+              <span>
+                No samples available
+              </span>
+            )}
             {sampleList.length > 0 && sampleList.map((sample, index) => (<Sample  key={sample.id} sample={sample} index={index} />))}
           </tbody>
         </table>
