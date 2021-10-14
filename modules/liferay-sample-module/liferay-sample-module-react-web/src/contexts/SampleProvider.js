@@ -7,7 +7,7 @@ import React, {
 
 import api from '../api/index'
 
-const SampleContext = createContext({})
+export const SampleContext = createContext({})
 
 const SampleProvider = ({ children }) => {
     const [sampleList, setSampleList] = useState([]);
