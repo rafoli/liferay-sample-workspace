@@ -14,7 +14,7 @@ export default function Create() {
     const isFormInvalid = useMemo(() => {
         const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
         return (sampleName.trim().length === 0 || regex.test(sampleName))
-    } ,[sampleName])
+    }, [sampleName])
     
     return (
         <div className="form-group">

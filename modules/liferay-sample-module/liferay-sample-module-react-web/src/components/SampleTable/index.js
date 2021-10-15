@@ -23,7 +23,7 @@ export default function SampleTable() {
                 No samples available
               </span>
             )}
-            {sampleList.length > 0 && sampleList.map((sample, index) => (<Sample  key={sample.id} sample={sample} index={index} />))}
+            {sampleList.length > 0 && sampleList.map((sample) => (<Sample key={sample.id} sample={sample} />))}
           </tbody>
         </table>
       </div>
