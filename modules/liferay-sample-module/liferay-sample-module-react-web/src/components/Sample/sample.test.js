@@ -26,7 +26,11 @@ const customRender = (ui, values) => {
 describe('Sample component', () =>{
 
     beforeEach(() => {
-        useRoles.mockImplementation(() => [true, true, true]);
+        useRoles.mockImplementation(() => ({
+            isAdmin: true,
+            isSignedIn: true,
+            isUser: true
+        }));
     })
 
     it("should render a sample form component", () => {

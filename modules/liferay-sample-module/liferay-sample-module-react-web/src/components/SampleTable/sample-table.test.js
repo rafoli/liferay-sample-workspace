@@ -26,7 +26,11 @@ const customRender = (ui, values) => {
 describe('SampleTable component', () =>{
 
     beforeEach(() => {
-        useRoles.mockImplementation(() => [true]);
+        useRoles.mockImplementation(() => ({
+            isAdmin: true,
+            isSignedIn: true,
+            isUser: true
+        }));
     })
 
     it("should render a table form component", () => {

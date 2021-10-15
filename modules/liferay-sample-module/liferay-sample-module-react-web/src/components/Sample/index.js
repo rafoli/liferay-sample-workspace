@@ -4,7 +4,7 @@ import { useRoles } from "../../hooks/useRoles";
 
 const Samples = ({ sample, index }) => {
     const [name, setName] = useState(sample.name)
-    const [isAdmin] = useRoles()
+    const { isAdmin } = useRoles()
     const { removeSample, setEditingSample, updateSample } = useSamples()
 
     function handleEditingSample(id) {
