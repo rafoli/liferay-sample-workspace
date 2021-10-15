@@ -1,11 +1,11 @@
 export function useRoles() {
-    const isAdmin = SampleWorkspace.isAdmin 
-    const isUser = SampleWorkspace.isUser
-    const isSignedIn = Liferay.ThemeDisplay.isSignedIn();
+    const isAdmin = SampleWorkspace.isAdmin || false
+    const isUser = SampleWorkspace.isUser || false
+    const isSignedIn = Liferay.ThemeDisplay.isSignedIn() || false
  
-    return [
+    return {
         isAdmin,
         isUser,
         isSignedIn
-    ]
+    }
 }
