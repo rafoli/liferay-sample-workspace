@@ -14,7 +14,7 @@ const Home = () => {
         <div className="sheet-header">
           <h1 className="sheet-title">Samples List</h1>
         </div>
-        {isSignedIn && <Create />}
+        { isSignedIn && <Create /> }
         <SampleTable />
       </div>
     </div>

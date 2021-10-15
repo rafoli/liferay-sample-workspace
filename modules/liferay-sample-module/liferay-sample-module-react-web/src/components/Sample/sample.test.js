@@ -110,7 +110,7 @@ describe('Sample component', () =>{
 
         const removeSample = jest.fn(); 
 
-        const { getByText, container } = render(
+        const { getByText } = render(
             <SampleContext.Provider
                 value={{
                     removeSample
@@ -125,4 +125,25 @@ describe('Sample component', () =>{
 
         expect(removeSample).toBeCalled()
     });  
+
+    it('non logged users and non admin should not see edit and remove buttons on Sample', () => {
+
+        useRoles.mockImplementation(() => ({
+            isAdmin: false,
+            isSignedIn: false,
+            isUser: false
+        }));
+
+        let sample = {
+            id: 1,
+            name: 'Test Sample',
+            editing: false
+        }
+
+        const { container } = render(
+            <Sample sample={sample}/>
+        ) 
+
+        expect(container.querySelector('button')).toBeNull()
+    })
 })
