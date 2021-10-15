@@ -10,19 +10,6 @@ import { useRoles } from "../../hooks/useRoles";
 
 jest.mock("../../hooks/useRoles")
  
-const customRender = (ui, values) => {
-  return (
-    render(
-        <SampleContext.Provider
-            value={values}
-        >
-            {ui}
-        </SampleContext.Provider>
-    )
-  )
-}
-
-
 describe('Sample component', () =>{
 
     beforeEach(() => {
