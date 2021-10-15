@@ -1,6 +1,8 @@
 
 {
 	"testResultsProcessor": "./node_modules/jest-html-reporter",
+	"testPathIgnorePatterns": ["build", "dist"],
+	"bail": true,
 	"globals": {
 		"Liferay": {
 			"authToken": 112341234
