@@ -9,7 +9,6 @@ const Samples = ({ sample, index }) => {
 
     function handleEditingSample(id) {
         if (sample.editing) {
-            console.log(id)
             updateSample(sample, name)
             setEditingSample(id) 
         } else {
