@@ -22,7 +22,7 @@ const SampleProvider = ({ children }) => {
             
             setSampleList(items)
         } catch (error) {
-            console.log('error on findAll' + error)
+            console.error('error on findAll' + error)
         }
     }
 
@@ -34,7 +34,7 @@ const SampleProvider = ({ children }) => {
 
             setSampleList(newSamples)
         } catch (error) {
-            console.log('error on removeSample' + error)
+            console.error('error on removeSample' + error)
         }
     }
 
@@ -46,7 +46,7 @@ const SampleProvider = ({ children }) => {
 
             setSampleList(samples => [...samples, newSample])
         } catch (error) {
-            console.log('error on createSample' + error)
+            console.error('error on createSample' + error)
         }
     }
 
@@ -56,7 +56,7 @@ const SampleProvider = ({ children }) => {
 
             findAll()
         } catch (error) {
-            console.log('error on saveSample' + error)
+            console.error('error on saveSample' + error)
         }
     }
 
