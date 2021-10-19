@@ -85,14 +85,14 @@ subprojects { subproject ->
 			}
 			else if (subproject.pluginManager.hasPlugin('com.liferay.node')) {
 
-				def typescriptSources = fileTree(subproject.projectDir).include("**/*.ts").files.flatten().findAll { it.exists() }
-				def typescriptSpecSources = fileTree(subproject.projectDir).include("**/*.spec.ts").files.flatten().findAll { it.exists() }
-				def javascriptReports = fileTree(subproject.projectDir).include("**/report/lcov.info").files
+				def javscriptSources = fileTree(subproject.projectDir).include("**/*.js").files.flatten().findAll { it.exists() }
+				def javascriptSpecSources = fileTree(subproject.projectDir).include("**/*.test.js").files.flatten().findAll { it.exists() }
+				def javascriptReports = fileTree(subproject.projectDir).include("**/coverage/lcov.info").files
 
-				property 'sonar.sources', typescriptSources - typescriptSpecSources
-				property 'sonar.tests', typescriptSpecSources
-				property 'sonar.typescript.lcov.reportPaths', javascriptReports
-				property 'sonar.typescript.exclusions', "**/node_modules/**, **/bower_components/**, **/lib/**"
+				property 'sonar.sources', javscriptSources - javascriptSpecSources
+				property 'sonar.tests', javascriptSpecSources
+				property 'sonar.javascript.lcov.reportPaths', javascriptReports
+				property 'sonar.javascript.exclusions', "**/node_modules/**, **/bower_components/**, **/lib/**"
 			}
 		}
 	}
