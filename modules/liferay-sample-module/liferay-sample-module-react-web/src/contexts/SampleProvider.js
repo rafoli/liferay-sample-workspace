@@ -40,11 +40,9 @@ const SampleProvider = ({ children }) => {
 
     async function createSample(name) {
         try {
-            const response = await api.post(`/samples`, { name })
+            await api.post(`/samples`, { name })
 
-            const newSample = { ...response.data, editing: false };
-
-            setSampleList(samples => [...samples, newSample])
+            findAll()
         } catch (error) {
             console.error('error on createSample' + error)
         }
@@ -61,7 +59,7 @@ const SampleProvider = ({ children }) => {
     }
 
     function setEditingSample(id) {
-        var allSamples = sampleList.map(sample => {
+        const allSamples = sampleList.map(sample => {
             if (sample.id === id)
                 sample.editing = !sample.editing
             

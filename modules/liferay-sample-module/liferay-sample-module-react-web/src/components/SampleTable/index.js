@@ -7,6 +7,16 @@ import Sample from '../Sample/index'
 export default function SampleTable() {
   const { sampleList } = useSamples();
 
+  if (sampleList.length === 0) {
+    return (
+      <div className="sheet-section">
+        <div className="table-responsive">
+          No samples available
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="sheet-section">
       <div className="table-responsive">
@@ -18,11 +28,6 @@ export default function SampleTable() {
             </tr>
           </thead>
           <tbody>
-            {sampleList.length === 0 && (
-              <span>
-                No samples available
-              </span>
-            )}
             {sampleList.length > 0 && sampleList.map((sample) => (<Sample key={sample.id} sample={sample} />))}
           </tbody>
         </table>
