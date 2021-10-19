@@ -38,7 +38,7 @@ describe('Unit Form test suite', () => {
 
     it('form should reset when', () => {
 
-        var createSample = jest.fn()
+        const createSample = jest.fn()
 
         const { container } = render(
             <SampleContext.Provider

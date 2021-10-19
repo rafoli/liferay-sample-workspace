@@ -1,149 +1,163 @@
 import React from "react";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from "@testing-library/react";
 
 import Sample from "./index";
 
 import { SampleContext } from "../../contexts/SampleProvider";
 import { useRoles } from "../../hooks/useRoles";
 
-jest.mock("../../hooks/useRoles")
- 
-describe('Sample component', () =>{
+jest.mock("../../hooks/useRoles");
 
-    beforeEach(() => {
-        useRoles.mockImplementation(() => ({
-            isAdmin: true,
-            isSignedIn: true,
-            isUser: true
-        }));
-    })
+describe("Sample component", () => {
+  beforeEach(() => {
+    useRoles.mockImplementation(() => ({
+      isAdmin: true,
+      isSignedIn: true,
+      isUser: true,
+    }));
+  });
 
-    it("should render a sample form component", () => {
+  it("should render a sample form component", () => {
+    const sample = {
+      id: 1,
+      name: "Test Sample",
+      editing: false,
+    };
 
-        var sample = {
-            id: 1,
-            name: 'Test Sample',
-            editing: false
-        }
-        
-        const { getByText } = render(
-            <Sample sample={sample}/>
-        ) 
+    const { getByText } = render(
+      <table>
+        <tbody>
+          <Sample sample={sample} />
+        </tbody>
+      </table>
+    );
 
-        expect(getByText('Test Sample')).toBeInTheDocument()
-    });  
+    expect(getByText("Test Sample")).toBeInTheDocument();
+  });
 
-    it("should show a input when is editing a sample", () => {
+  it("should show a input when is editing a sample", () => {
+    const sample = {
+      id: 1,
+      name: "Test Sample",
+      editing: false,
+    };
 
-        var sample = {
-            id: 1,
-            name: 'Test Sample',
-            editing: false
-        }
+    function setEditingSample(id) {
+      sample.editing = !sample.editing;
+    }
 
-        function setEditingSample(id) {
-            sample.editing = !sample.editing
-        }
+    const { getByText } = render(
+      <SampleContext.Provider
+        value={{
+          setEditingSample,
+        }}
+      >
+        <table>
+          <tbody>
+            <Sample
+              sample={{
+                id: 1,
+                name: "Test Sample",
+                editing: false,
+              }}
+            />
+          </tbody>
+        </table>
+      </SampleContext.Provider>
+    );
 
+    fireEvent.click(getByText("Edit"));
 
-        const { getByText } = render(
-            <SampleContext.Provider
-                value={{
-                    setEditingSample
-                }}
-            >
-                <Sample sample={{
-                    id: 1,
-                    name: 'Test Sample',
-                    editing: false
-                }}/>
-            </SampleContext.Provider>
-        ) 
+    expect(sample.editing).toBeTruthy();
+  });
 
-        fireEvent.click(getByText('Edit'));
-               
-        expect(sample.editing).toBeTruthy()
-    });  
+  it("should update a sample", () => {
+    let sample = {
+      id: 1,
+      name: "Test Sample",
+      editing: true,
+    };
 
-    it("should update a sample", () => {
+    const setEditingSample = jest.fn();
+    const updateSample = jest.fn();
 
-        let sample = {
-            id: 1,
-            name: 'Test Sample',
-            editing: true
-        }
+    const { getByText, container } = render(
+      <SampleContext.Provider
+        value={{
+          setEditingSample,
+          updateSample,
+        }}
+      >
+        <table>
+          <tbody>
+            <Sample sample={sample} />
+          </tbody>
+        </table>
+      </SampleContext.Provider>
+    );
 
-        const setEditingSample = jest.fn(); 
-        const updateSample = jest.fn()
-        
+    const input = container.querySelector("input");
+    fireEvent.change(input, { target: { value: "Updated a Sample" } });
 
-        const { getByText, container } = render(
-            <SampleContext.Provider
-                value={{
-                    setEditingSample,
-                    updateSample
-                }}
-            >
-                <Sample sample={sample}/>
-            </SampleContext.Provider>
-        ) 
+    const btn = getByText("Save");
+    fireEvent.click(btn);
 
-        var input = container.querySelector('input')
-        fireEvent.change(input, { target: {value: 'Updated a Sample'} })
-        
-        var btn = getByText('Save')
-        fireEvent.click(btn)
+    expect(setEditingSample).toBeCalled();
+    expect(updateSample).toBeCalled();
+  });
 
-        expect(setEditingSample).toBeCalled()
-        expect(updateSample).toBeCalled()
-    });  
+  it("should remove a sample", () => {
+    let sample = {
+      id: 1,
+      name: "Test Sample",
+      editing: true,
+    };
 
-    it("should remove a sample", () => {
+    const removeSample = jest.fn();
 
-        let sample = {
-            id: 1,
-            name: 'Test Sample',
-            editing: true
-        }
+    const { getByText } = render(
+      <SampleContext.Provider
+        value={{
+          removeSample,
+        }}
+      >
+        <table>
+          <tbody>
+            <Sample sample={sample} />
+          </tbody>
+        </table>
+      </SampleContext.Provider>
+    );
 
-        const removeSample = jest.fn(); 
+    const btn = getByText("Remove");
+    fireEvent.click(btn);
 
-        const { getByText } = render(
-            <SampleContext.Provider
-                value={{
-                    removeSample
-                }}
-            >
-                <Sample sample={sample}/>
-            </SampleContext.Provider>
-        ) 
+    expect(removeSample).toBeCalled();
+  });
 
-        var btn = getByText('Remove')
-        fireEvent.click(btn)
+  it("non logged users and non admin should not see edit and remove buttons on Sample", () => {
+    useRoles.mockImplementation(() => ({
+      isAdmin: false,
+      isSignedIn: false,
+      isUser: false,
+    }));
 
-        expect(removeSample).toBeCalled()
-    });  
+    let sample = {
+      id: 1,
+      name: "Test Sample",
+      editing: false,
+    };
 
-    it('non logged users and non admin should not see edit and remove buttons on Sample', () => {
+    const { container } = render(
+      <table>
+        <tbody>
+          <Sample sample={sample} />
+        </tbody>
+      </table>
+    );
 
-        useRoles.mockImplementation(() => ({
-            isAdmin: false,
-            isSignedIn: false,
-            isUser: false
-        }));
-
-        let sample = {
-            id: 1,
-            name: 'Test Sample',
-            editing: false
-        }
-
-        const { container } = render(
-            <Sample sample={sample}/>
-        ) 
-
-        expect(container.querySelector('button')).toBeNull()
-    })
-})
+    expect(container.querySelector("button")).toBeNull();
+  });
+});
