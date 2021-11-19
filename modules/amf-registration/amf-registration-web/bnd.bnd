@@ -1,0 +1,4 @@
+Bundle-Name: Acme Movie Fanatics Registration WEB
+Bundle-SymbolicName: com.acme.movie.fanatics.registration.web
+Bundle-Version: 1.0.0
+Export-Package: com.acme.movie.fanatics.registration.web.constants
