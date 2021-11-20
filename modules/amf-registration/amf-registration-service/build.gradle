@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:amf-registration:amf-registration-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../amf-registration-api/src/main/java"
+}
+
+group = "com.acme.movies.fanatics.registration"

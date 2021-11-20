@@ -1,0 +1,10 @@
+Bundle-Name: amf-registration-api
+Bundle-SymbolicName: com.acme.movies.fanatics.registration.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.acme.movies.fanatics.registration.exception,\
+	com.acme.movies.fanatics.registration.model,\
+	com.acme.movies.fanatics.registration.service,\
+	com.acme.movies.fanatics.registration.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../amf-registration-service/service.xml
